@@ -24,7 +24,7 @@ public class ModMain
     // Define mod id in a common place for everything to reference
     public static final String MODID = "apex";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
 

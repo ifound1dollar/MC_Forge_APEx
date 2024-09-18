@@ -49,7 +49,7 @@ public class ModCustomItem extends Item {
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         tooltip.add(Component.translatable(tooltipLang));
     }
 }
