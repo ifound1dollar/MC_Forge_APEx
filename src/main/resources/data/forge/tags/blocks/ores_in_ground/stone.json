@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "apex:cobalt_ore",
+    "apex:phosphate_ore",
+    "apex:ruby_ore",
+    "apex:sapphire_ore",
+    "apex:tin_ore",
+    "apex:tungsten_ore"
+  ]
+}

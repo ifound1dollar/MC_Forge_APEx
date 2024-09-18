@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "apex:ruby_block",
+    "apex:ruby_ore",
+    "apex:deepslate_ruby_ore",
+    "apex:sapphire_block",
+    "apex:sapphire_ore",
+    "apex:deepslate_sapphire_ore",
+    "apex:decorative_amethyst_block",
+
+    "apex:steel_block",
+    "apex:tungsten_block",
+    "apex:raw_tungsten_block",
+    "apex:tungsten_ore",
+    "apex:deepslate_tungsten_ore",
+
+    "apex:cobalt_block",
+    "apex:cobalt_ore",
+    "apex:deepslate_cobalt_ore"
+  ]
+}

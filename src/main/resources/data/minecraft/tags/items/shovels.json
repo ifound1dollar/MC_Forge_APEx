@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "apex:bronze_shovel",
+    "apex:gilded_bronze_shovel",
+    "apex:cobalt_steel_shovel",
+    "apex:infused_gemstone_shovel",
+    "apex:tungsten_carbide_shovel"
+  ]
+}

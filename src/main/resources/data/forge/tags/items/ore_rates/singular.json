@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "apex:cobalt_ore",
+    "apex:deepslate_cobalt_ore",
+    "apex:phosphate_ore",
+    "apex:deepslate_phosphate_ore",
+    "apex:ruby_ore",
+    "apex:deepslate_ruby_ore",
+    "apex:sapphire_ore",
+    "apex:deepslate_sapphire_ore",
+    "apex:tin_ore",
+    "apex:deepslate_tin_ore",
+    "apex:tungsten_ore",
+    "apex:deepslate_tungsten_ore"
+  ]
+}

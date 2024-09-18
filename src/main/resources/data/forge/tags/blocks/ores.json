@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ores/cobalt",
+    "#forge:ores/phosphate",
+    "#forge:ores/ruby",
+    "#forge:ores/sapphire",
+    "#forge:ores/tin",
+    "#forge:ores/tungsten"
+  ]
+}

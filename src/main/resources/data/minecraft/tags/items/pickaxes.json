@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "apex:bronze_pickaxe",
+    "apex:gilded_bronze_pickaxe",
+    "apex:cobalt_steel_pickaxe",
+    "apex:infused_gemstone_pickaxe",
+    "apex:tungsten_carbide_pickaxe"
+  ]
+}

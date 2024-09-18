@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "apex:tin_block",
+    "apex:raw_tin_block",
+    "apex:tin_ore",
+    "apex:deepslate_tin_ore",
+
+    "apex:bronze_block",
+
+    "apex:phosphate_ore",
+    "apex:deepslate_phosphate_ore"
+  ]
+}

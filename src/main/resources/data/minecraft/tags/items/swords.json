@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "apex:bronze_sword",
+    "apex:gilded_bronze_sword",
+    "apex:cobalt_steel_sword",
+    "apex:infused_gemstone_sword",
+    "apex:tungsten_carbide_sword"
+  ]
+}

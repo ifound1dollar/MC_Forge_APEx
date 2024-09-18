@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "apex:bronze_axe",
+    "apex:gilded_bronze_axe",
+    "apex:cobalt_steel_axe",
+    "apex:infused_gemstone_axe",
+    "apex:tungsten_carbide_axe"
+  ]
+}

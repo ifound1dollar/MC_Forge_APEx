@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "apex:bronze_ingot",
+    "apex:steel_ingot",
+    "apex:tungsten_ingot",
+    "apex:ruby",
+    "apex:sapphire"
+  ]
+}

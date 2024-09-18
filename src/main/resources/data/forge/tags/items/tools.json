@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:tools/battleaxes",
+    "#forge:tools/paxels"
+  ]
+}
