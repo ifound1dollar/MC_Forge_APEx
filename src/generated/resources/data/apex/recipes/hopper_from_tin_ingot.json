@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "tag": "forge:ingots/tin"
+    },
+    "i": {
+      "tag": "forge:chests"
+    }
+  },
+  "pattern": [
+    "d d",
+    "did",
+    " d "
+  ],
+  "result": {
+    "item": "minecraft:hopper"
+  },
+  "show_notification": true
+}

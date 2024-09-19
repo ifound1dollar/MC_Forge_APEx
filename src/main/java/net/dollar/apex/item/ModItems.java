@@ -53,7 +53,6 @@ public class ModItems {
     public static final RegistryObject<Item> TROPHY_OMINOUS_LETTER = registerItem("trophy_ominous_letter",
             () -> new ModCustomItem(new Item.Properties().stacksTo(1),
                     "tooltip.trophy_item", false));
-
     //endregion
 
     //region Raw Items, Gems, Compounds

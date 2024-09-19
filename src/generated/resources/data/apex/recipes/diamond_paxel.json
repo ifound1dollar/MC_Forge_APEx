@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "tag": "forge:gems/diamond"
+    },
+    "i": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "ddd",
+    "di ",
+    " i "
+  ],
+  "result": {
+    "item": "apex:diamond_paxel"
+  },
+  "show_notification": true
+}

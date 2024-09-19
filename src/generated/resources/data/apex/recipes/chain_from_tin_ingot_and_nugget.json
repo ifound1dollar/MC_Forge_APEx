@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "tag": "forge:ingots/tin"
+    },
+    "i": {
+      "item": "apex:tin_nugget"
+    }
+  },
+  "pattern": [
+    "i",
+    "d",
+    "i"
+  ],
+  "result": {
+    "item": "minecraft:chain"
+  },
+  "show_notification": true
+}

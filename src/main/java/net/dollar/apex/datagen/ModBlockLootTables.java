@@ -71,10 +71,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 (block) -> createOreDrop(ModBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), ModItems.RAW_TUNGSTEN.get()));
 
         //MULTI-DROP ORES
-        add(ModBlocks.RUBY_ORE.get(), (block) ->
+        add(ModBlocks.PHOSPHATE_ORE.get(), (block) ->
                 createMultiOreDrop(ModBlocks.PHOSPHATE_ORE.get(), ModItems.PHOSPHATE_POWDER.get(),
                         2.0f, 5.0f));   //Equivalent to copper
-        add(ModBlocks.DEEPSLATE_RUBY_ORE.get(), (block) ->
+        add(ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), (block) ->
                 createMultiOreDrop(ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), ModItems.PHOSPHATE_POWDER.get(),
                         2.0f, 5.0f));
     }

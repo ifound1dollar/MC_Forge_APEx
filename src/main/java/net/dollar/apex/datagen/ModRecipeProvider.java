@@ -208,7 +208,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .of(ModItems.PHOSPHATE_POWDER.get()).build()))
                 .unlockedBy("has_rotten_flesh", inventoryTrigger(ItemPredicate.Builder.item()
                         .of(Items.ROTTEN_FLESH).build()))
-                .save(consumer, new ResourceLocation(ModMain.MODID, "tin_ingot_from_nugget"));
+                .save(consumer, new ResourceLocation(ModMain.MODID, "fertilizer_from_phosphate_flesh"));
         //endregion
 
         //region Iron-Replacement Tin Recipes
@@ -557,18 +557,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //endregion
 
         //region GILDED BRONZE EQUIPMENT
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 2)
-                .define('d', ModItems.CARBIDE_UPGRADE_TEMPLATE.get())
-                .define('i', Tags.Items.OBSIDIAN)
-                .define('n', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
-                .pattern("ndn")
-                .pattern("nin")
-                .pattern("nnn")
-                .unlockedBy("has_carbide_upgrade_template", inventoryTrigger(ItemPredicate.Builder.item()
-                        .of(ModItems.CARBIDE_UPGRADE_TEMPLATE.get()).build()))
-                .unlockedBy("has_tungsten_ingot", inventoryTrigger(ItemPredicate.Builder.item()
-                        .of(ModTags.Items.FORGE_TUNGSTEN_INGOTS).build()))
-                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_HELMET.get(), 1)
                 .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_HELMET.get())

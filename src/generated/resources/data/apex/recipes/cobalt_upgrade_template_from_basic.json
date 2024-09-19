@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "item": "apex:basic_upgrade_template"
+    },
+    "i": {
+      "tag": "forge:stone"
+    },
+    "n": {
+      "tag": "forge:ingots/steel"
+    }
+  },
+  "pattern": [
+    " d ",
+    "nin",
+    " n "
+  ],
+  "result": {
+    "item": "apex:cobalt_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

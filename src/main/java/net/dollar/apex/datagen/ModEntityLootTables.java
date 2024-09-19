@@ -26,8 +26,8 @@ public class ModEntityLootTables extends EntityLootSubProvider {
      */
     @Override
     public void generate() {
-        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Obsidian Golem
-        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Mysterious Specter
+//        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Obsidian Golem
+//        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Mysterious Specter
     }
 
 
