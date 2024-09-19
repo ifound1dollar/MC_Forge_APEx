@@ -8,8 +8,8 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModEffectEvent {
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class ModLivingEntityEvents {
     /**
      * Intercepts the MobEffectEvent.Applicable event to allow or deny MobEffect application.
      * @param event The fired MobEffectEvent.Applicable event
@@ -32,4 +32,21 @@ public class ModEffectEvent {
             }
         }
     }
+
+//    @SubscribeEvent
+//    public static void eventEntityEquipmentChange(LivingEquipmentChangeEvent event) {
+//        //If the changed slot is armor, check if the chest item is an IFullSetEffectArmor item and
+//        //  if the wearer is now wearing a full set that is immune to a specific effect. If so,
+//        //  remove the now invalid effect immediately.
+//        LivingEntity entity = event.getEntity();
+//        EquipmentSlot slot = event.getSlot();
+//        if (!(slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST
+//                || slot == EquipmentSlot.LEGS || slot == EquipmentSlot.FEET)) {
+//            return;
+//        }
+//
+//        if (entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof IFullSetEffectArmor armor) {
+//
+//        }
+//    }
 }

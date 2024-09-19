@@ -15,12 +15,12 @@ public class ModItemProperties {
      * Generates client-side Item Properties for custom items (new Bows and Crossbows).
      */
     public static void addCustomItemProperties() {
-        makeBowItemProperties(ModItems.TEST_ITEM.get());    //TODO: Fix all three items (Bows)
-        makeBowItemProperties(ModItems.TEST_ITEM.get());
-        makeBowItemProperties(ModItems.TEST_ITEM.get());
-        makeCrossbowItemProperties(ModItems.TEST_ITEM.get());   //TODO: Fix all three items (Crossbows)
-        makeCrossbowItemProperties(ModItems.TEST_ITEM.get());
-        makeCrossbowItemProperties(ModItems.TEST_ITEM.get());
+        makeBowItemProperties(ModItems.COBALT_STEEL_BOW.get());
+        makeBowItemProperties(ModItems.INFUSED_GEMSTONE_BOW.get());
+        makeBowItemProperties(ModItems.TUNGSTEN_CARBIDE_BOW.get());
+        makeCrossbowItemProperties(ModItems.COBALT_STEEL_CROSSBOW.get());
+        makeCrossbowItemProperties(ModItems.INFUSED_GEMSTONE_CROSSBOW.get());
+        makeCrossbowItemProperties(ModItems.TUNGSTEN_CARBIDE_CROSSBOW.get());
     }
 
     /**

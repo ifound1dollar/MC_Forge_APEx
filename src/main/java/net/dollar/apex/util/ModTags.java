@@ -86,6 +86,10 @@ public class ModTags {
 
 
 
+        public static final TagKey<Item> MINECRAFT_COALS = minecraftItemTag("coals");
+
+
+
         /**
          * Generate a forge item tag. NOTE: ItemTags.create() method auto-inserts the 'item/' path
          *  before the JSON file name.
@@ -106,6 +110,10 @@ public class ModTags {
         private static TagKey<Item> modItemTag(String name)
         {
             return ItemTags.create(new ResourceLocation(ModMain.MODID, name));
+        }
+
+        private static TagKey<Item> minecraftItemTag(String name) {
+            return ItemTags.create(new ResourceLocation("minecraft", name));
         }
     }
 

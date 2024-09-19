@@ -3,6 +3,7 @@ package net.dollar.apex;
 import com.mojang.logging.LogUtils;
 import net.dollar.apex.block.ModBlocks;
 import net.dollar.apex.config.Config;
+import net.dollar.apex.entities.ModEntities;
 import net.dollar.apex.item.ModItemGroups;
 import net.dollar.apex.item.ModItems;
 import net.dollar.apex.util.ModItemProperties;
@@ -36,6 +37,7 @@ public class ModMain
         ModItemGroups.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
