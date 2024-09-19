@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -29,9 +30,9 @@ public class ModMain
 
 
 
-    public ModMain(FMLJavaModLoadingContext context)
+    public ModMain()
     {
-        IEventBus modEventBus = context.getModEventBus();
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         //Register the Deferred Register to the mod event bus for all new items, blocks, entities, etc.
         ModItemGroups.register(modEventBus);
@@ -46,7 +47,7 @@ public class ModMain
         modEventBus.addListener(this::commonSetup);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC, "apex_common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, "apex_common.toml");
     }
 
 
