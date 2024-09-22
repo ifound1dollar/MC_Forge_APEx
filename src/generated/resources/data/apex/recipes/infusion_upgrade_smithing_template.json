@@ -6,7 +6,7 @@
       "item": "apex:infusion_upgrade_smithing_template"
     },
     "i": {
-      "tag": "forge:deepslate"
+      "item": "minecraft:deepslate"
     },
     "n": {
       "tag": "forge:gems/diamond"

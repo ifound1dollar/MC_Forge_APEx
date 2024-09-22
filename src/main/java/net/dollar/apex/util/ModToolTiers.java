@@ -15,7 +15,7 @@ public class ModToolTiers {
             2.0f,
             14,
             BlockTags.NEEDS_IRON_TOOL,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())); //TODO: Correct item
+            () -> Ingredient.of(ModItems.BRONZE_INGOT.get()));
     public static final Tier GILDED_BRONZE = new ForgeTier(
             3,
             666,
@@ -31,7 +31,7 @@ public class ModToolTiers {
             3.0f,
             18,
             BlockTags.NEEDS_DIAMOND_TOOL,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())); //TODO: Correct item
+            () -> Ingredient.of(ModItems.COBALT_STEEL_INGOT.get()));
     public static final Tier INFUSED_GEMSTONE = new ForgeTier(
             4,
             2031,
@@ -39,7 +39,7 @@ public class ModToolTiers {
             4.0f,
             22,
             BlockTags.NEEDS_DIAMOND_TOOL,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())); //TODO: Correct item
+            () -> Ingredient.of(ModItems.INFUSED_GEMSTONE.get()));
     public static final Tier TUNGSTEN_CARBIDE = new ForgeTier(
             4,
             2501,
@@ -47,7 +47,7 @@ public class ModToolTiers {
             6.0f,
             15,
             BlockTags.NEEDS_DIAMOND_TOOL,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())); //TODO: Correct item
+            () -> Ingredient.of(ModItems.TUNGSTEN_CARBIDE_INGOT.get()));
 
 
 }

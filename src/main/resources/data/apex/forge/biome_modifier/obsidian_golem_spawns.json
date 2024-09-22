@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#is_overworld",
+  "spawners": {
+    "type": "apex:obsidian_golem",
+    "weight": 150,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

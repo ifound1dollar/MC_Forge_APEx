@@ -22,11 +22,11 @@ public class ModItemGroups {
     //Creates a creative tab for all APEx items.
     public static final RegistryObject<CreativeModeTab> APEX_GROUP = CREATIVE_MODE_TABS.register("apex_group",
             () -> CreativeModeTab.builder()
-                    .icon(() -> ModItems.TEST_ITEM.get().getDefaultInstance())  //TODO: Correct item
+                    .icon(() -> ModItems.INFUSED_GEMSTONE.get().getDefaultInstance())
                     .title(Component.literal("APEx"))
                     .displayItems((parameters, output) -> {
                         //Add all items to tab here.
-                        output.accept(ModItems.TEST_ITEM.get());    //TODO: Correct item
+
                         //Ores and Raw Blocks
                         output.accept(ModBlocks.COBALT_ORE.get());
                         output.accept(ModBlocks.DEEPSLATE_COBALT_ORE.get());

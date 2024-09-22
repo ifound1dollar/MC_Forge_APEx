@@ -6,7 +6,7 @@
       "item": "apex:basic_upgrade_template"
     },
     "i": {
-      "tag": "forge:obsidian"
+      "item": "minecraft:obsidian"
     },
     "n": {
       "tag": "forge:ingots/tungsten"

@@ -1,5 +1,6 @@
 package net.dollar.apex.util;
 
+import net.dollar.apex.ModMain;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
@@ -25,7 +26,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                 map.put(ArmorItem.Type.CHESTPLATE, 6);
                 map.put(ArmorItem.Type.HELMET, 2);
             }), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0f, 0.0f,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())),    //TODO: Correct item
+            () -> Ingredient.of(ModItems.BRONZE_INGOT.get())),
     GILDED_BRONZE("gilded_bronze", 23, Util.make(
             new EnumMap<>(ArmorItem.Type.class), (map) -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
@@ -41,7 +42,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.HELMET, 3);
             }), 20, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0f, 0.1f,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())),     //TODO: Correct item
+            () -> Ingredient.of(ModItems.COBALT_STEEL_INGOT.get())),
     INFUSED_GEMSTONE("infused_gemstone", 37, Util.make(
             new EnumMap<>(ArmorItem.Type.class), (map) -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
@@ -49,7 +50,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.HELMET, 3);
             }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0f, 0.05f,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get())),      //TODO: Correct item
+            () -> Ingredient.of(ModItems.INFUSED_GEMSTONE.get())),
     TUNGSTEN_CARBIDE("tungsten_carbide", 41, Util.make(
                     new EnumMap<>(ArmorItem.Type.class), (map) -> {
                         map.put(ArmorItem.Type.BOOTS, 3);
@@ -57,7 +58,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                         map.put(ArmorItem.Type.CHESTPLATE, 8);
                         map.put(ArmorItem.Type.HELMET, 3);
                     }), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0f, 0.1f,
-            () -> Ingredient.of(ModItems.TEST_ITEM.get()));     //TODO: Correct item
+            () -> Ingredient.of(ModItems.TUNGSTEN_CARBIDE_INGOT.get()));
 
 
 
@@ -109,7 +110,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
     }
 
     public String getName() {
-        return this.name;
+        return (ModMain.MODID + ":" + name);
     }
 
     public float getToughness() {

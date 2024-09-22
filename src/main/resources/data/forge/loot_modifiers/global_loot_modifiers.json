@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "entries": [
+    "apex:loot_basic_upgrade_template",
+    "apex:loot_cobalt_steel_upgrade_template",
+    "apex:loot_infused_gemstone_upgrade_template",
+    "apex:loot_netherite_upgrade_template",
+    "apex:loot_tungsten_carbide_upgrade_template",
+    "apex:loot_bronze_ingot",
+    "apex:loot_phosphate_powder",
+    "apex:loot_tin_ingot",
+    "apex:loot_cobalt_shard",
+    "apex:loot_ruby",
+    "apex:loot_sapphire",
+    "apex:loot_steel_ingot",
+    "apex:loot_tungsten_ingot"
+  ]
+}

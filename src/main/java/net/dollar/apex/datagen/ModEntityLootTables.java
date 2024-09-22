@@ -1,6 +1,6 @@
 package net.dollar.apex.datagen;
 
-import net.dollar.apex.entities.ModEntities;
+import net.dollar.apex.entity.ModEntities;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -26,8 +26,8 @@ public class ModEntityLootTables extends EntityLootSubProvider {
      */
     @Override
     public void generate() {
-//        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Obsidian Golem
-//        add(EntityType.ALLAY, LootTable.lootTable());   //TODO: Mysterious Specter
+        add(ModEntities.OBSIDIAN_GOLEM.get(), LootTable.lootTable());
+        add(ModEntities.MYSTERIOUS_SPECTER.get(), LootTable.lootTable());
     }
 
 

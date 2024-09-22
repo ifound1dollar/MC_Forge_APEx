@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "apex:tungsten_carbide_ingot"
+    },
+    "title": "Time for a REAL upgrade",
+    "description": "Obtain an upgrade ingredient for any new endgame equipment tier",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "apex:a_proper_equipment_expansion",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "apex:cobalt_steel_ingot",
+              "apex:infused_gemstone",
+              "apex:tungsten_carbide_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

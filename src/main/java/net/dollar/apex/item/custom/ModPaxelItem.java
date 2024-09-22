@@ -1,7 +1,7 @@
 package net.dollar.apex.item.custom;
 
 import net.dollar.apex.util.ModItemUtils;
-import net.minecraft.tags.BlockTags;
+import net.dollar.apex.util.ModTags;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -10,8 +10,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 
 public class ModPaxelItem extends DiggerItem {
     public ModPaxelItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
-        super(attackDamage, attackSpeed, tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
-        //TODO: Fix blocktags to use modded MOD_PAXEL_MINEABLE tag.
+        super(attackDamage, attackSpeed, tier, ModTags.Blocks.MOD_PAXEL_MINEABLE, properties);
     }
 
 

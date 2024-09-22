@@ -6,7 +6,7 @@
       "item": "apex:basic_upgrade_template"
     },
     "i": {
-      "tag": "forge:stone"
+      "item": "minecraft:stone"
     },
     "n": {
       "tag": "forge:ingots/steel"

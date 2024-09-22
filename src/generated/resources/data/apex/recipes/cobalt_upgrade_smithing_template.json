@@ -6,7 +6,7 @@
       "item": "apex:cobalt_upgrade_smithing_template"
     },
     "i": {
-      "tag": "forge:stone"
+      "item": "minecraft:stone"
     },
     "n": {
       "tag": "forge:ingots/steel"

@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-18T21:22:15.5570726	Loot Tables
+// 1.20.1	2024-09-21T22:00:09.1814771	Loot Tables
 4658d433cea05b6cd89cfcb840d16e2a85f51159 data/apex/loot_tables/blocks/bronze_block.json
 984017edc86f8a857fbcebdea93d0dbfc99bd4c3 data/apex/loot_tables/blocks/cobalt_block.json
 4bc56fcfe7db3a2be53044db652adbc2f38aa5fd data/apex/loot_tables/blocks/cobalt_ore.json
@@ -21,3 +21,5 @@ f0684073f908f680c9be309cd21d669b47b76cd0 data/apex/loot_tables/blocks/tin_block.
 29894719f025d6315ffee3d579e0749f418a1097 data/apex/loot_tables/blocks/tin_ore.json
 6608856cef34643876bcedb63b0f7d9e5221d810 data/apex/loot_tables/blocks/tungsten_block.json
 21b2480cbcc80554b2034352b5c29ad514acc37b data/apex/loot_tables/blocks/tungsten_ore.json
+f24278429ffa889bdb93c3a5fec3b91c871de977 data/apex/loot_tables/entities/mysterious_specter.json
+539e7453aea77375d51592a5313fb8862353b002 data/apex/loot_tables/entities/obsidian_golem.json

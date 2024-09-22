@@ -116,6 +116,82 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         blastingRecipeBuilder(consumer, ModItems.RAW_TUNGSTEN.get(), RecipeCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
         //endregion
+        
+        //region Smeltable tools
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
+        blastingRecipeBuilder(consumer, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC,
+                ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
+
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        smeltingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
+        blastingRecipeBuilder(consumer, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC,
+                Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
+        //endregion
 
 
 
@@ -141,9 +217,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 RecipeCategory.MISC, ModBlocks.BRONZE_BLOCK.get());
         nineBlockStorageRecipes(consumer, RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL_INGOT.get(),
                 RecipeCategory.MISC, ModBlocks.STEEL_BLOCK.get());
-
-        //TODO: SMELTABLE TOOLS HERE
-
         //endregion
 
         //region Nuggets (cannot use storage recipes helper because duplicate ingot recipe names)
@@ -408,7 +481,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //region Upgrade Templates
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
-                .define('i', Tags.Items.NETHERRACK)
+                .define('i', Items.NETHERRACK)
                 .define('n', Tags.Items.GEMS_DIAMOND)
                 .pattern(" d ")
                 .pattern("nin")
@@ -421,7 +494,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
-                .define('i', ModTags.Items.FORGE_STONES)
+                .define('i', Items.STONE)
                 .define('n', ModTags.Items.FORGE_STEEL_INGOTS)
                 .pattern(" d ")
                 .pattern("nin")
@@ -433,7 +506,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, new ResourceLocation(ModMain.MODID, "cobalt_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.COBALT_UPGRADE_TEMPLATE.get())
-                .define('i', ModTags.Items.FORGE_STONES)
+                .define('i', Items.STONE)
                 .define('n', ModTags.Items.FORGE_STEEL_INGOTS)
                 .pattern("ndn")
                 .pattern("nin")
@@ -446,7 +519,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.INFUSION_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
-                .define('i', ModTags.Items.FORGE_DEEPSLATES)
+                .define('i', Items.DEEPSLATE)
                 .define('n', ModTags.Items.FORGE_DIAMONDS)
                 .pattern(" d ")
                 .pattern("nin")
@@ -458,7 +531,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, new ResourceLocation(ModMain.MODID, "infusion_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.INFUSION_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.INFUSION_UPGRADE_TEMPLATE.get())
-                .define('i', ModTags.Items.FORGE_DEEPSLATES)
+                .define('i', Items.DEEPSLATE)
                 .define('n', ModTags.Items.FORGE_DIAMONDS)
                 .pattern("ndn")
                 .pattern("nin")
@@ -471,7 +544,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
-                .define('i', Tags.Items.OBSIDIAN)
+                .define('i', Items.OBSIDIAN)
                 .define('n', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
                 .pattern(" d ")
                 .pattern("nin")
@@ -483,7 +556,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, new ResourceLocation(ModMain.MODID, "carbide_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.CARBIDE_UPGRADE_TEMPLATE.get())
-                .define('i', Tags.Items.OBSIDIAN)
+                .define('i', Items.OBSIDIAN)
                 .define('n', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
                 .pattern("ndn")
                 .pattern("nin")
@@ -967,7 +1040,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> p_249580_, RecipeCategory p_251203_,
                                                   ItemLike p_251689_, RecipeCategory p_251376_, ItemLike p_248771_) {
         nineBlockStorageRecipes(p_249580_, p_251203_, p_251689_, p_251376_, p_248771_, getSimpleRecipeName(p_248771_),
-                (String)null, getSimpleRecipeName(p_251689_), (String)null);
+                null, getSimpleRecipeName(p_251689_), null);
     }
     protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> p_250423_, RecipeCategory p_250083_,
                                                   ItemLike p_250042_, RecipeCategory p_248977_, ItemLike p_251911_,

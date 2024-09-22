@@ -1,6 +1,7 @@
 package net.dollar.apex.item;
 
 import net.dollar.apex.ModMain;
+import net.dollar.apex.entity.ModEntities;
 import net.dollar.apex.item.custom.*;
 import net.dollar.apex.item.custom.bow.ModCobaltSteelBowItem;
 import net.dollar.apex.item.custom.bow.ModInfusedGemstoneBowItem;
@@ -14,8 +15,8 @@ import net.dollar.apex.item.custom.tungstencarbide.*;
 import net.dollar.apex.util.ModArmorMaterials;
 import net.dollar.apex.util.ModSmithingUpgradeItemHelper;
 import net.dollar.apex.util.ModToolTiers;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,18 +30,13 @@ public class ModItems {
 
 
 
-    public static final RegistryObject<Item> TEST_ITEM = registerItem("test_item",
-            () -> new Item(new Item.Properties()));
-
-
-
     //region Misc.
     public static final RegistryObject<Item> OBSIDIAN_GOLEM_SPAWN_EGG = registerItem("obsidian_golem_spawn_egg",
-            () -> new SpawnEggItem(EntityType.ALLAY, 0x12031E, 0xED4D0E,
-                    new Item.Properties()));    //TODO: Correct entity
+            () -> new ForgeSpawnEggItem(ModEntities.OBSIDIAN_GOLEM, 0x12031E, 0xED4D0E,
+                    new Item.Properties()));
     public static final RegistryObject<Item> MYSTERIOUS_SPECTER_SPAWN_EGG = registerItem("mysterious_specter_spawn_egg",
-            () -> new SpawnEggItem(EntityType.ALLAY, 0xE3E3E3, 0xB8B8B8,
-                    new Item.Properties()));    //TODO: Correct entity
+            () -> new ForgeSpawnEggItem(ModEntities.MYSTERIOUS_SPECTER, 0xE3E3E3, 0xB8B8B8,
+                    new Item.Properties()));
     public static final RegistryObject<Item> FERTILIZER = registerItem("fertilizer",
             () -> new BoneMealItem((new Item.Properties())));
     //endregion
