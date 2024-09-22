@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-22T01:26:00.2872561	Recipes
+// 1.20.1	2024-09-22T01:49:50.2743058	Recipes
 867d1437948e0234f683fcdbf83d6b962bfec163 data/apex/advancements/recipes/building_blocks/amethyst_shard.json
 0f2738e53de0e299c420a662397549fdcbede133 data/apex/advancements/recipes/building_blocks/bronze_ingot.json
 a69c225d7d1d17f9236843fb115ffea9803d484b data/apex/advancements/recipes/building_blocks/cobalt_shard.json
@@ -325,7 +325,7 @@ a9ed1f218b81d801a119c8d12581940221ff00e9 data/apex/recipes/shears_from_tin_ingot
 95bcf28dabb49614674b5c48ca25759ef293cc65 data/apex/recipes/shears_from_tin_ingot_reversed.json
 e33ca855c7f375908075a236733377d5d6fbd8f0 data/apex/recipes/soul_lantern_from_tin_nugget.json
 dd914a76c5d68d39d4ba0a8d4ce62808b983e0b5 data/apex/recipes/steel_block.json
-70f3da5ecc972cf4c2d93374dbe5b88e7fce6656 data/apex/recipes/steel_compound.json
+6bdb93d313a93e5a06d66c5b3bdd608de3731433 data/apex/recipes/steel_compound.json
 0630cbf188ea0abeb4fdf0290071f18e75acd57e data/apex/recipes/steel_ingot.json
 2662e30f66dc8fbda486825338ac3b049af2f10f data/apex/recipes/steel_ingot_from_blasting_steel_compound.json
 aa03d11db4eed0536c148038506b6fa9d1c9c842 data/apex/recipes/steel_ingot_from_nugget.json

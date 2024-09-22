@@ -391,7 +391,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .of(ModTags.Items.FORGE_TIN_INGOTS).build()))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STEEL_COMPOUND.get(), 1)
-                .requires(Ingredient.of(ModTags.Items.FORGE_STEEL_INGOTS), 1)
+                .requires(Ingredient.of(ModTags.Items.FORGE_IRON_INGOTS), 1)
                 .requires(Ingredient.of(ItemTags.COALS), 1)
                 .unlockedBy("has_steel_ingot", inventoryTrigger(ItemPredicate.Builder.item()
                         .of(ModTags.Items.FORGE_STEEL_INGOTS).build()))
