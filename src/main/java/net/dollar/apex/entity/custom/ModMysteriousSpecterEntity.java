@@ -74,12 +74,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         //NOTE: smaller numbers (first argument) imply higher priority
 
         //speedModifier, followingTargetEvenIfNotSeen
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true) {
-            @Override
-            protected double getAttackReachSqr(LivingEntity p_25556_) {
-                return super.getAttackReachSqr(p_25556_) / 1.5; //cut attack range down
-            }
-        });
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
         //speedModifier
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
