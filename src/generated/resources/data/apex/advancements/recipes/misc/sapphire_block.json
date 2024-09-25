@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_sapphire",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sapphire"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:sapphire_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

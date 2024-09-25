@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_bronze_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bronze_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:bronze_helmet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

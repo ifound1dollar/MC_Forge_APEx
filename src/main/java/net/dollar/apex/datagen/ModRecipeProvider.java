@@ -12,8 +12,10 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -914,7 +916,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                                 int ticks, String resultItemName) {
         SimpleCookingRecipeBuilder
                 .generic(Ingredient.of(ingredientItemLike), category, resultItemLike, xpReward, ticks,
-                        RecipeSerializer.SMELTING_RECIPE)
+                        RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
                 .save(recipeOutput, new ResourceLocation(ModMain.MODID,
@@ -937,7 +939,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                                 int ticks, String resultItemName) {
         SimpleCookingRecipeBuilder
                 .generic(Ingredient.of(ingredientItemLike), category, resultItemLike, xpReward, ticks,
-                        RecipeSerializer.BLASTING_RECIPE)
+                        RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
                 .save(recipeOutput, new ResourceLocation(ModMain.MODID,

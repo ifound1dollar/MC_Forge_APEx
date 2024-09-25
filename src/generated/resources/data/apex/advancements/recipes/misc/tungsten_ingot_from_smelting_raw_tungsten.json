@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_raw_tungsten",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_raw_tungsten"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:tungsten_ingot_from_smelting_raw_tungsten"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

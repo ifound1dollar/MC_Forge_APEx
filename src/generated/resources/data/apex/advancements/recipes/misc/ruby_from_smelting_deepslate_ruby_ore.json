@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_deepslate_ruby_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_deepslate_ruby_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:ruby_from_smelting_deepslate_ruby_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

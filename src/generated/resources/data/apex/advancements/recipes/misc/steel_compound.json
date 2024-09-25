@@ -30,15 +30,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_steel_ingot",
-      "has_coal",
-      "has_the_recipe"
+      "has_coal"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:steel_compound"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

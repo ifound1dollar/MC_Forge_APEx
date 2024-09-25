@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_bronze_compound",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bronze_compound"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:bronze_ingot_from_smelting_bronze_compound"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

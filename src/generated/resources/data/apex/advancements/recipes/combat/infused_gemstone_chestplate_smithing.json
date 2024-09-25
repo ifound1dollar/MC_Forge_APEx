@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_infusion_upgrade_smithing_template",
-      "has_infused_gemstone",
-      "has_the_recipe"
+      "has_infused_gemstone"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:infused_gemstone_chestplate_smithing"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

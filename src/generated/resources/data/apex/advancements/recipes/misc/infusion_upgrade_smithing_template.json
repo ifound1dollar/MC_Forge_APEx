@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_infusion_upgrade_template",
-      "has_diamond",
-      "has_the_recipe"
+      "has_diamond"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:infusion_upgrade_smithing_template"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

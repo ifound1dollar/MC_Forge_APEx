@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_tungsten_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tungsten_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:tungsten_ingot_from_blasting_tungsten_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

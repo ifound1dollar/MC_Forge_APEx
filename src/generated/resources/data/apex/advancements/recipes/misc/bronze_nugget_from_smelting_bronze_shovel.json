@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_bronze_shovel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bronze_shovel"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:bronze_nugget_from_smelting_bronze_shovel"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

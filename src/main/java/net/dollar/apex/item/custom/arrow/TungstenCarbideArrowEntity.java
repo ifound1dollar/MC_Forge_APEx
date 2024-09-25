@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 public class TungstenCarbideArrowEntity extends Arrow {
     private boolean isSpectral;
 
-    public TungstenCarbideArrowEntity(Level level, LivingEntity owner) {
-        super(level, owner);
+    public TungstenCarbideArrowEntity(Level level, LivingEntity owner, ItemStack stack) {
+        super(level, owner, stack);
     }
 
 

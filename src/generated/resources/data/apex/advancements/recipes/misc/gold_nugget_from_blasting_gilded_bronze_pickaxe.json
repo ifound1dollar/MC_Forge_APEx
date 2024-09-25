@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_pickaxe",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_pickaxe"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gold_nugget_from_blasting_gilded_bronze_pickaxe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

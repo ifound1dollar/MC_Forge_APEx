@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_tin_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tin_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:shears_from_tin_ingot_reversed"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

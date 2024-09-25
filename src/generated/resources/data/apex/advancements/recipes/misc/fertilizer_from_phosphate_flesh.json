@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_phosphate_powder",
-      "has_rotten_flesh",
-      "has_the_recipe"
+      "has_rotten_flesh"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:fertilizer_from_phosphate_flesh"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

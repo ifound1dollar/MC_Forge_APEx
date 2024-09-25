@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_sword",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_sword"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gilded_bronze_sword"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

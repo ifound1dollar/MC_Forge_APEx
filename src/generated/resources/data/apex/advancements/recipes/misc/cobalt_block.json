@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cobalt_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cobalt_shard"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:cobalt_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

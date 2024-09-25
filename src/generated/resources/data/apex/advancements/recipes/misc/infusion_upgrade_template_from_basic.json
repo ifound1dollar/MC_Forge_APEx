@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_basic_upgrade_template",
-      "has_diamond",
-      "has_the_recipe"
+      "has_diamond"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:infusion_upgrade_template_from_basic"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

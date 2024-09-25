@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_helmet",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_helmet"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gold_nugget_from_blasting_gilded_bronze_helmet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

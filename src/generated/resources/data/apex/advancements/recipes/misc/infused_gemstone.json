@@ -72,19 +72,18 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_amethyst",
       "has_diamond",
       "has_emerald",
       "has_ruby",
       "has_sapphire",
-      "has_handful_of_stardust",
-      "has_the_recipe"
+      "has_handful_of_stardust"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:infused_gemstone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

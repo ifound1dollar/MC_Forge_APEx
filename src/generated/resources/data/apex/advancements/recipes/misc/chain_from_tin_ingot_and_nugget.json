@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_tin_ingot",
-      "has_tin_nugget",
-      "has_the_recipe"
+      "has_tin_nugget"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:chain_from_tin_ingot_and_nugget"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

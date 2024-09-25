@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_axe",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_axe"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gold_nugget_from_smelting_gilded_bronze_axe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

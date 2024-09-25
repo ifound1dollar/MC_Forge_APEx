@@ -29,17 +29,17 @@ public class ModArrowUtil {
         //  spectral. Finally, implicitly cast it to the ArrowEntity class by assigning it to arrowEntity.
         switch (type) {
             case INFUSED -> {
-                InfusedGemstoneArrowEntity temp = new InfusedGemstoneArrowEntity(level, shooter);
+                InfusedGemstoneArrowEntity temp = new InfusedGemstoneArrowEntity(level, shooter, arrowStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }
             case CARBIDE -> {
-                TungstenCarbideArrowEntity temp = new TungstenCarbideArrowEntity(level, shooter);
+                TungstenCarbideArrowEntity temp = new TungstenCarbideArrowEntity(level, shooter, arrowStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }
             default -> {    //Guaranteed to be COBALT
-                CobaltSteelArrowEntity temp = new CobaltSteelArrowEntity(level, shooter);
+                CobaltSteelArrowEntity temp = new CobaltSteelArrowEntity(level, shooter, arrowStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }

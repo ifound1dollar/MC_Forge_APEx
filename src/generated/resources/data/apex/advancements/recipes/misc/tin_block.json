@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_tin_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tin_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:tin_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

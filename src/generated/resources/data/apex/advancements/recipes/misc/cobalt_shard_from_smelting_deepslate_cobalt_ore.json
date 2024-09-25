@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_deepslate_cobalt_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_deepslate_cobalt_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:cobalt_shard_from_smelting_deepslate_cobalt_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

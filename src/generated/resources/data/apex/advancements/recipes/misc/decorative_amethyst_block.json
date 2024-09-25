@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_amethyst_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_amethyst_shard"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:decorative_amethyst_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

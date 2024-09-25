@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_chestplate",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_chestplate"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gilded_bronze_chestplate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

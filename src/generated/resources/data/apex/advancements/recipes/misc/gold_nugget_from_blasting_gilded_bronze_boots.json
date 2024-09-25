@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_boots",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_boots"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gold_nugget_from_blasting_gilded_bronze_boots"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

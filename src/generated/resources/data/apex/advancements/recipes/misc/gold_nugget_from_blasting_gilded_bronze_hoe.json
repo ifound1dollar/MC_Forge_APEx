@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gilded_bronze_hoe",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gilded_bronze_hoe"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gold_nugget_from_blasting_gilded_bronze_hoe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

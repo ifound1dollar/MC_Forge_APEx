@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_phosphate_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_phosphate_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:phosphate_powder_from_smelting_phosphate_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

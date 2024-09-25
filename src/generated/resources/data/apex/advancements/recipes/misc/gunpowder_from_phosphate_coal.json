@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_phosphate_powder",
-      "has_coal",
-      "has_the_recipe"
+      "has_coal"
     ]
   ],
   "rewards": {
     "recipes": [
       "apex:gunpowder_from_phosphate_coal"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
