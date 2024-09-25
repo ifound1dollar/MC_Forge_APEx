@@ -37,7 +37,7 @@ public class ModCustomItem extends Item {
      * @return Whether this item has enchantment glint
      */
     @Override
-    public boolean isFoil(ItemStack stack) {
+    public boolean isFoil(@NotNull ItemStack stack) {
         return hasGlint;
     }
 
