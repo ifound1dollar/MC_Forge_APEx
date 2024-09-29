@@ -82,37 +82,37 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)
                     .strength(4.5f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(4, 8)));
 
 
     public static final RegistryObject<Block> SAPPHIRE_ORE = registerBlock("sapphire_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .strength(3f).requiresCorrectToolForDrops().mapColor(MapColor.STONE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(4, 8)));
     public static final RegistryObject<Block> DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)
                     .strength(4.5f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(4, 8)));
 
 
     public static final RegistryObject<Block> COBALT_ORE = registerBlock("cobalt_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .strength(3f).requiresCorrectToolForDrops().mapColor(MapColor.STONE),
-                    UniformInt.of(4, 8)));  //Diamond is 3, 7
+                    UniformInt.of(3, 6)));  //Diamond is 3, 7
     public static final RegistryObject<Block> DEEPSLATE_COBALT_ORE = registerBlock("deepslate_cobalt_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)
                     .strength(4.5f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(3, 6)));
 
 
     public static final RegistryObject<Block> PHOSPHATE_ORE = registerBlock("phosphate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .strength(3f).requiresCorrectToolForDrops().mapColor(MapColor.STONE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(1, 3)));
     public static final RegistryObject<Block> DEEPSLATE_PHOSPHATE_ORE = registerBlock("deepslate_phosphate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)
                     .strength(4.5f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE),
-                    UniformInt.of(3, 7)));
+                    UniformInt.of(1, 3)));
 
 
 

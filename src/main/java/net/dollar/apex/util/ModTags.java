@@ -48,7 +48,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> MOD_TOOLS_COBALT_STEEL = modItemTag("tools_cobalt_steel");
-        public static final TagKey<Item> MOD_TOOLS_INFUSED_DIAMOND = modItemTag("tools_infused_diamond");
+        public static final TagKey<Item> MOD_TOOLS_infused_gemstone = modItemTag("tools_infused_gemstone");
         public static final TagKey<Item> MOD_TOOLS_TUNGSTEN_CARBIDE = modItemTag("tools_tungsten_carbide");
 
 
