@@ -2,6 +2,7 @@ package net.dollar.apex.entity.custom;
 
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -44,7 +45,6 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     private UUID persistentAngerTarget;
 
     private int ticksSinceLastAttack = 0;
-    private int teleportDelayTicks = 0;
     private int auraCounterTicks = 60;
     private final int textureID;
 
@@ -264,7 +264,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
                 //ALSO CHANCE TO SET TARGET ON FIRE BASED ON % MISSING HP + 10% (LOOSELY CORRESPONDS TO CRACKINESS)
                 if (this.random.nextFloat() > (this.getHealth() / this.getMaxHealth()) - 0.1f) {
-                    livingEntity.setSecondsOnFire(4);
+                    livingEntity.setRemainingFireTicks(80); //4 seconds
                 }
             }
         }
@@ -322,7 +322,6 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         }
 
         ticksSinceLastAttack++;
-        teleportDelayTicks--;
         //if this hasn't attacked in >3 seconds, roll 1% chance per tick to afflict nearby players and teleport to target
         if (ticksSinceLastAttack > 60 && this.random.nextInt(100) < 1) {
             weakenAndSlowNearbyEntities();
@@ -416,7 +415,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean canBeAffected(MobEffectInstance effectInstance) {
-        MobEffect mobeffect = effectInstance.getEffect();
+        Holder<MobEffect> mobeffect = effectInstance.getEffect();
         return mobeffect != MobEffects.POISON && mobeffect != MobEffects.WITHER && mobeffect != MobEffects.HUNGER;
     }
 

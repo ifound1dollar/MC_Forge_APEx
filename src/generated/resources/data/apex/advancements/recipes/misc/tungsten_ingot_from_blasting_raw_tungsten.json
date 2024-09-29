@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:raw_tungsten"
-            ]
+            "items": "apex:raw_tungsten"
           }
         ]
       },

@@ -1,42 +1,25 @@
 package net.dollar.apex.item.custom;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TieredItem;
-import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ModBattleaxeItem extends TieredItem implements Vanishable {
-    private final float attackDamage;
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
-
-
+public class ModBattleaxeItem extends TieredItem {
     /**
      * Constructs a new ModBattleaxeItem object.
      * @param tier Equipment tier
-     * @param attackDamage Base attack damage (before tier modifier)
-     * @param attackSpeed Attack speed (NOT mining speed)
      * @param properties Item properties
      */
-    public ModBattleaxeItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
+    public ModBattleaxeItem(Tier tier, Properties properties) {
         super(tier, properties);
-        this.attackDamage = attackDamage + tier.getAttackDamageBonus();
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", attackSpeed, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = builder.build();
     }
 
 
@@ -55,16 +38,8 @@ public class ModBattleaxeItem extends TieredItem implements Vanishable {
                 enchantment == Enchantments.SMITE ||
                 enchantment == Enchantments.UNBREAKING ||
                 enchantment == Enchantments.FIRE_ASPECT ||
-                enchantment == Enchantments.MOB_LOOTING ||
+                enchantment == Enchantments.LOOTING ||
                 enchantment == Enchantments.MENDING);   //NOTE: Mending is treasure only, this just allows books.
-    }
-
-    /**
-     * Getter for attack damage field (post-calculation with tier attack damage bonus).
-     * @return Value of attackDamage field.
-     */
-    public float getDamage() {
-        return this.attackDamage;
     }
 
     /**
@@ -93,39 +68,37 @@ public class ModBattleaxeItem extends TieredItem implements Vanishable {
      * @return Whether the attack was successfully performed
      */
     public boolean hurtEnemy(ItemStack stack, LivingEntity targetEntity, LivingEntity userEntity) {
-        stack.hurtAndBreak(1, userEntity, (livingEntity) -> {
-            livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        stack.hurtAndBreak(1, userEntity, EquipmentSlot.MAINHAND);
         return true;
     }
 
-    /**
-     * Performs Item-specific mining operations (ex. deal durability damage).
-     * @param stack ItemStack corresponding to this Item
-     * @param level Active game Level
-     * @param blockState Blockstate of block being mined
-     * @param blockPos Position of block being mined
-     * @param userEntity User LivingEntity
-     * @return Whether the mining was successfully performed
-     */
-    public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity userEntity) {
-        if (blockState.getDestroySpeed(level, blockPos) != 0.0F) {
-            stack.hurtAndBreak(1, userEntity, (livingEntity) -> {
-                livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            }); //Change to deal only 1 durability damage instead of 2.
-        }
+//    /**
+//     * Performs Item-specific mining operations (ex. deal durability damage).
+//     * @param stack ItemStack corresponding to this Item
+//     * @param level Active game Level
+//     * @param blockState Blockstate of block being mined
+//     * @param blockPos Position of block being mined
+//     * @param userEntity User LivingEntity
+//     * @return Whether the mining was successfully performed
+//     */
+//    public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity userEntity) {
+//        if (blockState.getDestroySpeed(level, blockPos) != 0.0F) {
+//            stack.hurtAndBreak(1, userEntity, (livingEntity) -> {
+//                livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+//            }); //Change to deal only 1 durability damage instead of 2.
+//        }
+//
+//        return true;
+//    }
 
-        return true;
-    }
-
-    /**
-     * Gets Map of default attribute modifiers for the corresponding EquipmentSlot.
-     * @param slot EquipmentSlot corresponding to this Item
-     * @return Multimap of Attributes, AttributeModifiers
-     */
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        return slot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(slot);
-    }
+//    /**
+//     * Gets Map of default attribute modifiers for the corresponding EquipmentSlot.
+//     * @param slot EquipmentSlot corresponding to this Item
+//     * @return Multimap of Attributes, AttributeModifiers
+//     */
+//    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+//        return slot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(slot);
+//    }
 
     /**
      * Checks whether this Item can perform a specific ToolAction (false).

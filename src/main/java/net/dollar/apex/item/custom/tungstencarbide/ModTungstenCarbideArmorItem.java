@@ -3,6 +3,7 @@ package net.dollar.apex.item.custom.tungstencarbide;
 import net.dollar.apex.item.ModItems;
 import net.dollar.apex.util.IFullSetEffectArmor;
 import net.dollar.apex.util.ModItemUtils;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -10,14 +11,12 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class ModTungstenCarbideArmorItem extends ArmorItem implements IFullSetEffectArmor {
-    public ModTungstenCarbideArmorItem(ArmorMaterial material, Type type, Item.Properties properties) {
+    public ModTungstenCarbideArmorItem(Holder<ArmorMaterial> material, Type type, Item.Properties properties) {
         super(material, type, properties);
     }
 
@@ -29,7 +28,7 @@ public class ModTungstenCarbideArmorItem extends ArmorItem implements IFullSetEf
      * @return Whether the effect can be applied to this armor's wearer
      */
     @Override
-    public boolean canReceiveEffect(MobEffect effect, LivingEntity wearer) {
+    public boolean canReceiveEffect(Holder<MobEffect> effect, LivingEntity wearer) {
         //Can receive effect UNLESS full set and effect is weakness.
         boolean isFullSet = false;
 
@@ -50,12 +49,13 @@ public class ModTungstenCarbideArmorItem extends ArmorItem implements IFullSetEf
     /**
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
-     * @param level Relevant level
+     * @param context Relevant TooltipContext
      * @param tooltip List of tooltip texts to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
+                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         ModItemUtils.appendCobaltSteelEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.ARMOR);
     }
 }

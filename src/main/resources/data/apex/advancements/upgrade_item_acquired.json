@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "apex:tungsten_carbide_ingot"
+      "id": "apex:tungsten_carbide_ingot"
     },
     "title": "Time for a REAL upgrade",
     "description": "Obtain an upgrade ingredient for any new endgame equipment tier",

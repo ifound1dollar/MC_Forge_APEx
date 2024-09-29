@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:tin_ingot"
-            ]
+            "items": "apex:tin_ingot"
           }
         ]
       },

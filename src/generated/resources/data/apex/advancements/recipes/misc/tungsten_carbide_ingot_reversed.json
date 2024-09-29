@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:coals"
+            "items": "#minecraft:coals"
           }
         ]
       },
@@ -15,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:molten_core"
-            ]
+            "items": "apex:molten_core"
           }
         ]
       },
@@ -33,7 +31,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/tungsten"
+            "items": "#forge:ingots/tungsten"
           }
         ]
       },

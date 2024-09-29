@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:gilded_bronze_helmet"
-            ]
+            "items": "apex:gilded_bronze_helmet"
           }
         ]
       },

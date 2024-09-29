@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/amethyst"
+            "items": "#forge:gems/amethyst"
           }
         ]
       },
@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/diamond"
+            "items": "#forge:gems/diamond"
           }
         ]
       },
@@ -25,7 +25,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/emerald"
+            "items": "#forge:gems/emerald"
           }
         ]
       },
@@ -35,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:handful_of_stardust"
-            ]
+            "items": "apex:handful_of_stardust"
           }
         ]
       },
@@ -47,7 +45,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/ruby"
+            "items": "#forge:gems/ruby"
           }
         ]
       },
@@ -57,7 +55,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/sapphire"
+            "items": "#forge:gems/sapphire"
           }
         ]
       },

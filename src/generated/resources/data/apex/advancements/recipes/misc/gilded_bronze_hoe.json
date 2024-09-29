@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:gilded_bronze_hoe"
-            ]
+            "items": "apex:gilded_bronze_hoe"
           }
         ]
       },

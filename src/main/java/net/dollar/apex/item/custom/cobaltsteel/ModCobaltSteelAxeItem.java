@@ -1,18 +1,19 @@
 package net.dollar.apex.item.custom.cobaltsteel;
 
 import net.dollar.apex.util.ModItemUtils;
+import net.dollar.apex.util.ModToolTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class ModCobaltSteelAxeItem extends AxeItem {
-    public ModCobaltSteelAxeItem(Tier material, float attackDamage, float attackSpeed, Item.Properties properties) {
-        super(material, attackDamage, attackSpeed, properties);
+    public ModCobaltSteelAxeItem(Tier material, float attackDamage, float attackSpeed) {
+        super(material, new Item.Properties().attributes(AxeItem.createAttributes(
+                ModToolTiers.COBALT_STEEL, attackDamage, attackSpeed))
+                .fireResistant());
     }
 
 
@@ -33,12 +34,13 @@ public class ModCobaltSteelAxeItem extends AxeItem {
     /**
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
-     * @param level Relevant level
+     * @param context Relevant TooltipContext
      * @param tooltip List of tooltip texts to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
+                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         ModItemUtils.appendCobaltSteelEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
     }
 }

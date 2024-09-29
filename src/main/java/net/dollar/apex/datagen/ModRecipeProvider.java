@@ -4,6 +4,7 @@ import net.dollar.apex.ModMain;
 import net.dollar.apex.block.ModBlocks;
 import net.dollar.apex.item.ModItems;
 import net.dollar.apex.util.ModTags;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +23,7 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Used to auto-generate recipe JSON files in 'src/generated' subdirectory. In-code definitions of recipes
@@ -30,8 +32,8 @@ import javax.annotation.Nullable;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private enum ToolType { AXE, BATTLEAXE, HOE, PAXEL, PICKAXE, SHOVEL, SWORD }
 
-    public ModRecipeProvider(PackOutput output) {
-        super(output);
+    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+        super(output, provider);
     }
 
 

@@ -11,6 +11,7 @@
     "d "
   ],
   "result": {
-    "item": "minecraft:shears"
+    "count": 1,
+    "id": "minecraft:shears"
   }
 }

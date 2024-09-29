@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:tin_block"
-            ]
+            "items": "apex:tin_block"
           }
         ]
       },

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/diamond"
+            "items": "#forge:gems/diamond"
           }
         ]
       },
@@ -15,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:infusion_upgrade_smithing_template"
-            ]
+            "items": "apex:infusion_upgrade_smithing_template"
           }
         ]
       },

@@ -93,7 +93,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         return createSilkTouchDispatchTable(block, this.applyExplosionDecay(block,
                 LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
-                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.FORTUNE))));
     }
 
 

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:steel_nugget"
-            ]
+            "items": "apex:steel_nugget"
           }
         ]
       },

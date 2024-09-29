@@ -5,7 +5,7 @@ import net.dollar.apex.entity.client.ModMysteriousSpecterEntityRenderer;
 import net.dollar.apex.entity.client.ModObsidianGolemEntityRenderer;
 import net.dollar.apex.entity.custom.ModMysteriousSpecterEntity;
 import net.dollar.apex.entity.custom.ModObsidianGolemEntity;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -35,10 +35,10 @@ public class ModEntityEvents {
      */
     @SubscribeEvent
     public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.OBSIDIAN_GOLEM.get(), SpawnPlacements.Type.ON_GROUND,
+        event.register(ModEntities.OBSIDIAN_GOLEM.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModObsidianGolemEntity::checkObsidianGolemSpawnRules,
                 SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(ModEntities.MYSTERIOUS_SPECTER.get(), SpawnPlacements.Type.ON_GROUND,
+        event.register(ModEntities.MYSTERIOUS_SPECTER.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModMysteriousSpecterEntity::checkMysteriousSpecterSpawnRules,
                 SpawnPlacementRegisterEvent.Operation.REPLACE);
     }

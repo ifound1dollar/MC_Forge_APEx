@@ -2,6 +2,7 @@ package net.dollar.apex.entity.custom;
 
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -20,7 +21,6 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -255,7 +255,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
 
                 //ALSO CHANCE TO SET TARGET ON FIRE BASED ON % MISSING HP + 10% (LOOSELY CORRESPONDS TO CRACKINESS)
                 if (this.random.nextFloat() > (this.getHealth() / this.getMaxHealth()) - 0.1f) {
-                    livingEntity.setSecondsOnFire(4);
+                    livingEntity.setRemainingFireTicks(80); //4 seconds
                 }
             }
         }
@@ -273,7 +273,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean hurt(DamageSource source, float value) {
-        IronGolem.Crackiness irongolem$crackiness = this.getCrackiness();
+        Crackiness.Level irongolem$crackiness = this.getCrackiness();
         boolean flag = super.hurt(source, value);
         if (flag && this.getCrackiness() != irongolem$crackiness) {
             this.playSound(SoundEvents.IRON_GOLEM_DAMAGE, 1.0F, 1.0F);
@@ -286,8 +286,8 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * Gets Crackiness enum value based on percent current Health.
      * @return IronGolem.Crackiness value
      */
-    public IronGolem.Crackiness getCrackiness() {
-        return IronGolem.Crackiness.byFraction(this.getHealth() / this.getMaxHealth());
+    public Crackiness.Level getCrackiness() {
+        return Crackiness.GOLEM.byFraction(this.getHealth() / this.getMaxHealth());
     }
 
     /**
@@ -388,8 +388,8 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean canBeAffected(MobEffectInstance effectInstance) {
-        MobEffect mobeffect = effectInstance.getEffect();
-        return mobeffect != MobEffects.POISON && mobeffect != MobEffects.WITHER && mobeffect != MobEffects.HUNGER;
+        Holder<MobEffect> mobEffect = effectInstance.getEffect();
+        return mobEffect != MobEffects.POISON && mobEffect != MobEffects.WITHER && mobEffect != MobEffects.HUNGER;
     }
 
     /**

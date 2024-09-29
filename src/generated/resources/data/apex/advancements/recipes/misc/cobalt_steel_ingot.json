@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:cobalt_shard"
-            ]
+            "items": "apex:cobalt_shard"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:molten_core"
-            ]
+            "items": "apex:molten_core"
           }
         ]
       },
@@ -29,7 +25,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/steel"
+            "items": "#forge:ingots/steel"
           }
         ]
       },

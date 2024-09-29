@@ -1,7 +1,7 @@
 package net.dollar.apex.loot.chest;
 
 import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.dollar.apex.util.ModLootUtils;
@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class ModTungstenCarbideUpgradeTemplateModifier extends LootModifier {
-    public static final Supplier<Codec<ModTungstenCarbideUpgradeTemplateModifier>> CODEC = Suppliers.memoize(() ->
-            RecordCodecBuilder.create(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
+    public static final Supplier<MapCodec<ModTungstenCarbideUpgradeTemplateModifier>> CODEC = Suppliers.memoize(() ->
+            RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
                     .fieldOf("item").forGetter(m -> m.item)).apply(inst, ModTungstenCarbideUpgradeTemplateModifier::new)));
     final Item item;
 
@@ -78,7 +78,7 @@ public class ModTungstenCarbideUpgradeTemplateModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

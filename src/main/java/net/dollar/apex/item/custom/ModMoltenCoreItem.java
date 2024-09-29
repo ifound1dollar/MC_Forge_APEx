@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,12 +31,13 @@ public class ModMoltenCoreItem extends Item {
     /**
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
-     * @param level Relevant level
+     * @param context Relevant TooltipContext
      * @param tooltip List of tooltip texts to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
+                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.molten_core"));
     }
 }

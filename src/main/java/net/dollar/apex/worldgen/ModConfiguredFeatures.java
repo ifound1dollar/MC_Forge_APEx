@@ -3,7 +3,7 @@ package net.dollar.apex.worldgen;
 import net.dollar.apex.ModMain;
 import net.dollar.apex.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -36,7 +36,7 @@ public class ModConfiguredFeatures {
      * Registers new ConfiguredFeatures using one of two helper methods.
      * @param context BootstrapContext of type ConfiguredFeature
      */
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         //define valid ore replacements here
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -106,7 +106,7 @@ public class ModConfiguredFeatures {
      * @param configuration Configuration corresponding to the specific feature to generate (ex. OreConfiguration)
      */
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-            BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key,
+            BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key,
             F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }

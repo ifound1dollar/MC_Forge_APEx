@@ -12,6 +12,7 @@
     "###"
   ],
   "result": {
-    "item": "apex:steel_block"
+    "count": 1,
+    "id": "apex:steel_block"
   }
 }

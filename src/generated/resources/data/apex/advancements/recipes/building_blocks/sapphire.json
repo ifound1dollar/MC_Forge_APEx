@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:sapphire_block"
-            ]
+            "items": "apex:sapphire_block"
           }
         ]
       },

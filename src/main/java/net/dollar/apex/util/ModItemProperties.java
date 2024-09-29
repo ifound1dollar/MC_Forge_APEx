@@ -2,10 +2,12 @@ package net.dollar.apex.util;
 
 import net.dollar.apex.item.ModItems;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ChargedProjectiles;
 
 /**
  * Handles custom ItemProperties, used by Bows and Crossbows for client-side rendering.
@@ -38,10 +40,10 @@ public class ModItemProperties {
             }
         });
 
-        ItemProperties.register(item, new ResourceLocation("pulling"), (itemStack, level, userEntity, anInteger) -> {
-            return userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack ?
-                    1.0f : 0.0f;
-        });
+        ItemProperties.register(item, new ResourceLocation("pulling"),
+                (itemStack, level, userEntity, anInteger) ->
+                        userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack ?
+                                1.0f : 0.0f);
     }
 
     /**
@@ -61,18 +63,19 @@ public class ModItemProperties {
             }
         });
 
-        ItemProperties.register(item, new ResourceLocation("pulling"),(itemStack, level, userEntity, anInteger) -> {
-            return userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack
-                    && !CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F;
-        });
+        ItemProperties.register(item, new ResourceLocation("pulling"),
+                (itemStack, level, userEntity, anInteger) ->
+                        userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack
+                                && !CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
 
-        ItemProperties.register(item, new ResourceLocation("charged"), (itemStack, level, userEntity, anInteger) -> {
-            return CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F;
-        });
+        ItemProperties.register(item, new ResourceLocation("charged"),
+                (itemStack, level, userEntity, anInteger) ->
+                        CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
 
-        ItemProperties.register(item, new ResourceLocation("firework"), (itemStack, level, userEntity, anInteger) -> {
-            return CrossbowItem.isCharged(itemStack)
-                    && CrossbowItem.containsChargedProjectile(itemStack, Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
+        ItemProperties.register(item, new ResourceLocation("firework"),
+                (itemStack, level, userEntity, anInteger) -> {
+                    ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
+                    return chargedprojectiles != null && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
     }
 }

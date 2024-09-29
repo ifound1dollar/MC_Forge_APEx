@@ -47,7 +47,7 @@ public class ModArrowUtil {
 
         //Before returning and implicitly casting the Arrow to an AbstractArrow, initialize
         //  the ArrowEntity from the ItemStack (for Tipped Arrow behaviors).
-        arrowEntity.setEffectsFromItem(arrowStack);
+//        arrowEntity.setEffectsFromItem(arrowStack);
         return arrowEntity;
     }
 }

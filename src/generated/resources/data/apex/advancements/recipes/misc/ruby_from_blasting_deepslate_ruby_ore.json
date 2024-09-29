@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:deepslate_ruby_ore"
-            ]
+            "items": "apex:deepslate_ruby_ore"
           }
         ]
       },

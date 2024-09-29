@@ -36,10 +36,10 @@ public class ModMain
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         //Register the Deferred Register to the mod event bus for all new items, blocks, entities, etc.
+        ModEntities.register(modEventBus);  //Register entities first to ensure spawn eggs load correctly
         ModItemGroups.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-        ModEntities.register(modEventBus);
         ModLootTableModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
@@ -50,6 +50,10 @@ public class ModMain
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, "apex_common.toml");
+
+        //TEMP
+        //LOGGER.info(ModItems.MYSTERIOUS_SPECTER_SPAWN_EGG.getId().toString());
+        //TEMP
     }
 
 

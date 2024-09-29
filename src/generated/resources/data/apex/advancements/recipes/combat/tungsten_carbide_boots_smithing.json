@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:carbide_upgrade_smithing_template"
-            ]
+            "items": "apex:carbide_upgrade_smithing_template"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:tungsten_carbide_ingot"
-            ]
+            "items": "apex:tungsten_carbide_ingot"
           }
         ]
       },

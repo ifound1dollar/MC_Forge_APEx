@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "apex:steel_block"
-            ]
+            "items": "apex:steel_block"
           }
         ]
       },

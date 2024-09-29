@@ -15,6 +15,7 @@
     " d "
   ],
   "result": {
-    "item": "minecraft:compass"
+    "count": 1,
+    "id": "minecraft:compass"
   }
 }

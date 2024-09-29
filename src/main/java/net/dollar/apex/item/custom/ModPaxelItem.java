@@ -9,8 +9,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 public class ModPaxelItem extends DiggerItem {
-    public ModPaxelItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
-        super(attackDamage, attackSpeed, tier, ModTags.Blocks.MOD_PAXEL_MINEABLE, properties);
+    public ModPaxelItem(Tier tier, Properties properties) {
+        super(tier, ModTags.Blocks.MOD_PAXEL_MINEABLE, properties);
     }
 
 
@@ -24,8 +24,8 @@ public class ModPaxelItem extends DiggerItem {
      */
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return (enchantment == Enchantments.BLOCK_EFFICIENCY ||
-                enchantment == Enchantments.BLOCK_FORTUNE ||
+        return (enchantment == Enchantments.EFFICIENCY ||
+                enchantment == Enchantments.FORTUNE ||
                 enchantment == Enchantments.SILK_TOUCH ||
                 enchantment == Enchantments.UNBREAKING ||
                 enchantment == Enchantments.MENDING);   //NOTE: Mending is treasure only, this just allows books.

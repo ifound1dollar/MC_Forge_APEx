@@ -12,6 +12,7 @@
     "###"
   ],
   "result": {
-    "item": "apex:bronze_block"
+    "count": 1,
+    "id": "apex:bronze_block"
   }
 }
