@@ -11,6 +11,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -44,7 +46,54 @@ public class ModInfusedGemstoneArmorItem extends ArmorItem implements IFullSetEf
         return !(isFullSet && (effect == MobEffects.WITHER || effect == MobEffects.POISON));
     }
 
-
+    /**
+     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
+     *  vanilla weapon enchantments except Sweeping Edge.
+     * @param stack The ItemStack attempting to be enchanted (this)
+     * @param enchantment The Enchantment attempting to be applied
+     * @return Whether the enchantment is allowed
+     */
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (this.type == Type.HELMET) {
+            return (enchantment == Enchantments.AQUA_AFFINITY ||
+                    enchantment == Enchantments.BLAST_PROTECTION ||
+                    enchantment == Enchantments.FIRE_PROTECTION ||
+                    enchantment == Enchantments.PROJECTILE_PROTECTION ||
+                    enchantment == Enchantments.PROTECTION ||
+                    enchantment == Enchantments.RESPIRATION ||
+                    enchantment == Enchantments.UNBREAKING ||
+                    enchantment == Enchantments.MENDING);
+        } else if (this.type == Type.CHESTPLATE) {
+            return (enchantment == Enchantments.BLAST_PROTECTION ||
+                    enchantment == Enchantments.FIRE_PROTECTION ||
+                    enchantment == Enchantments.PROJECTILE_PROTECTION ||
+                    enchantment == Enchantments.PROTECTION ||
+                    enchantment == Enchantments.THORNS ||
+                    enchantment == Enchantments.UNBREAKING ||
+                    enchantment == Enchantments.MENDING);
+        } else if (this.type == Type.LEGGINGS) {
+            return (enchantment == Enchantments.BLAST_PROTECTION ||
+                    enchantment == Enchantments.FIRE_PROTECTION ||
+                    enchantment == Enchantments.PROJECTILE_PROTECTION ||
+                    enchantment == Enchantments.PROTECTION ||
+                    enchantment == Enchantments.SWIFT_SNEAK ||
+                    enchantment == Enchantments.UNBREAKING ||
+                    enchantment == Enchantments.MENDING);
+        } else if (this.type == Type.BOOTS) {
+            return (enchantment == Enchantments.BLAST_PROTECTION ||
+                    enchantment == Enchantments.DEPTH_STRIDER ||
+                    enchantment == Enchantments.FEATHER_FALLING ||
+                    enchantment == Enchantments.FROST_WALKER ||
+                    enchantment == Enchantments.FIRE_PROTECTION ||
+                    enchantment == Enchantments.PROJECTILE_PROTECTION ||
+                    enchantment == Enchantments.PROTECTION ||
+                    enchantment == Enchantments.SOUL_SPEED ||
+                    enchantment == Enchantments.UNBREAKING ||
+                    enchantment == Enchantments.MENDING);
+        }
+        return false;   //Return false if none of the types above.
+    }
 
     /**
      * Appends text to the Item's hover tooltip.

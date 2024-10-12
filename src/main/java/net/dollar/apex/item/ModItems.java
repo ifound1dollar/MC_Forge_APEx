@@ -259,73 +259,105 @@ public class ModItems {
 
     //region Bronze armor
     public static final RegistryObject<Item> BRONZE_HELMET = registerItem("bronze_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new ModBronzeArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.HELMET, new Item.Properties()
+                    .durability(ArmorItem.Type.HELMET.getDurability(15))));
     public static final RegistryObject<Item> BRONZE_CHESTPLATE = registerItem("bronze_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new ModBronzeArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.CHESTPLATE, new Item.Properties()
+                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(15))));
     public static final RegistryObject<Item> BRONZE_LEGGINGS = registerItem("bronze_leggings",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new ModBronzeArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.LEGGINGS, new Item.Properties()
+                    .durability(ArmorItem.Type.LEGGINGS.getDurability(15))));
     public static final RegistryObject<Item> BRONZE_BOOTS = registerItem("bronze_boots",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new ModBronzeArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.BOOTS, new Item.Properties()
+                    .durability(ArmorItem.Type.BOOTS.getDurability(15))));
     //endregion
 
     //region Gilded Bronze armor
     public static final RegistryObject<Item> GILDED_BRONZE_HELMET = registerItem("gilded_bronze_helmet",
             () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.HELMET,
-                    new Item.Properties()));
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.HELMET.getDurability(23))));
     public static final RegistryObject<Item> GILDED_BRONZE_CHESTPLATE = registerItem("gilded_bronze_chestplate",
             () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties()));
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(23))));
     public static final RegistryObject<Item> GILDED_BRONZE_LEGGINGS = registerItem("gilded_bronze_leggings",
             () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties()));
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(23))));
     public static final RegistryObject<Item> GILDED_BRONZE_BOOTS = registerItem("gilded_bronze_boots",
             () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.BOOTS,
-                    new Item.Properties()));
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(23))));
     //endregion
 
     //region Cobalt-Steel armor
     public static final RegistryObject<Item> COBALT_STEEL_HELMET = registerItem("cobalt_steel_helmet",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.HELMET.getDurability(37))));
     public static final RegistryObject<Item> COBALT_STEEL_CHESTPLATE = registerItem("cobalt_steel_chestplate",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
     public static final RegistryObject<Item> COBALT_STEEL_LEGGINGS = registerItem("cobalt_steel_leggings",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
     public static final RegistryObject<Item> COBALT_STEEL_BOOTS = registerItem("cobalt_steel_boots",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(37))));
     //endregion
 
     //region Infused Gemstone armor
     public static final RegistryObject<Item> INFUSED_GEMSTONE_HELMET = registerItem("infused_gemstone_helmet",
             () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.HELMET.getDurability(37))));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_CHESTPLATE = registerItem("infused_gemstone_chestplate",
             () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_LEGGINGS = registerItem("infused_gemstone_leggings",
             () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_BOOTS = registerItem("infused_gemstone_boots",
             () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(37))));
     //endregion
 
     //region Infused Gemstone armor
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_HELMET = registerItem("tungsten_carbide_helmet",
             () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.HELMET.getDurability(41))));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_CHESTPLATE = registerItem("tungsten_carbide_chestplate",
             () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(41))));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_LEGGINGS = registerItem("tungsten_carbide_leggings",
             () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(41))));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_BOOTS = registerItem("tungsten_carbide_boots",
             () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant()));
+                    new Item.Properties()
+                            .fireResistant()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(41))));
     //endregion
 
 

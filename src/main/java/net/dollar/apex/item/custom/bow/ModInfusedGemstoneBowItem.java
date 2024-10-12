@@ -10,6 +10,7 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -65,6 +66,24 @@ public class ModInfusedGemstoneBowItem extends BowItem {
         }
 
         return abstractarrow;
+    }
+
+    /**
+     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
+     *  vanilla weapon enchantments except Sweeping Edge.
+     * @param stack The ItemStack attempting to be enchanted (this)
+     * @param enchantment The Enchantment attempting to be applied
+     * @return Whether the enchantment is allowed
+     */
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return (enchantment == Enchantments.FLAME ||
+                enchantment == Enchantments.INFINITY ||
+                enchantment == Enchantments.POWER ||
+                enchantment == Enchantments.PUNCH ||
+                enchantment == Enchantments.UNBREAKING ||
+                enchantment == Enchantments.MENDING);
+
     }
 
     /**
