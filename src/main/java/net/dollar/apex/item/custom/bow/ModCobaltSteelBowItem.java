@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -90,6 +91,24 @@ public class ModCobaltSteelBowItem extends BowItem {
                 }
             }
         }
+    }
+
+    /**
+     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
+     *  vanilla weapon enchantments except Sweeping Edge.
+     * @param stack The ItemStack attempting to be enchanted (this)
+     * @param enchantment The Enchantment attempting to be applied
+     * @return Whether the enchantment is allowed
+     */
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return (enchantment == Enchantments.FLAMING_ARROWS ||
+                enchantment == Enchantments.INFINITY_ARROWS ||
+                enchantment == Enchantments.POWER_ARROWS ||
+                enchantment == Enchantments.PUNCH_ARROWS ||
+                enchantment == Enchantments.UNBREAKING ||
+                enchantment == Enchantments.MENDING);
+
     }
 
     /**
