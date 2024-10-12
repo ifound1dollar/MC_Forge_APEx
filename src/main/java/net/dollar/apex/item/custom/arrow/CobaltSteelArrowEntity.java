@@ -43,7 +43,7 @@ public class CobaltSteelArrowEntity extends Arrow {
      */
     @Override
     protected void onHitEntity(@NotNull EntityHitResult hitResult) {
-        super.onHit(hitResult);
+        super.onHitEntity(hitResult);
 
         //Only if hit Entity is a LivingEntity.
         if (hitResult.getEntity() instanceof LivingEntity livingEntity) {
