@@ -95,7 +95,7 @@ public class ModConfiguredFeatures {
      * @return The generated ResourceKey
      */
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(ModMain.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     /**

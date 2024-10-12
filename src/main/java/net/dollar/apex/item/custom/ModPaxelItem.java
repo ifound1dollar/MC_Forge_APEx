@@ -5,8 +5,6 @@ import net.dollar.apex.util.ModTags;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 
 public class ModPaxelItem extends DiggerItem {
     public ModPaxelItem(Tier tier, Properties properties) {
@@ -14,22 +12,6 @@ public class ModPaxelItem extends DiggerItem {
     }
 
 
-
-    /**
-     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
-     *  vanilla weapon enchantments except Sweeping Edge.
-     * @param stack The ItemStack attempting to be enchanted (this)
-     * @param enchantment The Enchantment attempting to be applied
-     * @return Whether the enchantment is allowed
-     */
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return (enchantment == Enchantments.EFFICIENCY ||
-                enchantment == Enchantments.FORTUNE ||
-                enchantment == Enchantments.SILK_TOUCH ||
-                enchantment == Enchantments.UNBREAKING ||
-                enchantment == Enchantments.MENDING);   //NOTE: Mending is treasure only, this just allows books.
-    }
 
     /**
      * Checks whether this Item can perform a specific ToolAction. Allows all Axe, Hoe, Pickaxe,

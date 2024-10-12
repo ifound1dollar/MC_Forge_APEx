@@ -22,24 +22,24 @@ public class ModArrowUtil {
      * @return The newly created custom PersistentProjectileEntity
      */
     public static AbstractArrow createCustomArrow(Level level, LivingEntity shooter,
-                                                  ItemStack arrowStack, ARROW_TYPE type) {
+                                                  ItemStack arrowStack, ItemStack weaponStack, ARROW_TYPE type) {
         Arrow arrowEntity;
 
         //For each case, first generate the correct type of ArrowEntity. Then, check whether it is
         //  spectral. Finally, implicitly cast it to the ArrowEntity class by assigning it to arrowEntity.
         switch (type) {
             case INFUSED -> {
-                InfusedGemstoneArrowEntity temp = new InfusedGemstoneArrowEntity(level, shooter, arrowStack);
+                InfusedGemstoneArrowEntity temp = new InfusedGemstoneArrowEntity(level, shooter, arrowStack, weaponStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }
             case CARBIDE -> {
-                TungstenCarbideArrowEntity temp = new TungstenCarbideArrowEntity(level, shooter, arrowStack);
+                TungstenCarbideArrowEntity temp = new TungstenCarbideArrowEntity(level, shooter, arrowStack, weaponStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }
             default -> {    //Guaranteed to be COBALT
-                CobaltSteelArrowEntity temp = new CobaltSteelArrowEntity(level, shooter, arrowStack);
+                CobaltSteelArrowEntity temp = new CobaltSteelArrowEntity(level, shooter, arrowStack, weaponStack);
                 temp.checkIsSpectral(arrowStack);
                 arrowEntity = temp;
             }

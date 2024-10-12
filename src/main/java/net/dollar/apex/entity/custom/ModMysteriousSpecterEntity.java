@@ -26,6 +26,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -236,24 +237,41 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean doHurtTarget(Entity targetEntity) {
-        //Can only attack once every second, then resets counter
+        //Can only attack once every second, then resets counter.
         if (ticksSinceLastAttack < 20) {
             return false;
         }
         ticksSinceLastAttack = 0;
 
-        //actual attack here
-        float f = this.getAttackDamage();
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
-        boolean flag = targetEntity.hurt(this.damageSources().mobAttack(this), f1);
+        //Actual attack here.
+        this.level().broadcastEntityEvent(this, (byte)4);
+        float attackDamage = this.getAttackDamage();
+        float $$2 = (int)attackDamage > 0 ?
+                attackDamage / 2.0F + (float)this.random.nextInt((int)attackDamage) : attackDamage;
+        DamageSource damageSource = this.damageSources().mobAttack(this);
+        boolean flag = targetEntity.hurt(damageSource, $$2);
 
         //If damaging target was successful.
         if (flag) {
             //Immediately reset movement speed buff.
             resetMovementSpeed();
 
-            this.doEnchantDamageEffects(this, targetEntity);
+            double knockbackResistance;
+            if (targetEntity instanceof LivingEntity livingEntity) {
+                knockbackResistance = livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+            } else {
+                knockbackResistance = 0.0;
+            }
 
+            double knockbackResistanceInverted = Math.max(0.0, 1.0 - knockbackResistance);
+            targetEntity.setDeltaMovement(targetEntity.getDeltaMovement().add(
+                    0.0, 0.4000000059604645 * knockbackResistanceInverted, 0.0));
+            Level var11 = this.level();
+            if (var11 instanceof ServerLevel serverLevel) {
+                EnchantmentHelper.doPostAttackEffects(serverLevel, targetEntity, damageSource);
+            }
+
+            //After default post-attack effects, do mob-specific effects.
             if (targetEntity instanceof LivingEntity livingEntity) {
                 //CHANCE TO APPLY EFFECT TO TARGET HERE, 50% chance on-hit
                 if (this.random.nextInt(100) < 67) {
@@ -422,12 +440,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     /**
      * Drops custom loot from this Monster when slain by a player. Also checks certain conditions to
      *  determine whether this should drop a custom collector item.
+     * @param level Active ServerLevel
      * @param source DamageSource of killing blow
-     * @param lootingLevel Looting level of slaying weapon
      * @param killedByPlayer Whether this was killed by a player
      */
     @Override
-    protected void dropCustomDeathLoot(DamageSource source, int lootingLevel, boolean killedByPlayer) {
+    protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean killedByPlayer) {
         if (!killedByPlayer) {
             //Only drop if last attacker was Player.
             return;
@@ -461,7 +479,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Amount of experience reward
      */
     @Override
-    public int getExperienceReward() {
+    public int getBaseExperienceReward() {
         //WitherBoss drops 50xp on death
         return 50;
     }

@@ -24,12 +24,12 @@ public class ModEntities {
             ENTITY_TYPES.register("obsidian_golem",
                     () -> EntityType.Builder.of(ModObsidianGolemEntity::new, MobCategory.MONSTER)
                             .sized(1.67f, 3.33f)   //roughly 1.25x Iron Golem hitbox size, but narrower
-                            .build(new ResourceLocation(ModMain.MODID + "obsidian_golem").toString()));
+                            .build(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem").toString()));
     public static final RegistryObject<EntityType<ModMysteriousSpecterEntity>> MYSTERIOUS_SPECTER =
             ENTITY_TYPES.register("mysterious_specter",
                     () -> EntityType.Builder.of(ModMysteriousSpecterEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 1.8f)
-                            .build(new ResourceLocation(ModMain.MODID + "mysterious_specter").toString()));
+                            .build(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter").toString()));
 
 
 

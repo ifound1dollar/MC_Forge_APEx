@@ -2,9 +2,12 @@ package net.dollar.apex.datagen;
 
 import net.dollar.apex.block.ModBlocks;
 import net.dollar.apex.item.ModItems;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -22,8 +25,8 @@ import java.util.Set;
  *  of loot tables to be generated are contained within this class.
  */
 public class ModBlockLootTables extends BlockLootSubProvider {
-    public ModBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    public ModBlockLootTables(HolderLookup.Provider provider) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), provider);
     }
 
 
@@ -90,10 +93,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
      * @return The newly generated loot table builder
      */
     protected LootTable.Builder createMultiOreDrop(Block block, Item item, float min, float max) {
+        HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return createSilkTouchDispatchTable(block, this.applyExplosionDecay(block,
                 LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
-                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.FORTUNE))));
+                        .apply(ApplyBonusCount.addOreBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
 

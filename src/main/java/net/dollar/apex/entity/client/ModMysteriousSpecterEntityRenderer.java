@@ -33,7 +33,7 @@ public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriou
     public ResourceLocation getTextureLocation(ModMysteriousSpecterEntity entity) {
         //Generate and return a new identifier using the TEXTURE_BASE string appended with the texture
         //  ID from the Entity instance (plus the .png extension).
-        return new ResourceLocation(ModMain.MODID, TEXTURE_BASE + entity.getTextureID() + ".png");
+        return ResourceLocation.fromNamespaceAndPath(ModMain.MODID, TEXTURE_BASE + entity.getTextureID() + ".png");
     }
 
     /**

@@ -31,7 +31,7 @@ public class ModTags {
          */
         private static TagKey<Block> forgeBlockTag(String name)
         {
-            return BlockTags.create(new ResourceLocation("forge", name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
         
         /**
@@ -42,7 +42,7 @@ public class ModTags {
          */
         private static TagKey<Block> modBlockTag(String name)
         {
-            return BlockTags.create(new ResourceLocation(ModMain.MODID, name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
         }
     }
 
@@ -98,7 +98,7 @@ public class ModTags {
          */
         private static TagKey<Item> forgeItemTag(String name)
         {
-            return ItemTags.create(new ResourceLocation("forge", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
 
         /**
@@ -109,11 +109,11 @@ public class ModTags {
          */
         private static TagKey<Item> modItemTag(String name)
         {
-            return ItemTags.create(new ResourceLocation(ModMain.MODID, name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
         }
 
         private static TagKey<Item> minecraftItemTag(String name) {
-            return ItemTags.create(new ResourceLocation("minecraft", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", name));
         }
     }
 
@@ -130,7 +130,7 @@ public class ModTags {
          */
         private static TagKey<EntityType<?>> forgeEntityTypeTag(String name)
         {
-            return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge", name));
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("forge", name));
         }
         /**
          * Generate an apex entity_type tag. NOTE: Using Registries.ENTITY_TYPE auto-inserts the
@@ -140,7 +140,7 @@ public class ModTags {
          */
         private static TagKey<EntityType<?>> modEntityTypeTag(String name)
         {
-            return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(ModMain.MODID, name));
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
         }
 
     }

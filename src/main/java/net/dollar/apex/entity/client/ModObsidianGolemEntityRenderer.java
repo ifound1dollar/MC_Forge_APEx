@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolemEntity,
         ModObsidianGolemModel<ModObsidianGolemEntity>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
             ModMain.MODID, "textures/entities/obsidian_golem.png");
 
     public ModObsidianGolemEntityRenderer(EntityRendererProvider.Context context) {

@@ -225,38 +225,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIN_NUGGET.get(), 9)
                 .requires(Ingredient.of(ModTags.Items.FORGE_TIN_INGOTS), 1)
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tin_nugget_from_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tin_nugget_from_ingot"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 1)
                 .requires(Ingredient.of(ModItems.TIN_NUGGET.get()), 9)
                 .unlockedBy("has_tin_nugget", has(ModItems.TIN_NUGGET.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tin_ingot_from_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tin_ingot_from_nugget"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TUNGSTEN_NUGGET.get(), 9)
                 .requires(Ingredient.of(ModTags.Items.FORGE_TUNGSTEN_INGOTS), 1)
                 .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tungsten_nugget_from_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_nugget_from_ingot"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TUNGSTEN_INGOT.get(), 1)
                 .requires(Ingredient.of(ModItems.TUNGSTEN_NUGGET.get()), 9)
                 .unlockedBy("has_tungsten_nugget", has(ModItems.TUNGSTEN_NUGGET.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tungsten_ingot_from_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_ingot_from_nugget"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRONZE_NUGGET.get(), 9)
                 .requires(Ingredient.of(ModTags.Items.FORGE_BRONZE_INGOTS), 1)
                 .unlockedBy("has_bronze_ingot", has(ModTags.Items.FORGE_BRONZE_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "bronze_nugget_from_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_nugget_from_ingot"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 1)
                 .requires(Ingredient.of(ModItems.BRONZE_NUGGET.get()), 9)
                 .unlockedBy("has_bronze_nugget", has(ModItems.BRONZE_NUGGET.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "bronze_ingot_from_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_ingot_from_nugget"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STEEL_NUGGET.get(), 9)
                 .requires(Ingredient.of(ModTags.Items.FORGE_STEEL_INGOTS), 1)
                 .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "steel_nugget_from_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "steel_nugget_from_ingot"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STEEL_INGOT.get(), 1)
                 .requires(Ingredient.of(ModItems.STEEL_NUGGET.get()), 9)
                 .unlockedBy("has_steel_nugget", has(ModItems.STEEL_NUGGET.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "steel_ingot_from_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "steel_ingot_from_nugget"));
         //endregion
 
         //region Phosphate Powder recipes
@@ -265,13 +265,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Ingredient.of(ModTags.Items.MINECRAFT_COALS), 1)
                 .unlockedBy("has_phosphate_powder", has(ModItems.PHOSPHATE_POWDER.get()))
                 .unlockedBy("has_coal", has(ModTags.Items.MINECRAFT_COALS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "gunpowder_from_phosphate_coal"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gunpowder_from_phosphate_coal"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FERTILIZER.get(), 2)
                 .requires(Ingredient.of(ModItems.PHOSPHATE_POWDER.get()), 1)
                 .requires(Ingredient.of(Items.ROTTEN_FLESH), 1)
                 .unlockedBy("has_phosphate_powder", has(ModItems.PHOSPHATE_POWDER.get()))
                 .unlockedBy("has_rotten_flesh", has(Items.ROTTEN_FLESH))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "fertilizer_from_phosphate_flesh"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "fertilizer_from_phosphate_flesh"));
         //endregion
 
         //region Iron-Replacement Tin Recipes
@@ -280,19 +280,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("d d")
                 .pattern(" d ")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "bucket_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bucket_from_tin_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SHEARS, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .pattern(" d")
                 .pattern("d ")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "shears_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "shears_from_tin_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SHEARS, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .pattern("d ")
                 .pattern(" d")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "shears_from_tin_ingot_reversed"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "shears_from_tin_ingot_reversed"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.LANTERN, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', Items.TORCH)
@@ -300,7 +300,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("did")
                 .pattern("ddd")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "lantern_from_tin_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "lantern_from_tin_nugget"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_LANTERN, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', Items.SOUL_TORCH)
@@ -308,7 +308,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("did")
                 .pattern("ddd")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "soul_lantern_from_tin_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "soul_lantern_from_tin_nugget"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TRIPWIRE_HOOK, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', ModTags.Items.FORGE_WOODEN_RODS)
@@ -317,7 +317,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("i")
                 .pattern("n")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tripwire_hook_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tripwire_hook_from_tin_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.HOPPER, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', ModTags.Items.FORGE_CHESTS)
@@ -325,7 +325,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("did")
                 .pattern(" d ")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "hopper_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "hopper_from_tin_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COMPASS, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', Items.REDSTONE)
@@ -333,7 +333,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("did")
                 .pattern(" d ")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "compass_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "compass_from_tin_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CHAIN, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', ModItems.TIN_NUGGET.get())
@@ -342,20 +342,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("i")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
                 .unlockedBy("has_tin_nugget", has(ModItems.TIN_NUGGET.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "chain_from_tin_ingot_and_nugget"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "chain_from_tin_ingot_and_nugget"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CAULDRON, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .pattern("d d")
                 .pattern("d d")
                 .pattern("ddd")
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "cauldron_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cauldron_from_tin_ingot"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.FLINT_AND_STEEL, 1)
                 .requires(Ingredient.of(ModTags.Items.FORGE_TIN_INGOTS), 1)
                 .requires(Ingredient.of(Items.FLINT), 1)
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
                 .unlockedBy("has_flint", has(Items.FLINT))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "flint_and_steel_from_tin_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "flint_and_steel_from_tin_ingot"));
         //endregion
 
         //region Compounds and Endgame Ingredient Items
@@ -396,7 +396,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
                 .unlockedBy("has_cobalt_shard", has(ModItems.COBALT_SHARD.get()))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "cobalt_steel_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COBALT_STEEL_INGOT.get(), 1)
                 .define('d', ModTags.Items.FORGE_STEEL_INGOTS)
                 .define('i', ModItems.COBALT_SHARD.get())
@@ -407,7 +407,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
                 .unlockedBy("has_cobalt_shard", has(ModItems.COBALT_SHARD.get()))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "cobalt_steel_ingot_reversed"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_ingot_reversed"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TUNGSTEN_CARBIDE_INGOT.get(), 1)
                 .define('d', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
@@ -419,7 +419,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
                 .unlockedBy("has_coal", has(ItemTags.COALS))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tungsten_carbide_ingot"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_ingot"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TUNGSTEN_CARBIDE_INGOT.get(), 1)
                 .define('d', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
                 .define('i', ItemTags.COALS)
@@ -430,7 +430,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
                 .unlockedBy("has_coal", has(ItemTags.COALS))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "tungsten_carbide_ingot_reversed"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_ingot_reversed"));
         //endregion
 
         //region Upgrade Templates
@@ -443,7 +443,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
                 .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "netherite_upgrade_template_from_basic"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "netherite_upgrade_template_from_basic"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
@@ -454,7 +454,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
                 .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "cobalt_upgrade_template_from_basic"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.COBALT_UPGRADE_TEMPLATE.get())
                 .define('i', Items.STONE)
@@ -475,7 +475,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
                 .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "infusion_upgrade_template_from_basic"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infusion_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.INFUSION_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.INFUSION_UPGRADE_TEMPLATE.get())
                 .define('i', Items.DEEPSLATE)
@@ -496,7 +496,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
                 .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, "carbide_upgrade_template_from_basic"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "carbide_upgrade_template_from_basic"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.CARBIDE_UPGRADE_TEMPLATE.get())
                 .define('i', Items.OBSIDIAN)
@@ -894,7 +894,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ingredient), category, result)
                 .unlocks(hasStringTemplate, has(template))
                 .unlocks(hasStringIngredient, has(ingredient))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID, getItemName(result))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, getItemName(result))
                         + "_smithing");
     }
 
@@ -921,7 +921,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID,
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID,
                         getItemName(resultItemLike)) + "_from_smelting_" + getItemName(ingredientItemLike));
     }
 
@@ -944,7 +944,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
-                .save(recipeOutput, new ResourceLocation(ModMain.MODID,
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ModMain.MODID,
                         getItemName(resultItemLike)) + "_from_blasting_" + getItemName(ingredientItemLike));
     }
 
@@ -955,8 +955,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     //region COPIED METHODS TO FIX RECIPES GENERATING UNDER MINECRAFT INSTEAD OF MOD
 
     //To fix generation issue: Copy over all methods used in this class and then edit all instances
-    // of 'new ResourceLocation()' to first take TestMod.MOD_ID, THEN the actual value.
-    //  ex. 'new ResourceLocation(p_252237_)' -> 'new ResourceLocation(TestMod.MOD_ID, p_252237_)'
+    // of 'ResourceLocation.fromNamespaceAndPath()' to first take TestMod.MOD_ID, THEN the actual value.
+    //  ex. 'ResourceLocation.fromNamespaceAndPath(p_252237_)' -> 'ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, p_252237_)'
 
     protected static void nineBlockStorageRecipes(RecipeOutput p_249580_, RecipeCategory p_251203_,
                                                   ItemLike p_251689_, RecipeCategory p_251376_, ItemLike p_248771_) {
@@ -971,14 +971,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(p_251911_)
                 .group(p_250414_)
                 .unlockedBy(getHasName(p_251911_), has(p_251911_))
-                .save(p_250423_, new ResourceLocation(ModMain.MODID, p_252237_));
+                .save(p_250423_, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, p_252237_));
         ShapedRecipeBuilder.shaped(p_248977_, p_251911_).define('#', p_250042_)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###")
                 .group(p_248641_)
                 .unlockedBy(getHasName(p_250042_), has(p_250042_))
-                .save(p_250423_, new ResourceLocation(ModMain.MODID, p_250475_));
+                .save(p_250423_, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, p_250475_));
     }
     //endregion
 }

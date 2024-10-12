@@ -73,7 +73,7 @@ public class ModArmorMaterials {
                                                   int enchantability, Holder<SoundEvent> equipSound,
                                                   float toughness, float knockbackResistance,
                                                   Supplier<Ingredient> repairIngredient) {
-        List<ArmorMaterial.Layer> $$7 = List.of(new ArmorMaterial.Layer(new ResourceLocation(ModMain.MODID, id)));
+        List<ArmorMaterial.Layer> $$7 = List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, id)));
         return register(id, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, $$7);
     }
 
@@ -89,7 +89,7 @@ public class ModArmorMaterials {
         }
 
         return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL,
-                new ResourceLocation(ModMain.MODID, id),
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, id),
                 new ArmorMaterial($$8, enchantability, equipSound, repairIngredient, layers, toughness, knockbackResistance));
     }
 }

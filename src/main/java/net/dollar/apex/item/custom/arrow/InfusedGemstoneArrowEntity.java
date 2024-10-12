@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 public class InfusedGemstoneArrowEntity extends Arrow {
     private boolean isSpectral;
 
-    public InfusedGemstoneArrowEntity(Level level, LivingEntity owner, ItemStack stack) {
-        super(level, owner, stack);
+    public InfusedGemstoneArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
+        super(level, owner, arrowStack, weaponStack);
     }
 
 

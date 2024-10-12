@@ -115,8 +115,8 @@ public class ModItemModelProvider extends ItemModelProvider {
      * @return Generated ItemModelBuilder (unused)
      */
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", new ResourceLocation(ModMain.MODID, "item/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "item/" + item.getId().getPath()));
     }
 
     /**
@@ -125,7 +125,7 @@ public class ModItemModelProvider extends ItemModelProvider {
      * @return Generated ItemModelBuilder (unused)
      */
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/handheld"))
-                .texture("layer0", new ResourceLocation(ModMain.MODID, "item/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "item/" + item.getId().getPath()));
     }
 }

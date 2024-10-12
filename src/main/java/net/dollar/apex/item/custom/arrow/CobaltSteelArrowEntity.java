@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 public class CobaltSteelArrowEntity extends Arrow {
     private boolean isSpectral;
 
-    public CobaltSteelArrowEntity(Level level, LivingEntity owner, ItemStack stack) {
-        super(level, owner, stack);
+    public CobaltSteelArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
+        super(level, owner, arrowStack, weaponStack);
     }
 
 
@@ -43,7 +43,7 @@ public class CobaltSteelArrowEntity extends Arrow {
      */
     @Override
     protected void onHitEntity(@NotNull EntityHitResult hitResult) {
-        super.onHit(hitResult);
+        super.onHitEntity(hitResult);
 
         //Only if hit Entity is a LivingEntity.
         if (hitResult.getEntity() instanceof LivingEntity livingEntity) {

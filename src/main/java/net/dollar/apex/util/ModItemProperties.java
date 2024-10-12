@@ -31,16 +31,16 @@ public class ModItemProperties {
      * @param item The corresponding Bow Item
      */
     private static void makeBowItemProperties(Item item) {
-        ItemProperties.register(item, new ResourceLocation("pull"), (itemStack, level, userEntity, anInteger) -> {
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pull"), (itemStack, level, userEntity, anInteger) -> {
             if (userEntity == null) {
                 return 0.0f;
             } else {
                 return userEntity.getUseItem() != itemStack ?
-                        0.0f : (float)(itemStack.getUseDuration() - userEntity.getUseItemRemainingTicks()) / 20.0f;
+                        0.0f : (float)(itemStack.getUseDuration(userEntity) - userEntity.getUseItemRemainingTicks()) / 20.0f;
             }
         });
 
-        ItemProperties.register(item, new ResourceLocation("pulling"),
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pulling"),
                 (itemStack, level, userEntity, anInteger) ->
                         userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack ?
                                 1.0f : 0.0f);
@@ -53,26 +53,26 @@ public class ModItemProperties {
      * @param item The corresponding Crossbow Item
      */
     private static void makeCrossbowItemProperties(Item item) {
-        ItemProperties.register(item, new ResourceLocation("pull"), (itemStack, level, userEntity, anInteger) -> {
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pull"), (itemStack, level, userEntity, anInteger) -> {
             if (userEntity == null) {
                 return 0.0F;
             } else {
                 return CrossbowItem.isCharged(itemStack) ? 0.0F :
-                        (float)(itemStack.getUseDuration() - userEntity.getUseItemRemainingTicks())
-                                / CrossbowItem.getChargeDuration(itemStack);
+                        (float)(itemStack.getUseDuration(userEntity) - userEntity.getUseItemRemainingTicks())
+                                / CrossbowItem.getChargeDuration(itemStack, userEntity);
             }
         });
 
-        ItemProperties.register(item, new ResourceLocation("pulling"),
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("pulling"),
                 (itemStack, level, userEntity, anInteger) ->
                         userEntity != null && userEntity.isUsingItem() && userEntity.getUseItem() == itemStack
                                 && !CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
 
-        ItemProperties.register(item, new ResourceLocation("charged"),
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("charged"),
                 (itemStack, level, userEntity, anInteger) ->
                         CrossbowItem.isCharged(itemStack) ? 1.0F : 0.0F);
 
-        ItemProperties.register(item, new ResourceLocation("firework"),
+        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("firework"),
                 (itemStack, level, userEntity, anInteger) -> {
                     ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
                     return chargedprojectiles != null && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;

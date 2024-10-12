@@ -1,6 +1,7 @@
 package net.dollar.apex.datagen;
 
 import net.dollar.apex.entity.ModEntities;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -15,8 +16,8 @@ import java.util.stream.Stream;
  *  of loot tables to be generated are contained within this class.
  */
 public class ModEntityLootTables extends EntityLootSubProvider {
-    protected ModEntityLootTables() {
-        super(FeatureFlags.REGISTRY.allFlags());
+    protected ModEntityLootTables(HolderLookup.Provider provider) {
+        super(FeatureFlags.REGISTRY.allFlags(), provider);
     }
 
 

@@ -10,8 +10,6 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,29 +37,10 @@ public class ModInfusedGemstoneBowItem extends BowItem {
         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(
-                level, shooter, arrowStack, ModArrowUtil.ARROW_TYPE.INFUSED);
+                level, shooter, arrowStack, weaponStack, ModArrowUtil.ARROW_TYPE.INFUSED);
 
         if (crit) {
             abstractarrow.setCritArrow(true);
-        }
-
-        int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER, weaponStack);
-        if (k > 0) {
-            abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() + (double)k * 0.5 + 0.5);
-        }
-
-        int i = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH, weaponStack);
-        if (i > 0) {
-            abstractarrow.setKnockback(i);
-        }
-
-        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAME, weaponStack) > 0) {
-            abstractarrow.igniteForSeconds(100);
-        }
-
-        int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PIERCING, weaponStack);
-        if (j > 0) {
-            abstractarrow.setPierceLevel((byte)j);
         }
 
         return abstractarrow;

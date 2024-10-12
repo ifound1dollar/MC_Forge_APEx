@@ -20,9 +20,9 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemEntity, ModObsidianGolemModel<ModObsidianGolemEntity>> {
     private static final Map<Crackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
-            Crackiness.Level.LOW, new ResourceLocation(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_low.png"),
-            Crackiness.Level.MEDIUM, new ResourceLocation(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_medium.png"),
-            Crackiness.Level.HIGH, new ResourceLocation(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_high.png"));
+            Crackiness.Level.LOW, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_low.png"),
+            Crackiness.Level.MEDIUM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_medium.png"),
+            Crackiness.Level.HIGH, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_high.png"));
 
     public ModObsidianGolemCrackLayer(RenderLayerParent<ModObsidianGolemEntity,
             ModObsidianGolemModel<ModObsidianGolemEntity>> p_117135_) {
@@ -38,7 +38,7 @@ public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemEnti
             Crackiness.Level irongolem$crackiness = entity.getCrackiness();
             if (irongolem$crackiness != Crackiness.Level.NONE) {
                 ResourceLocation resourcelocation = resourceLocations.get(irongolem$crackiness);
-                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, source, p_117150_, entity, 1.0F, 1.0F, 1.0F);
+                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, source, p_117150_, entity, -1);
             }
         }
     }
