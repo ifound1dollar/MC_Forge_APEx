@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "apex:phosphate_powder"
-    },
-    {
-      "item": "minecraft:rotten_flesh"
-    }
+    "apex:phosphate_powder",
+    "minecraft:rotten_flesh"
   ],
   "result": {
     "count": 2,

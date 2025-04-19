@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "apex:infused_gemstone"
-  },
-  "base": {
-    "item": "minecraft:diamond_pickaxe"
-  },
+  "addition": "apex:infused_gemstone",
+  "base": "minecraft:diamond_pickaxe",
   "result": {
     "count": 1,
     "id": "apex:infused_gemstone_pickaxe"
   },
-  "template": {
-    "item": "apex:infusion_upgrade_smithing_template"
-  }
+  "template": "apex:infusion_upgrade_smithing_template"
 }

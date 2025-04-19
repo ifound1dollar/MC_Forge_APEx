@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.2,
   "group": "phosphate_powder",
-  "ingredient": {
-    "item": "apex:deepslate_phosphate_ore"
-  },
+  "ingredient": "apex:deepslate_phosphate_ore",
   "result": {
     "id": "apex:phosphate_powder"
   }

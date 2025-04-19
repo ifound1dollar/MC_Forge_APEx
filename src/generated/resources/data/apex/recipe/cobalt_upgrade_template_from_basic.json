@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "apex:basic_upgrade_template"
-    },
-    "i": {
-      "item": "minecraft:stone"
-    },
-    "n": {
-      "tag": "forge:ingots/steel"
-    }
+    "d": "apex:basic_upgrade_template",
+    "i": "minecraft:stone",
+    "n": "#forge:ingots/steel"
   },
   "pattern": [
     " d ",

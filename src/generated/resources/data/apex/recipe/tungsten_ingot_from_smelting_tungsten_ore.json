@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "tungsten_ingot",
-  "ingredient": {
-    "item": "apex:tungsten_ore"
-  },
+  "ingredient": "apex:tungsten_ore",
   "result": {
     "id": "apex:tungsten_ingot"
   }

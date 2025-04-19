@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "apex:phosphate_powder"
-    },
-    {
-      "tag": "minecraft:coals"
-    }
+    "apex:phosphate_powder",
+    "#minecraft:coals"
   ],
   "result": {
     "count": 2,

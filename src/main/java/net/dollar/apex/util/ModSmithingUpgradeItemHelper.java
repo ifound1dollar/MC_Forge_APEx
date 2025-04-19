@@ -1,7 +1,10 @@
 package net.dollar.apex.util;
 
+import net.dollar.apex.ModMain;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -69,7 +72,9 @@ public class ModSmithingUpgradeItemHelper {
         return new SmithingTemplateItem(COBALT_UPGRADE_APPLIES_TO, COBALT_UPGRADE_INGREDIENTS,
                 COBALT_UPGRADE_BASE_SLOT_DESCRIPTION, COBALT_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(true),
-                new Item.Properties().rarity(Rarity.UNCOMMON));
+                new Item.Properties().rarity(Rarity.UNCOMMON)
+                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                                ModMain.MODID, "cobalt_upgrade_smithing_template"))));
     }
 
     /**
@@ -81,7 +86,9 @@ public class ModSmithingUpgradeItemHelper {
         return new SmithingTemplateItem(INFUSION_UPGRADE_APPLIES_TO, INFUSION_UPGRADE_INGREDIENTS,
                 INFUSION_UPGRADE_BASE_SLOT_DESCRIPTION, INFUSION_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(false),
-                new Item.Properties().rarity(Rarity.UNCOMMON));
+                new Item.Properties().rarity(Rarity.UNCOMMON)
+                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                                ModMain.MODID, "infusion_upgrade_smithing_template"))));
     }
 
     /**
@@ -93,7 +100,9 @@ public class ModSmithingUpgradeItemHelper {
         return new SmithingTemplateItem(CARBIDE_UPGRADE_APPLIES_TO, CARBIDE_UPGRADE_INGREDIENTS,
                 CARBIDE_UPGRADE_BASE_SLOT_DESCRIPTION, CARBIDE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(true),
-                new Item.Properties().rarity(Rarity.UNCOMMON));
+                new Item.Properties().rarity(Rarity.UNCOMMON)
+                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                                ModMain.MODID, "carbide_upgrade_smithing_template"))));
     }
 
 

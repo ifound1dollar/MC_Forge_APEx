@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "apex:tin_ingot"
-    }
+    "#": "apex:tin_ingot"
   },
   "pattern": [
     "###",

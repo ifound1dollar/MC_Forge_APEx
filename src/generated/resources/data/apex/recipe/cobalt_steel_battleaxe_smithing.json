@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "apex:cobalt_steel_ingot"
-  },
-  "base": {
-    "item": "apex:diamond_battleaxe"
-  },
+  "addition": "apex:cobalt_steel_ingot",
+  "base": "apex:diamond_battleaxe",
   "result": {
     "count": 1,
     "id": "apex:cobalt_steel_battleaxe"
   },
-  "template": {
-    "item": "apex:cobalt_upgrade_smithing_template"
-  }
+  "template": "apex:cobalt_upgrade_smithing_template"
 }

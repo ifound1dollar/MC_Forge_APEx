@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "apex:cobalt_shard"
-    }
+    "#": "apex:cobalt_shard"
   },
   "pattern": [
     "###",

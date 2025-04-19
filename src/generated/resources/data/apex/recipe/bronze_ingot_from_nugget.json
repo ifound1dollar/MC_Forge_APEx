@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    },
-    {
-      "item": "apex:bronze_nugget"
-    }
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget",
+    "apex:bronze_nugget"
   ],
   "result": {
     "count": 1,

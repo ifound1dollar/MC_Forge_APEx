@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.1,
   "group": "gold_nugget",
-  "ingredient": {
-    "item": "apex:gilded_bronze_sword"
-  },
+  "ingredient": "apex:gilded_bronze_sword",
   "result": {
     "id": "minecraft:gold_nugget"
   }

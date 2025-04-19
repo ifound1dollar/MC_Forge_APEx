@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "apex:tungsten_ingot"
-    }
+    "#": "apex:tungsten_ingot"
   },
   "pattern": [
     "###",

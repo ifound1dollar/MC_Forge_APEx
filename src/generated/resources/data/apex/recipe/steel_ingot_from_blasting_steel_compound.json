@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.9,
   "group": "steel_ingot",
-  "ingredient": {
-    "item": "apex:steel_compound"
-  },
+  "ingredient": "apex:steel_compound",
   "result": {
     "id": "apex:steel_ingot"
   }

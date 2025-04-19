@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.1,
   "group": "bronze_nugget",
-  "ingredient": {
-    "item": "apex:bronze_shovel"
-  },
+  "ingredient": "apex:bronze_shovel",
   "result": {
     "id": "apex:bronze_nugget"
   }

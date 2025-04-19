@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.9,
   "group": "cobalt_shard",
-  "ingredient": {
-    "item": "apex:cobalt_ore"
-  },
+  "ingredient": "apex:cobalt_ore",
   "result": {
     "id": "apex:cobalt_shard"
   }

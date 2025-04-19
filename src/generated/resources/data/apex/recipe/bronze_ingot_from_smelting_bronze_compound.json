@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "bronze_ingot",
-  "ingredient": {
-    "item": "apex:bronze_compound"
-  },
+  "ingredient": "apex:bronze_compound",
   "result": {
     "id": "apex:bronze_ingot"
   }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "apex:raw_tungsten"
-    }
+    "#": "apex:raw_tungsten"
   },
   "pattern": [
     "###",

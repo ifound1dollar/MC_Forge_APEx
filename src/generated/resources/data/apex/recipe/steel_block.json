@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "apex:steel_ingot"
-    }
+    "#": "apex:steel_ingot"
   },
   "pattern": [
     "###",

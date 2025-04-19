@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "forge:ingots/iron"
-    },
-    {
-      "tag": "minecraft:coals"
-    }
+    "#forge:ingots/iron",
+    "#minecraft:coals"
   ],
   "result": {
     "count": 1,

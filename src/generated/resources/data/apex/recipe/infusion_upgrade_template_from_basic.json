@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "apex:basic_upgrade_template"
-    },
-    "i": {
-      "item": "minecraft:deepslate"
-    },
-    "n": {
-      "tag": "forge:gems/diamond"
-    }
+    "d": "apex:basic_upgrade_template",
+    "i": "minecraft:deepslate",
+    "n": "#forge:gems/diamond"
   },
   "pattern": [
     " d ",

@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "apex:infused_gemstone"
-  },
-  "base": {
-    "item": "minecraft:diamond_chestplate"
-  },
+  "addition": "apex:infused_gemstone",
+  "base": "minecraft:diamond_chestplate",
   "result": {
     "count": 1,
     "id": "apex:infused_gemstone_chestplate"
   },
-  "template": {
-    "item": "apex:infusion_upgrade_smithing_template"
-  }
+  "template": "apex:infusion_upgrade_smithing_template"
 }

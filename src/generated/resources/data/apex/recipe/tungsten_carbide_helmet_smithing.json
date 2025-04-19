@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "apex:tungsten_carbide_ingot"
-  },
-  "base": {
-    "item": "minecraft:diamond_helmet"
-  },
+  "addition": "apex:tungsten_carbide_ingot",
+  "base": "minecraft:diamond_helmet",
   "result": {
     "count": 1,
     "id": "apex:tungsten_carbide_helmet"
   },
-  "template": {
-    "item": "apex:carbide_upgrade_smithing_template"
-  }
+  "template": "apex:carbide_upgrade_smithing_template"
 }

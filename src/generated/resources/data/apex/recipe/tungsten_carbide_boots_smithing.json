@@ -1,16 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "apex:tungsten_carbide_ingot"
-  },
-  "base": {
-    "item": "minecraft:diamond_boots"
-  },
+  "addition": "apex:tungsten_carbide_ingot",
+  "base": "minecraft:diamond_boots",
   "result": {
     "count": 1,
     "id": "apex:tungsten_carbide_boots"
   },
-  "template": {
-    "item": "apex:carbide_upgrade_smithing_template"
-  }
+  "template": "apex:carbide_upgrade_smithing_template"
 }

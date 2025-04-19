@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "apex:steel_block"
-    }
+    "apex:steel_block"
   ],
   "result": {
     "count": 9,

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "d": {
-      "tag": "forge:ingots/bronze"
-    }
+    "d": "#forge:ingots/bronze"
   },
   "pattern": [
     "d d",

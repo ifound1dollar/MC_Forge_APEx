@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "apex:infusion_upgrade_smithing_template"
-    },
-    "i": {
-      "item": "minecraft:deepslate"
-    },
-    "n": {
-      "tag": "forge:gems/diamond"
-    }
+    "d": "apex:infusion_upgrade_smithing_template",
+    "i": "minecraft:deepslate",
+    "n": "#forge:gems/diamond"
   },
   "pattern": [
     "ndn",

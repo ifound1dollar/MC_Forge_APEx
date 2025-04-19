@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.2,
   "group": "ruby",
-  "ingredient": {
-    "item": "apex:ruby_ore"
-  },
+  "ingredient": "apex:ruby_ore",
   "result": {
     "id": "apex:ruby"
   }

@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "tin_ingot",
-  "ingredient": {
-    "item": "apex:raw_tin"
-  },
+  "ingredient": "apex:raw_tin",
   "result": {
     "id": "apex:tin_ingot"
   }

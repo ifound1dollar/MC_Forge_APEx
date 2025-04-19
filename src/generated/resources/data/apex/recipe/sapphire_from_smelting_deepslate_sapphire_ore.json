@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.2,
   "group": "sapphire",
-  "ingredient": {
-    "item": "apex:deepslate_sapphire_ore"
-  },
+  "ingredient": "apex:deepslate_sapphire_ore",
   "result": {
     "id": "apex:sapphire"
   }

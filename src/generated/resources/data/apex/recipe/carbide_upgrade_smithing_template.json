@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "apex:carbide_upgrade_smithing_template"
-    },
-    "i": {
-      "item": "minecraft:obsidian"
-    },
-    "n": {
-      "tag": "forge:ingots/tungsten"
-    }
+    "d": "apex:carbide_upgrade_smithing_template",
+    "i": "minecraft:obsidian",
+    "n": "#forge:ingots/tungsten"
   },
   "pattern": [
     "ndn",

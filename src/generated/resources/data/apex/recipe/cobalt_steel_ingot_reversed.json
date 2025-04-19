@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "tag": "forge:ingots/steel"
-    },
-    "i": {
-      "item": "apex:cobalt_shard"
-    },
-    "n": {
-      "item": "apex:molten_core"
-    }
+    "d": "#forge:ingots/steel",
+    "i": "apex:cobalt_shard",
+    "n": "apex:molten_core"
   },
   "pattern": [
     "idi",

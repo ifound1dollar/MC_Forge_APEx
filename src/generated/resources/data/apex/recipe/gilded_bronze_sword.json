@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "tag": "forge:ingots/gold"
-    },
-    "i": {
-      "item": "apex:bronze_sword"
-    }
+    "d": "#forge:ingots/gold",
+    "i": "apex:bronze_sword"
   },
   "pattern": [
     "ddd",

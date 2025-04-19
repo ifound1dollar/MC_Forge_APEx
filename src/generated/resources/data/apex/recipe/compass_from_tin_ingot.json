@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "tag": "forge:ingots/tin"
-    },
-    "i": {
-      "item": "minecraft:redstone"
-    }
+    "d": "#forge:ingots/tin",
+    "i": "minecraft:redstone"
   },
   "pattern": [
     " d ",

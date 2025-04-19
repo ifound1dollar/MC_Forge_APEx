@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "apex:basic_upgrade_template"
-    },
-    "i": {
-      "item": "minecraft:obsidian"
-    },
-    "n": {
-      "tag": "forge:ingots/tungsten"
-    }
+    "d": "apex:basic_upgrade_template",
+    "i": "minecraft:obsidian",
+    "n": "#forge:ingots/tungsten"
   },
   "pattern": [
     " d ",

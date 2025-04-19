@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "tin_ingot",
-  "ingredient": {
-    "item": "apex:deepslate_tin_ore"
-  },
+  "ingredient": "apex:deepslate_tin_ore",
   "result": {
     "id": "apex:tin_ingot"
   }

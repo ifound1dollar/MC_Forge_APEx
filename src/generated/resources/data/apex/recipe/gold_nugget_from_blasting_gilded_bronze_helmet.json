@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.1,
   "group": "gold_nugget",
-  "ingredient": {
-    "item": "apex:gilded_bronze_helmet"
-  },
+  "ingredient": "apex:gilded_bronze_helmet",
   "result": {
     "id": "minecraft:gold_nugget"
   }
