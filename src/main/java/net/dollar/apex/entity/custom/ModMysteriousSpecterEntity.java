@@ -87,19 +87,19 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Checks whether a spawn attempt is valid, specifically whether it is below a specific y-value.
      * @param entityType EntityType of ObsidianGolemEntity (this)
      * @param accessor Active LevelAccessor
-     * @param spawnType Type of mob spawn (NATURAL)
+     * @param spawnReason Type of mob spawn (NATURAL)
      * @param blockPos Position of spawn attempt being queried
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
     public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, LevelAccessor accessor,
-                                                       MobSpawnType spawnType, BlockPos blockPos, RandomSource randomSource) {
+                                                       EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
         //Only allow spawn above a certain y-level (62 is sea level).
         if (blockPos.getY() < 62) {
             return false;
         }
 
-        return checkMobSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
+        return checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
     }
 
 
@@ -236,7 +236,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether attack was performed successfully
      */
     @Override
-    public boolean doHurtTarget(Entity targetEntity) {
+    public boolean doHurtTarget(ServerLevel serverLevel, Entity targetEntity) {
         //Can only attack once every second, then resets counter.
         if (ticksSinceLastAttack < 20) {
             return false;
@@ -249,7 +249,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         float $$2 = (int)attackDamage > 0 ?
                 attackDamage / 2.0F + (float)this.random.nextInt((int)attackDamage) : attackDamage;
         DamageSource damageSource = this.damageSources().mobAttack(this);
-        boolean flag = targetEntity.hurt(damageSource, $$2);
+        boolean flag = targetEntity.hurtServer(serverLevel, damageSource, $$2);
 
         //If damaging target was successful.
         if (flag) {
@@ -266,10 +266,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
             double knockbackResistanceInverted = Math.max(0.0, 1.0 - knockbackResistance);
             targetEntity.setDeltaMovement(targetEntity.getDeltaMovement().add(
                     0.0, 0.4000000059604645 * knockbackResistanceInverted, 0.0));
-            Level var11 = this.level();
-            if (var11 instanceof ServerLevel serverLevel) {
-                EnchantmentHelper.doPostAttackEffects(serverLevel, targetEntity, damageSource);
-            }
+            EnchantmentHelper.doPostAttackEffects(serverLevel, targetEntity, damageSource);
 
             //After default post-attack effects, do mob-specific effects.
             if (targetEntity instanceof LivingEntity livingEntity) {
@@ -311,8 +308,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether hurt operation was completed successfully
      */
     @Override
-    public boolean hurt(DamageSource source, float value) {
-        return super.hurt(source, value);
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource source, float value) {
+        return super.hurtServer(serverLevel, source, value);
     }
 
 
@@ -440,19 +437,19 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     /**
      * Drops custom loot from this Monster when slain by a player. Also checks certain conditions to
      *  determine whether this should drop a custom collector item.
-     * @param level Active ServerLevel
+     * @param serverLevel Active ServerLevel
      * @param source DamageSource of killing blow
      * @param killedByPlayer Whether this was killed by a player
      */
     @Override
-    protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean killedByPlayer) {
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean killedByPlayer) {
         if (!killedByPlayer) {
             //Only drop if last attacker was Player.
             return;
         }
 
         //Below is copied from how a Nether Star drops from WitherBoss.
-        ItemEntity itementity = this.spawnAtLocation(ModItems.HANDFUL_OF_STARDUST.get());
+        ItemEntity itementity = this.spawnAtLocation(serverLevel, ModItems.HANDFUL_OF_STARDUST.get());
         if (itementity != null) {
             itementity.setExtendedLifetime();
         }
@@ -466,7 +463,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
                     heldItem == ModItems.TUNGSTEN_CARBIDE_HOE.get())
             {
                 //Drop Ominous Letter trophy item and give it a long despawn delay.
-                ItemEntity trophyItem = this.spawnAtLocation(ModItems.TROPHY_OMINOUS_LETTER.get());
+                ItemEntity trophyItem = this.spawnAtLocation(serverLevel, ModItems.TROPHY_OMINOUS_LETTER.get());
                 if (trophyItem != null) {
                     trophyItem.setExtendedLifetime();
                 }
@@ -479,7 +476,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Amount of experience reward
      */
     @Override
-    public int getBaseExperienceReward() {
+    public int getBaseExperienceReward(ServerLevel serverLevel) {
         //WitherBoss drops 50xp on death
         return 50;
     }

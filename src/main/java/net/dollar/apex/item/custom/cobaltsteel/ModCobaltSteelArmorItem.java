@@ -10,13 +10,17 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ModCobaltSteelArmorItem extends ArmorItem implements IFullSetEffectArmor {
-    public ModCobaltSteelArmorItem(Holder<ArmorMaterial> material, Type type, Item.Properties properties) {
+    public ModCobaltSteelArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
         super(material, type, properties);
     }
 

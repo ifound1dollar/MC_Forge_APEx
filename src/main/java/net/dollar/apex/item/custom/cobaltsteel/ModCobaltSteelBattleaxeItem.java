@@ -2,19 +2,19 @@ package net.dollar.apex.item.custom.cobaltsteel;
 
 import net.dollar.apex.item.custom.ModBattleaxeItem;
 import net.dollar.apex.util.ModItemUtils;
-import net.dollar.apex.util.ModToolTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ModCobaltSteelBattleaxeItem extends ModBattleaxeItem {
-    public ModCobaltSteelBattleaxeItem(Tier material, int attackDamage, float attackSpeed) {
-        super(material, new Item.Properties().attributes(SwordItem.createAttributes(
-                ModToolTiers.COBALT_STEEL, attackDamage, attackSpeed))
-                .fireResistant());
+    public ModCobaltSteelBattleaxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
 

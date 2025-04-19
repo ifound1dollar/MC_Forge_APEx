@@ -1,7 +1,6 @@
 package net.dollar.apex.item.custom.infusedgemstone;
 
 import net.dollar.apex.util.ModItemUtils;
-import net.dollar.apex.util.ModToolTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
@@ -10,10 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ModInfusedGemstoneShovelItem extends ShovelItem {
-    public ModInfusedGemstoneShovelItem(Tier material, float attackDamage, float attackSpeed) {
-        super(material, new Item.Properties().attributes(ShovelItem.createAttributes(
-                ModToolTiers.INFUSED_GEMSTONE, attackDamage, attackSpeed))
-                .fireResistant());
+    public ModInfusedGemstoneShovelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
 

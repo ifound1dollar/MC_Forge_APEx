@@ -3,6 +3,8 @@ package net.dollar.apex.util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SmithingTemplateItem;
 
 import java.util.List;
@@ -13,7 +15,6 @@ import java.util.List;
  */
 public class ModSmithingUpgradeItemHelper {
     //region COBALT-STEEL Components
-    private static final Component COBALT_UPGRADE = Component.literal("Cobalt-Steel Upgrade").withStyle(ChatFormatting.GRAY);
     private static final Component COBALT_UPGRADE_APPLIES_TO = Component.literal("Diamond Equipment").withStyle(ChatFormatting.BLUE);
     private static final Component COBALT_UPGRADE_INGREDIENTS = Component.literal("Cobalt-Steel Ingot").withStyle(ChatFormatting.BLUE);
     private static final Component COBALT_UPGRADE_BASE_SLOT_DESCRIPTION = Component.literal(
@@ -23,7 +24,6 @@ public class ModSmithingUpgradeItemHelper {
     //endregion
 
     //region INFUSED DIAMOND Components
-    private static final Component INFUSION_UPGRADE = Component.literal("Infused Gemstone Upgrade").withStyle(ChatFormatting.GRAY);
     private static final Component INFUSION_UPGRADE_APPLIES_TO = Component.literal("Diamond Equipment").withStyle(ChatFormatting.BLUE);
     private static final Component INFUSION_UPGRADE_INGREDIENTS = Component.literal("Infused Gemstone").withStyle(ChatFormatting.BLUE);
     private static final Component INFUSION_UPGRADE_BASE_SLOT_DESCRIPTION = Component.literal(
@@ -33,7 +33,6 @@ public class ModSmithingUpgradeItemHelper {
     //endregion
 
     //region TUNGSTEN-CARBIDE Components
-    private static final Component CARBIDE_UPGRADE = Component.literal("Tungsten-Carbide Upgrade").withStyle(ChatFormatting.GRAY);
     private static final Component CARBIDE_UPGRADE_APPLIES_TO = Component.literal("Diamond Equipment").withStyle(ChatFormatting.BLUE);
     private static final Component CARBIDE_UPGRADE_INGREDIENTS = Component.literal("Tungsten-Carbide Ingot").withStyle(ChatFormatting.BLUE);
     private static final Component CARBIDE_UPGRADE_BASE_SLOT_DESCRIPTION = Component.literal(
@@ -68,8 +67,9 @@ public class ModSmithingUpgradeItemHelper {
      */
     public static SmithingTemplateItem createCobaltUpgradeTemplate() {
         return new SmithingTemplateItem(COBALT_UPGRADE_APPLIES_TO, COBALT_UPGRADE_INGREDIENTS,
-                COBALT_UPGRADE, COBALT_UPGRADE_BASE_SLOT_DESCRIPTION, COBALT_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-                createUpgradeIconList(), createUpgradeMaterialList(true));
+                COBALT_UPGRADE_BASE_SLOT_DESCRIPTION, COBALT_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
+                createUpgradeIconList(), createUpgradeMaterialList(true),
+                new Item.Properties().rarity(Rarity.UNCOMMON));
     }
 
     /**
@@ -79,8 +79,9 @@ public class ModSmithingUpgradeItemHelper {
      */
     public static SmithingTemplateItem createInfusionUpgradeTemplate() {
         return new SmithingTemplateItem(INFUSION_UPGRADE_APPLIES_TO, INFUSION_UPGRADE_INGREDIENTS,
-                INFUSION_UPGRADE, INFUSION_UPGRADE_BASE_SLOT_DESCRIPTION, INFUSION_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-                createUpgradeIconList(), createUpgradeMaterialList(false));
+                INFUSION_UPGRADE_BASE_SLOT_DESCRIPTION, INFUSION_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
+                createUpgradeIconList(), createUpgradeMaterialList(false),
+                new Item.Properties().rarity(Rarity.UNCOMMON));
     }
 
     /**
@@ -90,8 +91,9 @@ public class ModSmithingUpgradeItemHelper {
      */
     public static SmithingTemplateItem createCarbideUpgradeTemplate() {
         return new SmithingTemplateItem(CARBIDE_UPGRADE_APPLIES_TO, CARBIDE_UPGRADE_INGREDIENTS,
-                CARBIDE_UPGRADE, CARBIDE_UPGRADE_BASE_SLOT_DESCRIPTION, CARBIDE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-                createUpgradeIconList(), createUpgradeMaterialList(true));
+                CARBIDE_UPGRADE_BASE_SLOT_DESCRIPTION, CARBIDE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
+                createUpgradeIconList(), createUpgradeMaterialList(true),
+                new Item.Properties().rarity(Rarity.UNCOMMON));
     }
 
 

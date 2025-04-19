@@ -3,12 +3,13 @@ package net.dollar.apex.item.custom;
 import net.dollar.apex.util.ModItemUtils;
 import net.dollar.apex.util.ModTags;
 import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 
 public class ModPaxelItem extends DiggerItem {
-    public ModPaxelItem(Tier tier, Properties properties) {
-        super(tier, ModTags.Blocks.MOD_PAXEL_MINEABLE, properties);
+    public ModPaxelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
+        super(material, ModTags.Blocks.MOD_PAXEL_MINEABLE, attackDamage, attackSpeed, properties);
     }
 
 

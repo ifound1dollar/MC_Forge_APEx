@@ -14,8 +14,9 @@ import net.dollar.apex.item.custom.infusedgemstone.*;
 import net.dollar.apex.item.custom.tungstencarbide.*;
 import net.dollar.apex.util.ModArmorMaterials;
 import net.dollar.apex.util.ModSmithingUpgradeItemHelper;
-import net.dollar.apex.util.ModToolTiers;
+import net.dollar.apex.util.ModToolMaterials;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -131,225 +132,220 @@ public class ModItems {
 
     //region Axes
     public static final RegistryObject<Item> BRONZE_AXE = registerItem("bronze_axe",
-            () -> new AxeItem(ModToolTiers.BRONZE, new Item.Properties()
-                    .attributes(AxeItem.createAttributes(ModToolTiers.BRONZE, 6.0f, -3.1f))));
+            () -> new AxeItem(ModToolMaterials.BRONZE, 6.0f, -3.1f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_AXE = registerItem("gilded_bronze_axe",
-            () -> new AxeItem(ModToolTiers.GILDED_BRONZE, new Item.Properties()
-                    .attributes(AxeItem.createAttributes(ModToolTiers.GILDED_BRONZE, 6.0f, -2.9f))));
+            () -> new AxeItem(ModToolMaterials.GILDED_BRONZE, 6.0f, -2.9f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> COBALT_STEEL_AXE = registerItem("cobalt_steel_axe",
-            () -> new ModCobaltSteelAxeItem(ModToolTiers.COBALT_STEEL,
-                    5.0f, -2.7f));  //Very fast, Netherite = 5.0f, -3.0f
+            () -> new ModCobaltSteelAxeItem(ModToolMaterials.COBALT_STEEL, 5.0f, -2.7f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 5.0f, -3.0f
     public static final RegistryObject<Item> INFUSED_GEMSTONE_AXE = registerItem("infused_gemstone_axe",
-            () -> new ModInfusedGemstoneAxeItem(ModToolTiers.INFUSED_GEMSTONE,
-                    5.0f, -2.9f));  //Faster, Netherite = 5.0f, -3.0f
+            () -> new ModInfusedGemstoneAxeItem(ModToolMaterials.INFUSED_GEMSTONE, 5.0f, -2.9f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 5.0f, -3.0f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_AXE = registerItem("tungsten_carbide_axe",
-            () -> new ModTungstenCarbideAxeItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    6.0f, -3.2f));  //Slower, Netherite = 5.0f, -3.0f
+            () -> new ModTungstenCarbideAxeItem(ModToolMaterials.TUNGSTEN_CARBIDE, 6.0f, -3.2f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 5.0f, -3.0f
     //endregion
 
     //region Battleaxes
     public static final RegistryObject<Item> DIAMOND_BATTLEAXE = registerItem("diamond_battleaxe",
-            () -> new ModBattleaxeItem(Tiers.DIAMOND, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 5, -3.0f))));
+            () -> new ModBattleaxeItem(ToolMaterial.DIAMOND,
+                    5.0f, -3.0f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> NETHERITE_BATTLEAXE = registerItem("netherite_battleaxe",
-            () -> new ModBattleaxeItem(Tiers.NETHERITE, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(Tiers.NETHERITE, 5, -3.0f))
-                    .fireResistant()));     //Equivalent to Axe stats
+            () -> new ModBattleaxeItem(ToolMaterial.NETHERITE,
+                    5.0f, -3.0f,
+                    new Item.Properties().fireResistant()));    //Equivalent to Axe stats
     public static final RegistryObject<Item> COBALT_STEEL_BATTLEAXE = registerItem("cobalt_steel_battleaxe",
-            () -> new ModCobaltSteelBattleaxeItem(ModToolTiers.COBALT_STEEL,
-                    5, -2.7f));     //Faster, Netherite = 5.0f, -3.0f
+            () -> new ModCobaltSteelBattleaxeItem(ModToolMaterials.COBALT_STEEL,
+                    5.0f, -2.7f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 5.0f, -3.0f
     public static final RegistryObject<Item> INFUSED_GEMSTONE_BATTLEAXE = registerItem("infused_gemstone_battleaxe",
-            () -> new ModInfusedGemstoneBattleaxeItem(ModToolTiers.INFUSED_GEMSTONE,
-                    5, -2.9f));     //Very fast, Netherite = 5.0f, -3.0f
+            () -> new ModInfusedGemstoneBattleaxeItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    5.0f, -2.9f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 5.0f, -3.0f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_BATTLEAXE = registerItem("tungsten_carbide_battleaxe",
-            () -> new ModTungstenCarbideBattleaxeItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    6, -3.2f));     //Slower, Netherite = 5.0f, -3.0f
+            () -> new ModTungstenCarbideBattleaxeItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    6.0f, -3.2f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 5.0f, -3.0f
     //endregion
 
     //region Hoes
     public static final RegistryObject<Item> BRONZE_HOE = registerItem("bronze_hoe",
-            () -> new HoeItem(ModToolTiers.BRONZE, new Item.Properties()
-                    .attributes(HoeItem.createAttributes(ModToolTiers.BRONZE, -2.0f, -1.0f))));
+            () -> new HoeItem(ModToolMaterials.BRONZE, -2.0f, -1.0f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_HOE = registerItem("gilded_bronze_hoe",
-            () -> new HoeItem(ModToolTiers.GILDED_BRONZE, new Item.Properties()
-                    .attributes(HoeItem.createAttributes(ModToolTiers.GILDED_BRONZE, -2.0f, -0.0f))));
+            () -> new HoeItem(ModToolMaterials.GILDED_BRONZE, -2.0f, -0.0f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> COBALT_STEEL_HOE = registerItem("cobalt_steel_hoe",
-            () -> new ModCobaltSteelHoeItem(ModToolTiers.COBALT_STEEL,
-                    -2, 0.0f));     //Very fast, Netherite = -4, 0.0f
+            () -> new ModCobaltSteelHoeItem(ModToolMaterials.COBALT_STEEL,
+                    -2, 0.0f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = -4, 0.0f
     public static final RegistryObject<Item> INFUSED_GEMSTONE_HOE = registerItem("infused_gemstone_hoe",
-            () -> new ModInfusedGemstoneHoeItem(ModToolTiers.INFUSED_GEMSTONE,
-                    -2, -1.0f));    //Faster, Netherite = -4, 0.0f
+            () -> new ModInfusedGemstoneHoeItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    -2, -1.0f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = -4, 0.0f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_HOE = registerItem("tungsten_carbide_hoe",
-            () -> new ModTungstenCarbideHoeItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    -3, -2.0f));    //Slower, Netherite = -4, 0.0f
+            () -> new ModTungstenCarbideHoeItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    -3, -2.0f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = -4, 0.0f
     //endregion
 
     //region Paxel
     public static final RegistryObject<Item> DIAMOND_PAXEL = registerItem("diamond_paxel",
-            () -> new ModPaxelItem(Tiers.DIAMOND, new Item.Properties()
-                    .attributes(ModPaxelItem.createAttributes(Tiers.DIAMOND, 2.0f, -2.9f))));
+            () -> new ModPaxelItem(ToolMaterial.DIAMOND, 2.0f, -2.9f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> NETHERITE_PAXEL = registerItem("netherite_paxel",
-            () -> new ModPaxelItem(Tiers.NETHERITE, new Item.Properties()
-                    .attributes(ModPaxelItem.createAttributes(Tiers.NETHERITE, 2.0f, -2.9f))
-                    .fireResistant())); //Rough average between Axe, Pickaxe, and Shovel stats
+            () -> new ModPaxelItem(ToolMaterial.NETHERITE, 2.0f, -2.9f,
+                    new Item.Properties().fireResistant()));    //Rough average between Axe, Pickaxe, and Shovel stats
     public static final RegistryObject<Item> COBALT_STEEL_PAXEL = registerItem("cobalt_steel_paxel",
-            () -> new ModCobaltSteelPaxelItem(ModToolTiers.COBALT_STEEL,
-                    2.0f, -2.6f));  //Faster, Netherite = 2.0f, -2.9f
+            () -> new ModCobaltSteelPaxelItem(ModToolMaterials.COBALT_STEEL,
+                    2.0f, -2.6f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 2.0f, -2.9f
     public static final RegistryObject<Item> INFUSED_GEMSTONE_PAXEL = registerItem("infused_gemstone_paxel",
-            () -> new ModInfusedGemstonePaxelItem(ModToolTiers.INFUSED_GEMSTONE,
-                    2.0f, -2.8f));  //Very fast, Netherite = 2.0f, -2.9f
+            () -> new ModInfusedGemstonePaxelItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    2.0f, -2.8f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 2.0f, -2.9f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_PAXEL = registerItem("tungsten_carbide_paxel",
-            () -> new ModTungstenCarbidePaxelItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    2.5f, -3.1f));  //Slower, Netherite = 2.0f, -2.9f
+            () -> new ModTungstenCarbidePaxelItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    2.5f, -3.1f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 2.0f, -2.9f
     //endregion
 
     //region Pickaxes
     public static final RegistryObject<Item> BRONZE_PICKAXE = registerItem("bronze_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.BRONZE, new Item.Properties()
-                    .attributes(PickaxeItem.createAttributes(ModToolTiers.BRONZE, 1.0f, -2.8f))));
+            () -> new PickaxeItem(ModToolMaterials.BRONZE, 1.0f, -2.8f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_PICKAXE = registerItem("gilded_bronze_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.GILDED_BRONZE, new Item.Properties()
-                    .attributes(PickaxeItem.createAttributes(ModToolTiers.GILDED_BRONZE, 1.0f, -2.6f))));
-    public static final RegistryObject<Item> INFUSED_GEMSTONE_PICKAXE = registerItem("infused_gemstone_pickaxe",
-            () -> new ModInfusedGemstonePickaxeItem(ModToolTiers.INFUSED_GEMSTONE,
-                    1, -2.7f));     //Faster, Netherite = 1, -2.8f
+            () -> new PickaxeItem(ModToolMaterials.GILDED_BRONZE, 1.0f, -2.6f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> COBALT_STEEL_PICKAXE = registerItem("cobalt_steel_pickaxe",
-            () -> new ModCobaltSteelPickaxeItem(ModToolTiers.COBALT_STEEL,
-                    1, -2.5f));     //Slower, Netherite = 1, -2.8f
+            () -> new ModCobaltSteelPickaxeItem(ModToolMaterials.COBALT_STEEL,
+                    1.0f, -2.5f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 1, -2.8f
+    public static final RegistryObject<Item> INFUSED_GEMSTONE_PICKAXE = registerItem("infused_gemstone_pickaxe",
+            () -> new ModInfusedGemstonePickaxeItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    1.0f, -2.7f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 1, -2.8f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_PICKAXE = registerItem("tungsten_carbide_pickaxe",
-            () -> new ModTungstenCarbidePickaxeItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    1, -3.0f));     //Very fast, Netherite = 1, -2.8f
+            () -> new ModTungstenCarbidePickaxeItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    1.0f, -3.0f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 1, -2.8f
     //endregion
 
     //region Shovel
     public static final RegistryObject<Item> BRONZE_SHOVEL = registerItem("bronze_shovel",
-            () -> new ShovelItem(ModToolTiers.BRONZE, new Item.Properties()
-                    .attributes(ShovelItem.createAttributes(ModToolTiers.BRONZE, 1.5f, -3.0f))));
+            () -> new ShovelItem(ModToolMaterials.BRONZE, 1.5f, -3.0f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_SHOVEL = registerItem("gilded_bronze_shovel",
-            () -> new ShovelItem(ModToolTiers.GILDED_BRONZE, new Item.Properties()
-                    .attributes(ShovelItem.createAttributes(ModToolTiers.GILDED_BRONZE, 1.5f, -2.8f))));
-    public static final RegistryObject<Item> INFUSED_GEMSTONE_SHOVEL = registerItem("infused_gemstone_shovel",
-            () -> new ModInfusedGemstoneShovelItem(ModToolTiers.INFUSED_GEMSTONE,
-                    2.0f, -2.9f));  //Faster, Netherite = 1.5f, -3.0f
+            () -> new ShovelItem(ModToolMaterials.GILDED_BRONZE, 1.5f, -2.8f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> COBALT_STEEL_SHOVEL = registerItem("cobalt_steel_shovel",
-            () -> new ModCobaltSteelShovelItem(ModToolTiers.COBALT_STEEL,
-                    1.5f, -2.7f));  //Very fast, Netherite = 1.5f, -3.0f
+            () -> new ModCobaltSteelShovelItem(ModToolMaterials.COBALT_STEEL,
+                    1.5f, -2.7f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 1.5f, -3.0f
+    public static final RegistryObject<Item> INFUSED_GEMSTONE_SHOVEL = registerItem("infused_gemstone_shovel",
+            () -> new ModInfusedGemstoneShovelItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    2.0f, -2.9f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 1.5f, -3.0f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_SHOVEL = registerItem("tungsten_carbide_shovel",
-            () -> new ModTungstenCarbideShovelItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    2.0f, -3.2f));  //Slower, Netherite = 1.5f, -3.0f
+            () -> new ModTungstenCarbideShovelItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    2.0f, -3.2f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 1.5f, -3.0f
     //endregion
 
     //region Sword
     public static final RegistryObject<Item> BRONZE_SWORD = registerItem("bronze_sword",
-            () -> new SwordItem(ModToolTiers.BRONZE, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.BRONZE, 3, -2.4f))));
+            () -> new SwordItem(ModToolMaterials.BRONZE, 3.0f, -2.4f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_SWORD = registerItem("gilded_bronze_sword",
-            () -> new SwordItem(ModToolTiers.GILDED_BRONZE, new Item.Properties()
-                    .attributes(SwordItem.createAttributes(ModToolTiers.GILDED_BRONZE, 3, -2.2f))));
-    public static final RegistryObject<Item> INFUSED_GEMSTONE_SWORD = registerItem("infused_gemstone_sword",
-            () -> new ModInfusedGemstoneSwordItem(ModToolTiers.INFUSED_GEMSTONE,
-                    3, -2.3f));     //Faster, Netherite = 3, -2.4f
+            () -> new SwordItem(ModToolMaterials.GILDED_BRONZE, 3.0f, -2.2f,
+                    new Item.Properties()));
     public static final RegistryObject<Item> COBALT_STEEL_SWORD = registerItem("cobalt_steel_sword",
-            () -> new ModCobaltSteelSwordItem(ModToolTiers.COBALT_STEEL,
-                    3, -2.0f));     //Very fast, Netherite = 3, -2.4f
+            () -> new ModCobaltSteelSwordItem(ModToolMaterials.COBALT_STEEL,
+                    3, -2.0f,
+                    new Item.Properties().fireResistant()));    //Very fast, Netherite = 3, -2.4f
+    public static final RegistryObject<Item> INFUSED_GEMSTONE_SWORD = registerItem("infused_gemstone_sword",
+            () -> new ModInfusedGemstoneSwordItem(ModToolMaterials.INFUSED_GEMSTONE,
+                    3, -2.3f,
+                    new Item.Properties().fireResistant()));    //Faster, Netherite = 3, -2.4f
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_SWORD = registerItem("tungsten_carbide_sword",
-            () -> new ModTungstenCarbideSwordItem(ModToolTiers.TUNGSTEN_CARBIDE,
-                    3, -2.6f));     //Slower, Netherite = 3, -2.4f
+            () -> new ModTungstenCarbideSwordItem(ModToolMaterials.TUNGSTEN_CARBIDE,
+                    3, -2.6f,
+                    new Item.Properties().fireResistant()));    //Slower, Netherite = 3, -2.4f
     //endregion
 
     //region Bronze armor
     public static final RegistryObject<Item> BRONZE_HELMET = registerItem("bronze_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.HELMET, new Item.Properties()
-                    .durability(ArmorItem.Type.HELMET.getDurability(15))));
+            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.HELMET,
+                    new Item.Properties()));    // Durability now contained directly in ArmorMaterial.
     public static final RegistryObject<Item> BRONZE_CHESTPLATE = registerItem("bronze_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.CHESTPLATE, new Item.Properties()
-                    .durability(ArmorItem.Type.CHESTPLATE.getDurability(15))));
+            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_LEGGINGS = registerItem("bronze_leggings",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.LEGGINGS, new Item.Properties()
-                    .durability(ArmorItem.Type.LEGGINGS.getDurability(15))));
+            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BOOTS = registerItem("bronze_boots",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorItem.Type.BOOTS, new Item.Properties()
-                    .durability(ArmorItem.Type.BOOTS.getDurability(15))));
+            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.BOOTS, new Item.Properties()));
     //endregion
 
     //region Gilded Bronze armor
     public static final RegistryObject<Item> GILDED_BRONZE_HELMET = registerItem("gilded_bronze_helmet",
-            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.HELMET,
-                    new Item.Properties()
-                            .durability(ArmorItem.Type.HELMET.getDurability(23))));
+            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorType.HELMET,
+                    new Item.Properties()));    // Durability now contained directly in ArmorMaterial.
     public static final RegistryObject<Item> GILDED_BRONZE_CHESTPLATE = registerItem("gilded_bronze_chestplate",
-            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties()
-                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(23))));
+            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorType.CHESTPLATE,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_LEGGINGS = registerItem("gilded_bronze_leggings",
-            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties()
-                            .durability(ArmorItem.Type.LEGGINGS.getDurability(23))));
+            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorType.LEGGINGS,
+                    new Item.Properties()));
     public static final RegistryObject<Item> GILDED_BRONZE_BOOTS = registerItem("gilded_bronze_boots",
-            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorItem.Type.BOOTS,
-                    new Item.Properties()
-                            .durability(ArmorItem.Type.BOOTS.getDurability(23))));
+            () -> new ModGildedBronzeArmorItem(ModArmorMaterials.GILDED_BRONZE, ArmorType.BOOTS,
+                    new Item.Properties()));
     //endregion
 
     //region Cobalt-Steel armor
     public static final RegistryObject<Item> COBALT_STEEL_HELMET = registerItem("cobalt_steel_helmet",
-            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.HELMET,
-                    new Item.Properties()
-                            .fireResistant()
-                            .durability(ArmorItem.Type.HELMET.getDurability(37))));
+            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorType.HELMET,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COBALT_STEEL_CHESTPLATE = registerItem("cobalt_steel_chestplate",
-            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties()
-                            .fireResistant()
-                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorType.CHESTPLATE,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COBALT_STEEL_LEGGINGS = registerItem("cobalt_steel_leggings",
-            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties()
-                            .fireResistant()
-                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorType.LEGGINGS,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COBALT_STEEL_BOOTS = registerItem("cobalt_steel_boots",
-            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.BOOTS,
-                    new Item.Properties()
-                            .fireResistant()
-                            .durability(ArmorItem.Type.BOOTS.getDurability(37))));
+            () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorType.BOOTS,
+                    new Item.Properties().fireResistant()));
     //endregion
 
     //region Infused Gemstone armor
     public static final RegistryObject<Item> INFUSED_GEMSTONE_HELMET = registerItem("infused_gemstone_helmet",
-            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.HELMET.getDurability(37))));
+            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorType.HELMET,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_CHESTPLATE = registerItem("infused_gemstone_chestplate",
-            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorType.CHESTPLATE,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_LEGGINGS = registerItem("infused_gemstone_leggings",
-            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorType.LEGGINGS,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_BOOTS = registerItem("infused_gemstone_boots",
-            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.BOOTS.getDurability(37))));
+            () -> new ModInfusedGemstoneArmorItem(ModArmorMaterials.INFUSED_GEMSTONE, ArmorType.BOOTS,
+                    new Item.Properties().fireResistant()));
     //endregion
 
     //region Infused Gemstone armor
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_HELMET = registerItem("tungsten_carbide_helmet",
-            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.HELMET.getDurability(41))));
+            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorType.HELMET,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_CHESTPLATE = registerItem("tungsten_carbide_chestplate",
-            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(41))));
+            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorType.CHESTPLATE,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_LEGGINGS = registerItem("tungsten_carbide_leggings",
-            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.LEGGINGS.getDurability(41))));
+            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorType.LEGGINGS,
+                    new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_BOOTS = registerItem("tungsten_carbide_boots",
-            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant()
-                            .durability(ArmorItem.Type.BOOTS.getDurability(41))));
+            () -> new ModTungstenCarbideArmorItem(ModArmorMaterials.TUNGSTEN_CARBIDE, ArmorType.BOOTS,
+                    new Item.Properties().fireResistant()));
     //endregion
 
 

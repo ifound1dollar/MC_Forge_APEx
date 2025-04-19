@@ -1,7 +1,6 @@
 package net.dollar.apex.item.custom.cobaltsteel;
 
 import net.dollar.apex.util.ModItemUtils;
-import net.dollar.apex.util.ModToolTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
@@ -10,10 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ModCobaltSteelAxeItem extends AxeItem {
-    public ModCobaltSteelAxeItem(Tier material, float attackDamage, float attackSpeed) {
-        super(material, new Item.Properties().attributes(AxeItem.createAttributes(
-                ModToolTiers.COBALT_STEEL, attackDamage, attackSpeed))
-                .fireResistant());
+    public ModCobaltSteelAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
 

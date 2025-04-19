@@ -12,7 +12,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,9 +30,9 @@ public class ModMain
 
 
 
-    public ModMain()
+    public ModMain(FMLJavaModLoadingContext context)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus modEventBus = context.getModEventBus();
 
         //Register the Deferred Register to the mod event bus for all new items, blocks, entities, etc.
         ModEntities.register(modEventBus);  //Register entities first to ensure spawn eggs load correctly
@@ -49,7 +48,7 @@ public class ModMain
         modEventBus.addListener(this::commonSetup);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC, "apex_common.toml");
+        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC, "apex_common.toml");
 
         //TEMP
         //LOGGER.info(ModItems.MYSTERIOUS_SPECTER_SPAWN_EGG.getId().toString());

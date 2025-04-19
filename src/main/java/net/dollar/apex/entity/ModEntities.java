@@ -3,6 +3,8 @@ package net.dollar.apex.entity;
 import net.dollar.apex.ModMain;
 import net.dollar.apex.entity.custom.ModMysteriousSpecterEntity;
 import net.dollar.apex.entity.custom.ModObsidianGolemEntity;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -24,12 +26,14 @@ public class ModEntities {
             ENTITY_TYPES.register("obsidian_golem",
                     () -> EntityType.Builder.of(ModObsidianGolemEntity::new, MobCategory.MONSTER)
                             .sized(1.67f, 3.33f)   //roughly 1.25x Iron Golem hitbox size, but narrower
-                            .build(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem").toString()));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE,
+                                    ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem"))));
     public static final RegistryObject<EntityType<ModMysteriousSpecterEntity>> MYSTERIOUS_SPECTER =
             ENTITY_TYPES.register("mysterious_specter",
                     () -> EntityType.Builder.of(ModMysteriousSpecterEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 1.8f)
-                            .build(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter").toString()));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE,
+                                    ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter"))));
 
 
 

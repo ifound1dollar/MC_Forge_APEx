@@ -78,19 +78,19 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * Checks whether a spawn attempt is valid, specifically whether it is below a specific y-value.
      * @param entityType EntityType of ObsidianGolemEntity (this)
      * @param accessor Active LevelAccessor
-     * @param spawnType Type of mob spawn (NATURAL)
+     * @param spawnReason Type of mob spawn (NATURAL)
      * @param blockPos Position of spawn attempt being queried
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
     public static boolean checkObsidianGolemSpawnRules(EntityType<ModObsidianGolemEntity> entityType, LevelAccessor accessor,
-                                                       MobSpawnType spawnType, BlockPos blockPos, RandomSource randomSource) {
+                                                       EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
         //Only valid spawn very low in the world
         if (blockPos.getY() >= 0) {
             return false;
         }
 
-        return checkMobSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
+        return checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
     }
 
 
@@ -230,7 +230,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * @return Whether attack was performed successfully
      */
     @Override
-    public boolean doHurtTarget(Entity targetEntity) {
+    public boolean doHurtTarget(ServerLevel serverLevel, Entity targetEntity) {
         //Can only attack once every 1.5 seconds, then resets counter.
         if (ticksSinceLastAttack < 30) {
             return false;
@@ -244,7 +244,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         float $$2 = (int)attackDamage > 0 ?
                 attackDamage / 2.0F + (float)this.random.nextInt((int)attackDamage) : attackDamage;
         DamageSource damageSource = this.damageSources().mobAttack(this);
-        boolean flag = targetEntity.hurt(damageSource, $$2);
+        boolean flag = targetEntity.hurtServer(serverLevel, damageSource, $$2);
 
         //If damaging target was successful.
         if (flag) {
@@ -258,10 +258,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
             double knockbackResistanceInverted = Math.max(0.0, 1.0 - knockbackResistance);
             targetEntity.setDeltaMovement(targetEntity.getDeltaMovement().add(
                     0.0, 0.4000000059604645 * knockbackResistanceInverted, 0.0));
-            Level var11 = this.level();
-            if (var11 instanceof ServerLevel serverLevel) {
-                EnchantmentHelper.doPostAttackEffects(serverLevel, targetEntity, damageSource);
-            }
+            EnchantmentHelper.doPostAttackEffects(serverLevel, targetEntity, damageSource);
 
             //After default post-attack effects, do mob-specific effects.
             if (targetEntity instanceof LivingEntity livingEntity) {
@@ -295,9 +292,9 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * @return Whether hurt operation was completed successfully
      */
     @Override
-    public boolean hurt(DamageSource source, float value) {
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource source, float value) {
         Crackiness.Level irongolem$crackiness = this.getCrackiness();
-        boolean flag = super.hurt(source, value);
+        boolean flag = super.hurtServer(serverLevel, source, value);
         if (flag && this.getCrackiness() != irongolem$crackiness) {
             this.playSound(SoundEvents.IRON_GOLEM_DAMAGE, 1.0F, 1.0F);
         }
@@ -430,7 +427,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         }
 
         //Below is copied from how a Nether Star drops from WitherBoss.
-        ItemEntity itementity = this.spawnAtLocation(ModItems.MOLTEN_CORE.get());
+        ItemEntity itementity = this.spawnAtLocation(level, ModItems.MOLTEN_CORE.get());
         if (itementity != null) {
             itementity.setExtendedLifetime();
         }
@@ -443,7 +440,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
                     EnchantmentHelper.getItemEnchantmentLevel(registryLookup.getOrThrow(Enchantments.SHARPNESS), heldItem) >= 5)
             {
                 //Drop Obsidian Dust trophy item and give it a long despawn delay.
-                ItemEntity trophyItem = this.spawnAtLocation(ModItems.TROPHY_OBSIDIAN_DUST.get());
+                ItemEntity trophyItem = this.spawnAtLocation(level, ModItems.TROPHY_OBSIDIAN_DUST.get());
                 if (trophyItem != null) {
                     trophyItem.setExtendedLifetime();
                 }
@@ -456,10 +453,11 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * @return Amount of experience reward
      */
     @Override
-    public int getBaseExperienceReward() {
+    public int getBaseExperienceReward(ServerLevel serverLevel) {
         //WitherBoss drops 50xp on death
         return 50;
     }
+
 
     /**
      * Gets maximum distance that this Monster will voluntarily drop during pathfinding.

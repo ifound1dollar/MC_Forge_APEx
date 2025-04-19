@@ -2,22 +2,19 @@ package net.dollar.apex.item.custom.infusedgemstone;
 
 import net.dollar.apex.item.custom.ModPaxelItem;
 import net.dollar.apex.util.ModItemUtils;
-import net.dollar.apex.util.ModToolTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ModInfusedGemstonePaxelItem extends ModPaxelItem {
-    public ModInfusedGemstonePaxelItem(Tier material, float attackDamage, float attackSpeed) {
-        super(material, new Item.Properties().attributes(ModPaxelItem.createAttributes(
-                ModToolTiers.INFUSED_GEMSTONE, attackDamage, attackSpeed))
-                .fireResistant());
+    public ModInfusedGemstonePaxelItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
 

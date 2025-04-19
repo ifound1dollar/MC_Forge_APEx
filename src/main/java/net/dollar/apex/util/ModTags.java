@@ -51,6 +51,13 @@ public class ModTags {
         public static final TagKey<Item> MOD_TOOLS_infused_gemstone = modItemTag("tools_infused_gemstone");
         public static final TagKey<Item> MOD_TOOLS_TUNGSTEN_CARBIDE = modItemTag("tools_tungsten_carbide");
 
+        public static final TagKey<Item> MOD_REPAIRS_COBALT_STEEL_EQUIPMENT =modItemTag(
+                "repairs_cobalt_steel_equipment");
+        public static final TagKey<Item> MOD_REPAIRS_INFUSED_GEMSTONE_EQUIPMENT =modItemTag(
+                "repairs_infused_gemstone_equipment");
+        public static final TagKey<Item> MOD_REPAIRS_TUNGSTEN_CARBIDE_EQUIPMENT =modItemTag(
+                "repairs_tungsten_carbide_equipment");
+
 
 
         public static final TagKey<Item> FORGE_AMETHYST = forgeItemTag("gems/amethyst");
