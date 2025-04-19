@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.random.RandomGenerator;
+import java.util.Random;
 
 @OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterRenderState extends HumanoidRenderState {
@@ -12,7 +12,8 @@ public class ModMysteriousSpecterRenderState extends HumanoidRenderState {
 
     public ModMysteriousSpecterRenderState() {
         //Set textureID to a value between 0-4, which is used to determine which texture to render.
-        this.textureID = RandomGenerator.getDefault().nextInt(5);
+        Random random = new Random();
+        this.textureID = random.nextInt(5);
     }
 
 
