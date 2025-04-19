@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Handles Old Lady Muff rendering, supporting custom texture. Also implements custom render scale.
@@ -30,7 +31,7 @@ public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriou
      * @return Texture ResourceLocation
      */
     @Override
-    public ResourceLocation getTextureLocation(ModMysteriousSpecterRenderState renderState) {
+    public @NotNull ResourceLocation getTextureLocation(ModMysteriousSpecterRenderState renderState) {
         //Generate and return a new identifier using the TEXTURE_BASE string appended with the texture
         //  ID from the Entity instance (plus the .png extension).
         return ResourceLocation.fromNamespaceAndPath(ModMain.MODID, TEXTURE_BASE + renderState.getTextureID() + ".png");
@@ -42,14 +43,14 @@ public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriou
      * @param poseStack PoseStack corresponding to this renderer
      */
     @Override
-    protected void scale(ModMysteriousSpecterRenderState renderState, PoseStack poseStack) {
+    protected void scale(@NotNull ModMysteriousSpecterRenderState renderState, PoseStack poseStack) {
         //scaling this will change the size of the actual model & texture
         poseStack.scale(0.9375f, 0.9375f, 0.9375f);
     }
 
 
     @Override
-    public ModMysteriousSpecterRenderState createRenderState() {
+    public @NotNull ModMysteriousSpecterRenderState createRenderState() {
         return new ModMysteriousSpecterRenderState();
     }
 }

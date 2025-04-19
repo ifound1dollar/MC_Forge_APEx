@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Crackiness;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemRend
 
 
 
-    public void render(PoseStack poseStack, MultiBufferSource source, int p_117150_,
+    public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource source, int p_117150_,
                        ModObsidianGolemRenderState renderState, float limbAngle, float limbDistance) {
         if (!renderState.isInvisible) {
             Crackiness.Level crackLevel = renderState.crackiness;

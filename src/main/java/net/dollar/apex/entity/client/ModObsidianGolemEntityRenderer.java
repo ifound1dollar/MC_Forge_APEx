@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Handles Old Lady Muff rendering, supporting custom texture. Also implements custom render scale.
@@ -33,7 +34,7 @@ public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolem
      * @return Texture ResourceLocation
      */
     @Override
-    public ResourceLocation getTextureLocation(ModObsidianGolemRenderState renderState) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull ModObsidianGolemRenderState renderState) {
         return TEXTURE;
     }
 
@@ -43,23 +44,23 @@ public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolem
      * @param poseStack PoseStack corresponding to this renderer
      */
     @Override
-    protected void scale(ModObsidianGolemRenderState renderState, PoseStack poseStack) {
+    protected void scale(@NotNull ModObsidianGolemRenderState renderState, PoseStack poseStack) {
         poseStack.scale(1.25f, 1.25f, 1.25f);
     }
 
 
 
-    public ModObsidianGolemRenderState createRenderState() {
+    public @NotNull ModObsidianGolemRenderState createRenderState() {
         return new ModObsidianGolemRenderState();
     }
 
-    public void extractRenderState(ModObsidianGolemEntity entity, ModObsidianGolemRenderState renderState, float p_363302_) {
+    public void extractRenderState(@NotNull ModObsidianGolemEntity entity, @NotNull ModObsidianGolemRenderState renderState, float p_363302_) {
         super.extractRenderState(entity, renderState, p_363302_);
         renderState.attackTicksRemaining = (float) entity.getAttackAnimationTick() > 0.0F ? (float) entity.getAttackAnimationTick() - p_363302_ : 0.0F;
         renderState.crackiness = entity.getCrackiness();
     }
 
-    protected void setupRotations(ModObsidianGolemRenderState renderState, PoseStack poseStack, float p_115016_, float p_115017_) {
+    protected void setupRotations(@NotNull ModObsidianGolemRenderState renderState, @NotNull PoseStack poseStack, float p_115016_, float p_115017_) {
         super.setupRotations(renderState, poseStack, p_115016_, p_115017_);
         if (!((double) renderState.walkAnimationSpeed < 0.01)) {
             float $$4 = 13.0F;

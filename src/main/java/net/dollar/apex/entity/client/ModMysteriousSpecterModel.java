@@ -16,6 +16,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -41,7 +42,6 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
     public static MeshDefinition createMesh(CubeDeformation p_170826_, boolean p_170827_) {
         MeshDefinition $$2 = HumanoidModel.createMesh(p_170826_, 0.0F);
         PartDefinition $$3 = $$2.getRoot();
-        float $$4 = 0.25F;
         if (p_170827_) {
             PartDefinition $$5 = $$3.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, p_170826_), PartPose.offset(5.0F, 2.0F, 0.0F));
             PartDefinition $$6 = $$3.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(40, 16).addBox(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, p_170826_), PartPose.offset(-5.0F, 2.0F, 0.0F));
@@ -63,7 +63,7 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
         return $$2;
     }
 
-    public void setupAnim(ModMysteriousSpecterRenderState renderState) {
+    public void setupAnim(@NotNull ModMysteriousSpecterRenderState renderState) {
         boolean $$1 = true;
         this.body.visible = $$1;
         this.rightArm.visible = $$1;
@@ -82,14 +82,14 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
         this.jacket.visible = isVisible;
     }
 
-    public void translateToHand(HumanoidArm p_103392_, PoseStack p_103393_) {
+    public void translateToHand(@NotNull HumanoidArm p_103392_, @NotNull PoseStack p_103393_) {
         this.root().translateAndRotate(p_103393_);
         ModelPart $$2 = this.getArm(p_103392_);
         $$2.translateAndRotate(p_103393_);
     }
 
     public ModelPart getRandomBodyPart(RandomSource p_370076_) {
-        return (ModelPart) Util.getRandom(this.bodyParts, p_370076_);
+        return Util.getRandom(this.bodyParts, p_370076_);
     }
 
     protected HumanoidModel.ArmPose getArmPose(PlayerRenderState p_365270_, HumanoidArm p_367362_) {

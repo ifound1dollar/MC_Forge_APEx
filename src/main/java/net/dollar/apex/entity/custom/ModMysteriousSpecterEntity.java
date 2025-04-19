@@ -31,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -140,12 +141,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         }
     }
 
-    public void addAdditionalSaveData(CompoundTag p_28867_) {
+    public void addAdditionalSaveData(@NotNull CompoundTag p_28867_) {
         super.addAdditionalSaveData(p_28867_);
         this.addPersistentAngerSaveData(p_28867_);
     }
 
-    public void readAdditionalSaveData(CompoundTag p_28857_) {
+    public void readAdditionalSaveData(@NotNull CompoundTag p_28857_) {
         super.readAdditionalSaveData(p_28857_);
         this.readPersistentAngerSaveData(this.level(), p_28857_);
     }
@@ -198,7 +199,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param source DamageSource of damage being dealt
      * @return Hurt SoundEvent
      */
-    protected SoundEvent getHurtSound(DamageSource source) {
+    protected @NotNull SoundEvent getHurtSound(@NotNull DamageSource source) {
         return SoundEvents.BLAZE_AMBIENT;
     }
 
@@ -206,7 +207,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Gets death sound produced by this Monster.
      * @return Death SoundEvent
      */
-    protected SoundEvent getDeathSound() {
+    protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.BLAZE_DEATH;
     }
 
@@ -215,7 +216,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param blockPos Position being stepped on
      * @param blockState Blockstate of block at position being stepped on
      */
-    protected void playStepSound(BlockPos blockPos, BlockState blockState) {
+    protected void playStepSound(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         //PLAY NO STEP SOUND.
 //        this.playSound(SoundEvents.IRON_GOLEM_STEP, 1.0F, 1.0F);
     }
@@ -236,7 +237,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether attack was performed successfully
      */
     @Override
-    public boolean doHurtTarget(ServerLevel serverLevel, Entity targetEntity) {
+    public boolean doHurtTarget(@NotNull ServerLevel serverLevel, @NotNull Entity targetEntity) {
         //Can only attack once every second, then resets counter.
         if (ticksSinceLastAttack < 20) {
             return false;
@@ -308,7 +309,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether hurt operation was completed successfully
      */
     @Override
-    public boolean hurtServer(ServerLevel serverLevel, DamageSource source, float value) {
+    public boolean hurtServer(@NotNull ServerLevel serverLevel, @NotNull DamageSource source, float value) {
         return super.hurtServer(serverLevel, source, value);
     }
 
@@ -442,7 +443,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param killedByPlayer Whether this was killed by a player
      */
     @Override
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource source, boolean killedByPlayer) {
+    protected void dropCustomDeathLoot(@NotNull ServerLevel serverLevel, @NotNull DamageSource source, boolean killedByPlayer) {
         if (!killedByPlayer) {
             //Only drop if last attacker was Player.
             return;
@@ -476,7 +477,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Amount of experience reward
      */
     @Override
-    public int getBaseExperienceReward(ServerLevel serverLevel) {
+    public int getBaseExperienceReward(@NotNull ServerLevel serverLevel) {
         //WitherBoss drops 50xp on death
         return 50;
     }

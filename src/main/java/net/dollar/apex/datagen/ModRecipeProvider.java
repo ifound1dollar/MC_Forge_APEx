@@ -1025,7 +1025,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
         @Override
-        protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NotNull Provider provider,
+                                                               @NotNull RecipeOutput recipeOutput) {
             return new ModRecipeProvider(provider, recipeOutput);
         }
 

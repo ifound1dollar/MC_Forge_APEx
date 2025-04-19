@@ -5,6 +5,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Defines Obsidian Golem model, copied largely from IronGolemModel but without flower layer.
@@ -28,7 +29,7 @@ public class ModObsidianGolemModel extends EntityModel<ModObsidianGolemRenderSta
 
 
 
-    public void setupAnim(ModObsidianGolemRenderState renderState) {
+    public void setupAnim(@NotNull ModObsidianGolemRenderState renderState) {
         super.setupAnim(renderState);
         float $$1 = renderState.attackTicksRemaining;
         float $$2 = renderState.walkAnimationSpeed;

@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class ModBattleaxeItem extends Item {
     /**
@@ -26,7 +27,7 @@ public class ModBattleaxeItem extends Item {
      * Checks whether a player can attack a specific block with this item.
      * @return Whether the player can attack a block with this Item
      */
-    public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
+    public boolean canAttackBlock(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player) {
         return !player.isCreative();
     }
 
@@ -36,7 +37,7 @@ public class ModBattleaxeItem extends Item {
      * @param blockState BlockState of target block
      * @return Calculated destroy speed
      */
-    public float getDestroySpeed(ItemStack stack, BlockState blockState) {
+    public float getDestroySpeed(@NotNull ItemStack stack, @NotNull BlockState blockState) {
         return 1.0f;
     }
 
@@ -47,7 +48,7 @@ public class ModBattleaxeItem extends Item {
      * @param userEntity User LivingEntity
      * @return Whether the attack was successfully performed
      */
-    public boolean hurtEnemy(ItemStack stack, LivingEntity targetEntity, LivingEntity userEntity) {
+    public boolean hurtEnemy(ItemStack stack, @NotNull LivingEntity targetEntity, @NotNull LivingEntity userEntity) {
         stack.hurtAndBreak(1, userEntity, EquipmentSlot.MAINHAND);
         return true;
     }
