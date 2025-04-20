@@ -90,7 +90,7 @@ public class ModItems {
     public static final RegistryObject<Item> MOLTEN_CORE = registerItem("molten_core",
             () -> new ModMoltenCoreItem(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> HANDFUL_OF_STARDUST = registerItem("handful_of_stardust",
-            () -> new ModCustomItem(new Item.Properties(),
+            () -> new ModCustomItem(new Item.Properties().fireResistant(),
                     "tooltip.handful_of_stardust", false));
     public static final RegistryObject<Item> INFUSED_GEMSTONE = registerItem("infused_gemstone",
             () -> new ModCustomItem(new Item.Properties().fireResistant(),
