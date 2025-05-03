@@ -20,7 +20,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -36,12 +35,10 @@ public class ModItems {
 
     //region Misc.
     public static final RegistryObject<Item> OBSIDIAN_GOLEM_SPAWN_EGG = registerItem("obsidian_golem_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.OBSIDIAN_GOLEM, 0xFF12031E, 0xFFED4D0E,
-                    new Item.Properties()
+            () -> new SpawnEggItem(ModEntities.OBSIDIAN_GOLEM.get(), new Item.Properties()
                             .setId(generateItemKey("obsidian_golem_spawn_egg"))));
     public static final RegistryObject<Item> MYSTERIOUS_SPECTER_SPAWN_EGG = registerItem("mysterious_specter_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.MYSTERIOUS_SPECTER, 0xFFE3E3E3, 0xFFB8B8B8,
-                    new Item.Properties()
+            () -> new SpawnEggItem(ModEntities.MYSTERIOUS_SPECTER.get(), new Item.Properties()
                             .setId(generateItemKey("mysterious_specter_spawn_egg"))));
     public static final RegistryObject<Item> FERTILIZER = registerItem("fertilizer",
             () -> new BoneMealItem((new Item.Properties()

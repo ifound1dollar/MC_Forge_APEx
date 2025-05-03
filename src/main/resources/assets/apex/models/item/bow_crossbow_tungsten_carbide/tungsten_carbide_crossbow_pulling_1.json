@@ -1,6 +1,0 @@
-{
-    "parent": "apex:item/tungsten_carbide_crossbow",
-    "textures": {
-        "layer0": "apex:item/tungsten_carbide_crossbow_pulling_1"
-    }
-}

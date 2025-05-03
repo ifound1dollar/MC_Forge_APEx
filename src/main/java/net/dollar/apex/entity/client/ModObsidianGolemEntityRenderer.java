@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolemEntity,
         ModObsidianGolemRenderState, ModObsidianGolemModel> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
-            ModMain.MODID, "textures/entities/obsidian_golem.png");
+            ModMain.MODID, "textures/entity/obsidian_golem.png");
 
     public ModObsidianGolemEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new ModObsidianGolemModel(context.bakeLayer(ModelLayers.IRON_GOLEM)), 0.7f);  //shadow radius

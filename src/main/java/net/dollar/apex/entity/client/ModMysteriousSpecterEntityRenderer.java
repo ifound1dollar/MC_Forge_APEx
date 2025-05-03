@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 @OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriousSpecterEntity,
         ModMysteriousSpecterRenderState, ModMysteriousSpecterModel> {
-    private static final String TEXTURE_BASE = "textures/entities/mysterious_specter";
+    private static final String TEXTURE_BASE = "textures/entity/mysterious_specter";
 
     public ModMysteriousSpecterEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new ModMysteriousSpecterModel(context.bakeLayer(ModelLayers.PLAYER)), 0.6f);  //shadow radius

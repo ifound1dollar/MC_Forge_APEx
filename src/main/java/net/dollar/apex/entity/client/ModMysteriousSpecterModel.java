@@ -1,7 +1,6 @@
 package net.dollar.apex.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.Util;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,19 +9,13 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 @OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecterRenderState> {
-    private final List<ModelPart> bodyParts;
     public final ModelPart leftSleeve;
     public final ModelPart rightSleeve;
     public final ModelPart leftPants;
@@ -36,7 +29,6 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
         this.leftPants = this.leftLeg.getChild("left_pants");
         this.rightPants = this.rightLeg.getChild("right_pants");
         this.jacket = this.body.getChild("jacket");
-        this.bodyParts = List.of(this.head, this.body, this.leftArm, this.rightArm, this.leftLeg, this.rightLeg);
     }
 
     public static MeshDefinition createMesh(CubeDeformation p_170826_, boolean p_170827_) {
@@ -86,13 +78,5 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
         this.root().translateAndRotate(p_103393_);
         ModelPart $$2 = this.getArm(p_103392_);
         $$2.translateAndRotate(p_103393_);
-    }
-
-    public ModelPart getRandomBodyPart(RandomSource p_370076_) {
-        return Util.getRandom(this.bodyParts, p_370076_);
-    }
-
-    protected HumanoidModel.ArmPose getArmPose(PlayerRenderState p_365270_, HumanoidArm p_367362_) {
-        return PlayerRenderer.getArmPose(p_365270_, p_367362_);
     }
 }

@@ -6,7 +6,6 @@ import net.dollar.apex.config.Config;
 import net.dollar.apex.entity.ModEntities;
 import net.dollar.apex.item.ModItemGroups;
 import net.dollar.apex.item.ModItems;
-import net.dollar.apex.util.ModItemProperties;
 import net.dollar.apex.util.ModLootTableModifiers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -85,9 +84,6 @@ public class ModMain
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            //Sets up proper bow/crossbow item rendering on client-side only
-            ModItemProperties.addCustomItemProperties();
-
             // Some client setup code
 //            LOGGER.info("HELLO FROM CLIENT SETUP");
 //            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
