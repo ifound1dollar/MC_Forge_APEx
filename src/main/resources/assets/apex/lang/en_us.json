@@ -54,9 +54,9 @@
   "item.apex.cobalt_steel_ingot": "Cobalt-Steel Ingot",
 
   "item.apex.basic_upgrade_template": "Basic Upgrade Template",
-  "item.apex.cobalt_upgrade_smithing_template": "Smithing Template",
-  "item.apex.infusion_upgrade_smithing_template": "Smithing Template",
-  "item.apex.carbide_upgrade_smithing_template": "Smithing Template",
+  "item.apex.cobalt_upgrade_smithing_template": "§eCobalt-Steel Upgrade",
+  "item.apex.infusion_upgrade_smithing_template": "§eInfused Gemstone Upgrade",
+  "item.apex.carbide_upgrade_smithing_template": "§eTungsten-Carbide Upgrade",
 
 
 
@@ -143,7 +143,7 @@
 
 
 
-  "tooltip.trophy_item": "§6Trophy item",
+  "tooltip.trophy_item": "§6Trophy Item",
   "tooltip.handful_of_stardust": "§dRemains of a Mysterious Specter",
   "tooltip.molten_core": "§cCore of an Obsidian Golem",
   "tooltip.cobalt_steel_ingot": "§3Upgrade Ingredient",
