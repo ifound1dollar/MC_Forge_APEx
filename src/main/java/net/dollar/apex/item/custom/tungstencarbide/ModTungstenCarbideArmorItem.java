@@ -105,6 +105,6 @@ public class ModTungstenCarbideArmorItem extends ArmorItem implements IFullSetEf
      */
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendCobaltSteelEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.ARMOR);
+        ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.ARMOR);
     }
 }
