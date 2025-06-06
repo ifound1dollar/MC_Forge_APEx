@@ -20,9 +20,9 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemRenderState, ModObsidianGolemModel> {
     private static final Map<Crackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
-            Crackiness.Level.LOW, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_low.png"),
-            Crackiness.Level.MEDIUM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_medium.png"),
-            Crackiness.Level.HIGH, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entities/obsidian_golem_crackiness_high.png"));
+            Crackiness.Level.LOW, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_low.png"),
+            Crackiness.Level.MEDIUM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_medium.png"),
+            Crackiness.Level.HIGH, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_high.png"));
 
     public ModObsidianGolemCrackLayer(RenderLayerParent<ModObsidianGolemRenderState,
             ModObsidianGolemModel> parent) {

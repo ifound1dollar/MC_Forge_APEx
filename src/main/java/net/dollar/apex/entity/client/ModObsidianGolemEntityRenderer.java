@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolemEntity,
         ModObsidianGolemRenderState, ModObsidianGolemModel> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
-            ModMain.MODID, "textures/entities/obsidian_golem.png");
+            ModMain.MODID, "textures/entity/obsidian_golem.png");
 
     public ModObsidianGolemEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new ModObsidianGolemModel(context.bakeLayer(ModelLayers.IRON_GOLEM)), 0.7f);  //shadow radius
@@ -63,7 +63,6 @@ public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolem
     protected void setupRotations(@NotNull ModObsidianGolemRenderState renderState, @NotNull PoseStack poseStack, float p_115016_, float p_115017_) {
         super.setupRotations(renderState, poseStack, p_115016_, p_115017_);
         if (!((double) renderState.walkAnimationSpeed < 0.01)) {
-            float $$4 = 13.0F;
             float $$5 = renderState.walkAnimationPos + 6.0F;
             float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
             poseStack.mulPose(Axis.ZP.rotationDegrees(6.5F * $$6));
