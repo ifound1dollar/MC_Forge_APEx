@@ -1,5 +1,6 @@
 package net.dollar.apex.datagen;
 
+import net.dollar.apex.ModMain;
 import net.dollar.apex.item.ModItems;
 import net.dollar.apex.util.ModEquipmentAssets;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -107,52 +108,52 @@ public class ModItemModelGenerators extends ItemModelGenerators {
 
         // ARMORS
         generateTrimmableItem(ModItems.BRONZE_HELMET.get(), ModEquipmentAssets.BRONZE,
-                "helmet", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_helmet"), false);
         generateTrimmableItem(ModItems.BRONZE_CHESTPLATE.get(), ModEquipmentAssets.BRONZE,
-                "chestplate", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_chestplate"), false);
         generateTrimmableItem(ModItems.BRONZE_LEGGINGS.get(), ModEquipmentAssets.BRONZE,
-                "leggings", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_leggings"), false);
         generateTrimmableItem(ModItems.BRONZE_BOOTS.get(), ModEquipmentAssets.BRONZE,
-                "boots", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_boots"), false);
 
         generateTrimmableItem(ModItems.GILDED_BRONZE_HELMET.get(), ModEquipmentAssets.GILDED_BRONZE,
-                "helmet", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_helmet"), false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_CHESTPLATE.get(), ModEquipmentAssets.GILDED_BRONZE,
-                "chestplate", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_chestplate"), false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_LEGGINGS.get(), ModEquipmentAssets.GILDED_BRONZE,
-                "leggings", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_leggings"), false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_BOOTS.get(), ModEquipmentAssets.GILDED_BRONZE,
-                "boots", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_boots"), false);
 
         generateTrimmableItem(ModItems.COBALT_STEEL_HELMET.get(), ModEquipmentAssets.COBALT_STEEL,
-                "helmet", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_helmet"), false);
         generateTrimmableItem(ModItems.COBALT_STEEL_CHESTPLATE.get(), ModEquipmentAssets.COBALT_STEEL,
-                "chestplate", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_chestplate"), false);
         generateTrimmableItem(ModItems.COBALT_STEEL_LEGGINGS.get(), ModEquipmentAssets.COBALT_STEEL,
-                "leggings", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_leggings"), false);
         generateTrimmableItem(ModItems.COBALT_STEEL_BOOTS.get(), ModEquipmentAssets.COBALT_STEEL,
-                "boots", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_boots"), false);
 
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_HELMET.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                "helmet", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_helmet"), false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_CHESTPLATE.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                "chestplate", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_chestplate"), false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_LEGGINGS.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                "leggings", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_leggings"), false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_BOOTS.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                "boots", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_boots"), false);
 
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_HELMET.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                "helmet", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_helmet"), false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_CHESTPLATE.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                "chestplate", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_chestplate"), false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_LEGGINGS.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                "leggings", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_leggings"), false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_BOOTS.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                "boots", false);
+                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_boots"), false);
 
         // SPAWN EGGS
-        generateSpawnEgg(ModItems.OBSIDIAN_GOLEM_SPAWN_EGG.get(), 0x12031E, 0xED4D0E);
-        generateSpawnEgg(ModItems.MYSTERIOUS_SPECTER_SPAWN_EGG.get(), 0xE3E3E3, 0xB8B8B8);
+        generateFlatItem(ModItems.OBSIDIAN_GOLEM_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        generateFlatItem(ModItems.MYSTERIOUS_SPECTER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
     }
 }

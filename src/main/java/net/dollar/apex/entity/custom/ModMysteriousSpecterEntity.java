@@ -392,7 +392,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
                 //Slow and Weaken ALL nearby LivingEntities regardless of whether angry at.
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60));
 
                 //Knockback the LivingEntity with half default strength.
@@ -408,8 +408,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     private void increaseMovementSpeedTemporarily() {
         //Add Speed effect at level 5 (20% * level), so double speed, for 1200 ticks (60 seconds).
-        if (!this.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-            this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 4));
+        if (!this.hasEffect(MobEffects.SPEED)) {
+            this.addEffect(new MobEffectInstance(MobEffects.SPEED, 1200, 4));
         }
     }
 
@@ -418,8 +418,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     private void resetMovementSpeed() {
         //Remove Speed status effect, if active.
-        if (this.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-            this.removeEffect(MobEffects.MOVEMENT_SPEED);
+        if (this.hasEffect(MobEffects.SPEED)) {
+            this.removeEffect(MobEffects.SPEED);
         }
     }
 

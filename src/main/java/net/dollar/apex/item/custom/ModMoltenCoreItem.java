@@ -4,11 +4,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class ModMoltenCoreItem extends Item {
     public ModMoltenCoreItem(Properties properties) {
@@ -32,12 +33,13 @@ public class ModMoltenCoreItem extends Item {
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
      * @param context Relevant TooltipContext
-     * @param tooltip List of tooltip texts to render
+     * @param display TooltipDisplay corresponding to this tooltip
+     * @param tooltip List of tooltip text Components to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
-                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.molten_core"));
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
+                                @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
+        tooltip.accept(Component.translatable("tooltip.molten_core"));
     }
 }

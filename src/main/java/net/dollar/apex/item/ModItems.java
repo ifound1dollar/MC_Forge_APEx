@@ -274,13 +274,13 @@ public class ModItems {
 
     //region Pickaxes
     public static final RegistryObject<Item> BRONZE_PICKAXE = registerItem("bronze_pickaxe",
-            () -> new PickaxeItem(ModToolMaterials.BRONZE, 1.0f, -2.8f,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_pickaxe"))));
+            () -> new Item(new Item.Properties()
+                    .pickaxe(ModToolMaterials.BRONZE, 1.0f, -2.8f)
+                    .setId(generateItemKey("bronze_pickaxe"))));
     public static final RegistryObject<Item> GILDED_BRONZE_PICKAXE = registerItem("gilded_bronze_pickaxe",
-            () -> new PickaxeItem(ModToolMaterials.GILDED_BRONZE, 1.0f, -2.6f,
-                    new Item.Properties()
-                            .setId(generateItemKey("gilded_bronze_pickaxe"))));
+            () -> new Item(new Item.Properties()
+                    .pickaxe(ModToolMaterials.GILDED_BRONZE, 1.0f, -2.6f)
+                    .setId(generateItemKey("gilded_bronze_pickaxe"))));
     public static final RegistryObject<Item> COBALT_STEEL_PICKAXE = registerItem("cobalt_steel_pickaxe",
             () -> new ModCobaltSteelPickaxeItem(ModToolMaterials.COBALT_STEEL,
                     1.0f, -2.5f,
@@ -326,13 +326,13 @@ public class ModItems {
 
     //region Sword
     public static final RegistryObject<Item> BRONZE_SWORD = registerItem("bronze_sword",
-            () -> new SwordItem(ModToolMaterials.BRONZE, 3.0f, -2.4f,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_sword"))));
+            () -> new Item(new Item.Properties()
+                    .sword(ModToolMaterials.BRONZE, 3.0f, -2.4f)
+                    .setId(generateItemKey("bronze_sword"))));
     public static final RegistryObject<Item> GILDED_BRONZE_SWORD = registerItem("gilded_bronze_sword",
-            () -> new SwordItem(ModToolMaterials.GILDED_BRONZE, 3.0f, -2.2f,
-                    new Item.Properties()
-                            .setId(generateItemKey("gilded_bronze_sword"))));
+            () -> new Item(new Item.Properties()
+                    .sword(ModToolMaterials.GILDED_BRONZE, 3.0f, -2.2f)
+                    .setId(generateItemKey("gilded_bronze_sword"))));
     public static final RegistryObject<Item> COBALT_STEEL_SWORD = registerItem("cobalt_steel_sword",
             () -> new ModCobaltSteelSwordItem(ModToolMaterials.COBALT_STEEL,
                     3, -2.0f,
@@ -352,21 +352,21 @@ public class ModItems {
 
     //region Bronze armor
     public static final RegistryObject<Item> BRONZE_HELMET = registerItem("bronze_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.HELMET,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_helmet"))));     // Durability now contained directly in ArmorMaterial.
+            () -> new Item(new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.HELMET)
+                    .setId(generateItemKey("bronze_helmet"))));     // Durability now contained directly in ArmorMaterial.
     public static final RegistryObject<Item> BRONZE_CHESTPLATE = registerItem("bronze_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.CHESTPLATE,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_chestplate"))));
+            () -> new Item(new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.CHESTPLATE)
+                    .setId(generateItemKey("bronze_chestplate"))));
     public static final RegistryObject<Item> BRONZE_LEGGINGS = registerItem("bronze_leggings",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.LEGGINGS,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_leggings"))));
+            () -> new Item(new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.LEGGINGS)
+                    .setId(generateItemKey("bronze_leggings"))));
     public static final RegistryObject<Item> BRONZE_BOOTS = registerItem("bronze_boots",
-            () -> new ArmorItem(ModArmorMaterials.BRONZE, ArmorType.BOOTS,
-                    new Item.Properties()
-                            .setId(generateItemKey("bronze_boots"))));
+            () -> new Item(new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.BOOTS)
+                    .setId(generateItemKey("bronze_boots"))));
     //endregion
 
     //region Gilded Bronze armor

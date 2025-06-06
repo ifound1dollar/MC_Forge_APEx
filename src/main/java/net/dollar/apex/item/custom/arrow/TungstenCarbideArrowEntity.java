@@ -59,7 +59,7 @@ public class TungstenCarbideArrowEntity extends Arrow {
             //Level 2 slow (third argument) for 30% reduction, 15%/level.
 //            target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,
 //                    ModCommonConfigs.ENDGAME_TIER_EFFECT_SECONDS.get() * 20, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,
                     4 * 20, 1));
         }
     }

@@ -9,10 +9,11 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Corresponds specifically to the Tungsten-Carbide Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
@@ -82,15 +83,16 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
      * @param context Relevant TooltipContext
-     * @param tooltip List of tooltip texts to render
+     * @param display TooltipDisplay corresponding to this tooltip
+     * @param tooltip List of tooltip text Components to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
-                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
+                                @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
         ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
 
-        //Call super function AFTER because it has return statement if not charged.
-        super.appendHoverText(stack, context, tooltip, flag);
+        //Call super function AFTER so the tooltip info is directly underneath the name.
+        super.appendHoverText(stack, context, display, tooltip, flag);
     }
 }

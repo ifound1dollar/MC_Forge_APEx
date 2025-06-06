@@ -268,7 +268,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
                     //APPLY ONE OF THESE TWO EFFECTS
                     if (this.random.nextBoolean()) {
                         //apply only level 1 slow, 15%/level (30% was a bit too much)
-                        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 0));
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 80, 0));
                     } else {
                         livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0));
                     }
@@ -368,7 +368,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
             if (entity instanceof LivingEntity livingEntity) {
                 //blind and slow ALL nearby LivingEntities, regardless of whether angry at
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
             }
         }
     }

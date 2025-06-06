@@ -10,18 +10,20 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.function.Consumer;
 
-public class ModInfusedGemstoneArmorItem extends ArmorItem implements IFullSetEffectArmor {
+public class ModInfusedGemstoneArmorItem extends Item implements IFullSetEffectArmor {
     public ModInfusedGemstoneArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
-        super(material, type, properties);
+        super(properties
+                .humanoidArmor(material, type));
     }
 
 
@@ -54,12 +56,13 @@ public class ModInfusedGemstoneArmorItem extends ArmorItem implements IFullSetEf
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item
      * @param context Relevant TooltipContext
-     * @param tooltip List of tooltip texts to render
+     * @param display TooltipDisplay corresponding to this tooltip
+     * @param tooltip List of tooltip text Components to render
      * @param flag TooltipFlag determining data like simple or advanced
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
-                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
+                                @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
         ModItemUtils.appendInfusedGemstoneEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.ARMOR);
     }
 }
