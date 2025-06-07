@@ -6,16 +6,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class ModGildedBronzeArmorItem extends Item {
-    public ModGildedBronzeArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
-        super(properties
-                .humanoidArmor(material, type));
+    public ModGildedBronzeArmorItem(Properties properties) {
+        super(properties);
     }
 
 

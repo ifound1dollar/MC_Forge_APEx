@@ -1,21 +1,19 @@
-package net.dollar.apex.item.custom.infusedgemstone;
+package net.dollar.apex.item.custom.tungstencarbide;
 
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public class ModInfusedGemstoneSwordItem extends Item {
-    public ModInfusedGemstoneSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
-        super(properties
-                .sword(material, attackDamage, attackSpeed));
+public class ModTungstenCarbideToolItem extends Item {
+    public ModTungstenCarbideToolItem(Properties properties) {
+        super(properties);
     }
 
 
@@ -28,10 +26,8 @@ public class ModInfusedGemstoneSwordItem extends Item {
      */
     @Override
     public void hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
-        ModItemUtils.applyInfusedGemstoneOnHit(target);
+        ModItemUtils.applyTungstenCarbideOnHit(target);
     }
-
-
 
     /**
      * Appends text to the Item's hover tooltip.
@@ -44,6 +40,6 @@ public class ModInfusedGemstoneSwordItem extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
                                 @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendInfusedGemstoneEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
+        ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
     }
 }

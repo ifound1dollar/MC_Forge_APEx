@@ -27,8 +27,6 @@ public class ModTungstenCarbideHoeItem extends HoeItem {
         ModItemUtils.applyTungstenCarbideOnHit(target);
     }
 
-
-
     /**
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item

@@ -14,16 +14,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class ModTungstenCarbideArmorItem extends Item implements IFullSetEffectArmor {
-    public ModTungstenCarbideArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
-        super(properties
-                .humanoidArmor(material, type));
+    public ModTungstenCarbideArmorItem(Properties properties) {
+        super(properties);
     }
 
 
@@ -47,10 +44,8 @@ public class ModTungstenCarbideArmorItem extends Item implements IFullSetEffectA
             isFullSet = hasHelm && hasChest && hasLegs && hasBoots;
         }
 
-        return !(isFullSet && (effect == MobEffects.SLOWNESS || effect == MobEffects.LEVITATION));
+        return !(isFullSet && (effect == MobEffects.WEAKNESS || effect == MobEffects.LEVITATION));
     }
-
-
 
     /**
      * Appends text to the Item's hover tooltip.

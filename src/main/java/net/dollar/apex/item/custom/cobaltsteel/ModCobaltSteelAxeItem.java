@@ -16,6 +16,29 @@ public class ModCobaltSteelAxeItem extends AxeItem {
 
 
 
+//    @Override
+//    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+//        // ENTRY IS THE VALUE, KEY IS THE ENCHANTMENT
+//        ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(book);
+//        for (Object2IntMap.Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
+//            Holder<Enchantment> holder = entry.getKey();
+//            int i2 = enchantments.getLevel(holder);
+//            int j2 = entry.getIntValue();
+//            Enchantment enchantment = holder.value();
+////            ModMain.LOGGER.debug("can enchant: {}", enchantment.canEnchant(stack));
+////            enchantment.getSupportedItems().stream().forEach((consumer) ->
+////            {
+////                ModMain.LOGGER.debug(consumer.getRegisteredName());
+////            });
+//        }
+//        ModMain.LOGGER.debug("isBookEnchantable called, size: {}", enchantments.size());
+//        Random random = new Random();
+//        return random.nextBoolean();
+//
+//
+//        //return super.isBookEnchantable(stack, book);
+//    }
+
     /**
      * Performs normal post-hit operations but with chance to apply additional effect(s).
      * @param stack ItemStack of this Item

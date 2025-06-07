@@ -14,16 +14,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class ModInfusedGemstoneArmorItem extends Item implements IFullSetEffectArmor {
-    public ModInfusedGemstoneArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
-        super(properties
-                .humanoidArmor(material, type));
+    public ModInfusedGemstoneArmorItem(Properties properties) {
+        super(properties);
     }
 
 
@@ -49,8 +46,6 @@ public class ModInfusedGemstoneArmorItem extends Item implements IFullSetEffectA
 
         return !(isFullSet && (effect == MobEffects.WITHER || effect == MobEffects.POISON));
     }
-
-
 
     /**
      * Appends text to the Item's hover tooltip.

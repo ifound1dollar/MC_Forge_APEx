@@ -1,5 +1,6 @@
 package net.dollar.apex.item.custom.arrow;
 
+import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +16,7 @@ public class CobaltSteelArrowEntity extends Arrow {
 
     public CobaltSteelArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
         super(level, owner, arrowStack, weaponStack);
+        setBaseDamage(3.0f);
     }
 
 
@@ -26,15 +28,6 @@ public class CobaltSteelArrowEntity extends Arrow {
      */
     public void checkIsSpectral(ItemStack arrow) {
         if (arrow.getItem() instanceof SpectralArrowItem) { isSpectral = true; }
-    }
-
-    /**
-     * Sets the base damage value of this ArrowEntity (set to 3.0 from 2.0).
-     * @param damage New base damage (default 2.0)
-     */
-    @Override
-    public void setBaseDamage(double damage) {
-        super.setBaseDamage(3.0);
     }
 
     /**
@@ -54,13 +47,8 @@ public class CobaltSteelArrowEntity extends Arrow {
                 livingEntity.addEffect(statusEffectInstance, this.getOwner());
             }
 
-            //Apply Slowness effect to target (attackedEntity) for configurable duration in seconds.
-            //TODO: RE-IMPLEMENT CONFIGS
-            //Level 1 (third argument) for 4 heart melee damage reduction.
-//            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,
-//                    ModCommonConfigs.ENDGAME_TIER_EFFECT_SECONDS.get() * 20, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS,
-                    4 * 20, 1));
+            // Apply special on-hit effect when this arrow entity hits a LivingEntity.
+            ModItemUtils.applyCobaltSteelOnHit(livingEntity);
         }
     }
 }

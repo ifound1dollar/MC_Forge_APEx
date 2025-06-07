@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * CLIENT-ONLY. Handles Old Lady Muff rendering, supporting custom texture. Also implements custom render scale.
+ * CLIENT-ONLY. Handles Mysterious Specter rendering, supporting custom texture. Also implements custom render scale.
  */
 @OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriousSpecterEntity,

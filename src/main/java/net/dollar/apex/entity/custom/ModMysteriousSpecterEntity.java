@@ -362,10 +362,9 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
-                //Do not apply effect to Mysterious Specters.
-                if (livingEntity instanceof ModMysteriousSpecterEntity) {
-                    continue;
-                }
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
 
                 //Apply lowest-level Weakness and Hunger to each entity for 10 seconds.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0));
@@ -391,14 +390,13 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         this.playSound(SoundEvents.RAVAGER_ROAR, 1.0f, 1.0f);
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
+
                 //Slow and Weaken ALL nearby LivingEntities regardless of whether angry at.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60));
-
-                //Knockback the LivingEntity with half default strength.
-                //KNOCKBACK NOT WORKING FOR SOME REASON
-//                livingEntity.takeKnockback(0.5f, MathHelper.sin(this.getYaw() * ((float)Math.PI / 180)),
-//                        -MathHelper.cos(this.getYaw() * ((float)Math.PI / 180)));
             }
         }
     }

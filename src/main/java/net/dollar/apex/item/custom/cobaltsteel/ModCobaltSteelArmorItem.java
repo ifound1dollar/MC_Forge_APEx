@@ -14,16 +14,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class ModCobaltSteelArmorItem extends Item implements IFullSetEffectArmor {
-    public ModCobaltSteelArmorItem(ArmorMaterial material, ArmorType type, Properties properties) {
-        super(properties
-                .humanoidArmor(material, type));
+    public ModCobaltSteelArmorItem(Properties properties) {
+        super(properties);
     }
 
 
@@ -48,7 +45,7 @@ public class ModCobaltSteelArmorItem extends Item implements IFullSetEffectArmor
         }
 
         //ModMain.LOGGER.info("Full set: " + isFullSet + " | Effect: " + effect.getName());
-        return !(isFullSet && (effect == MobEffects.WEAKNESS || effect == MobEffects.MINING_FATIGUE));
+        return !(isFullSet && (effect == MobEffects.SLOWNESS || effect == MobEffects.MINING_FATIGUE));
     }
 
     /**

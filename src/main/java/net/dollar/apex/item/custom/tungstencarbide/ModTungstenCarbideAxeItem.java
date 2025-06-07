@@ -27,8 +27,6 @@ public class ModTungstenCarbideAxeItem extends AxeItem {
         ModItemUtils.applyTungstenCarbideOnHit(target);
     }
 
-
-
     /**
      * Appends text to the Item's hover tooltip.
      * @param stack ItemStack corresponding to this item

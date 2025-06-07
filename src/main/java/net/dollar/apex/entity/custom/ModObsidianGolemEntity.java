@@ -366,6 +366,10 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         this.playSound(SoundEvents.RAVAGER_ROAR, 1.0F, 1.0F);   //volume, pitch???
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
+                // Do not apply effect to creative mode players or other Obsidian Golems.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModObsidianGolemEntity) continue;
+
                 //blind and slow ALL nearby LivingEntities, regardless of whether angry at
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
