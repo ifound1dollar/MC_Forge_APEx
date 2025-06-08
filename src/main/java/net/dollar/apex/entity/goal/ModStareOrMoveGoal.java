@@ -150,7 +150,7 @@ public class ModStareOrMoveGoal extends Goal {
     @Nullable
     protected Vec3 getRandomTargetPos() {
         // If in water, try to find position on land, else find default position.
-        if (this.mob.isInWater()) {
+        if (mob.isInWater()) {
             Vec3 vec3 = LandRandomPos.getPos(this.mob, 15, 7);
             if (vec3 == null) {
                 vec3 = DefaultRandomPos.getPos(this.mob, 10, 7);
@@ -182,7 +182,7 @@ public class ModStareOrMoveGoal extends Goal {
                 return false;
             } else {
                 // Else MOVING but no valid look target, so return whether movement is done.
-                return !mob.getNavigation().isDone() && !mob.hasControllingPassenger();
+                return !mob.getNavigation().isDone();
             }
         }
 
