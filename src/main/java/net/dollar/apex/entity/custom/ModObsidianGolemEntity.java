@@ -69,7 +69,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
         //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 0.6d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -87,10 +87,16 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
     public static boolean checkObsidianGolemSpawnRules(EntityType<ModObsidianGolemEntity> entityType, LevelAccessor accessor,
                                                        EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
         //Only valid spawn very low in the world
-        if (blockPos.getY() >= 0) {
+        int y = blockPos.getY();
+        if (y >= 0) {
             return false;
+        } else if (y >= -24) {
+            // Effectively reduce spawn rate by 50% above y = -24.
+            return randomSource.nextBoolean()
+                    && checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
         }
 
+        // Else check regular spawn rules (normal spawn rate).
         return checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
     }
 

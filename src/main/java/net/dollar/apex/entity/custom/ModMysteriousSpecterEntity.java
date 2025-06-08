@@ -1,5 +1,6 @@
 package net.dollar.apex.entity.custom;
 
+import net.dollar.apex.entity.goal.ModStareOrMoveGoal;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -77,11 +77,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
-        //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+
+        this.goalSelector.addGoal(3, new ModStareOrMoveGoal(this, Player.class, 10.0f,
+                0.666d, 0.001f));
     }
 
     /**
@@ -352,7 +353,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Applies the Weakness and Hunger effect to all nearby Entities.
      */
     private void applyWeaknessHungerAura() {
-        double radius = 16.0;
+        double radius = 12.0;
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
