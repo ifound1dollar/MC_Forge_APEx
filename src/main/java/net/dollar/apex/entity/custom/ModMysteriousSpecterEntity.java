@@ -212,6 +212,28 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         return SoundEvents.BLAZE_DEATH;
     }
 
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return switch (getRandom().nextInt(5)) {
+            case 0 -> SoundEvents.BLAZE_AMBIENT;
+            case 1 -> SoundEvents.HUSK_AMBIENT;
+            case 2 -> SoundEvents.ZOMBIE_VILLAGER_AMBIENT;
+            case 3 -> SoundEvents.GHAST_AMBIENT;
+            case 4 -> SoundEvents.WARDEN_TENDRIL_CLICKS;
+            default -> null;    // Should never reach default case.
+        };
+    }
+
+    @Override
+    public int getAmbientSoundInterval() {
+        return 300;     // Default is 80.
+    }
+
+    @Override
+    protected float getSoundVolume() {
+        return 0.666f;  // Default is 1.0f.
+    }
+
     /**
      * Plays step sound of this Monster.
      * @param blockPos Position being stepped on

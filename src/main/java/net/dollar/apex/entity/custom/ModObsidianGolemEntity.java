@@ -212,6 +212,21 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         return SoundEvents.IRON_GOLEM_DEATH;
     }
 
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return switch (getRandom().nextInt(3)) {
+            case 0 -> SoundEvents.RAVAGER_AMBIENT;
+            case 1 -> SoundEvents.CREAKING_AMBIENT;
+            case 2 -> SoundEvents.CREAKING_TWITCH;
+            default -> null;    // Should never reach default case.
+        };
+    }
+
+    @Override
+    public int getAmbientSoundInterval() {
+        return 300;     // Default is 80.
+    }
+
     /**
      * Plays step sound of this Monster.
      * @param blockPos Position being stepped on
