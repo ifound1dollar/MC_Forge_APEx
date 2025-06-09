@@ -88,18 +88,23 @@ public class ModItems {
 
     //Region End-game upgrade items
     public static final RegistryObject<Item> MOLTEN_CORE = registerItem("molten_core",
-            () -> new ModMoltenCoreItem(new Item.Properties().fireResistant()));
+            () -> new ModMoltenCoreItem(new Item.Properties()
+                    .fireResistant()));
     public static final RegistryObject<Item> HANDFUL_OF_STARDUST = registerItem("handful_of_stardust",
-            () -> new ModCustomItem(new Item.Properties().fireResistant(),
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant(),
                     "tooltip.handful_of_stardust", false));
     public static final RegistryObject<Item> INFUSED_GEMSTONE = registerItem("infused_gemstone",
-            () -> new ModCustomItem(new Item.Properties().fireResistant(),
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant(),
                     "tooltip.infused_gemstone", true));
     public static final RegistryObject<Item> COBALT_STEEL_INGOT = registerItem("cobalt_steel_ingot",
-            () -> new ModCustomItem(new Item.Properties().fireResistant(),
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant(),
                     "tooltip.cobalt_steel_ingot", false));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_INGOT = registerItem("tungsten_carbide_ingot",
-            () -> new ModCustomItem(new Item.Properties().fireResistant(),
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant(),
                     "tooltip.tungsten_carbide_ingot", false));
     //endregion
 
@@ -116,17 +121,29 @@ public class ModItems {
 
     //region Bows/Crossbows 
     public static final RegistryObject<Item> COBALT_STEEL_BOW = registerItem("cobalt_steel_bow",
-            () -> new ModCobaltSteelBowItem(new Item.Properties().durability(1200).fireResistant()));
+            () -> new ModCobaltSteelBowItem(new Item.Properties()
+                    .durability(1350)       // Default durability is 384
+                    .fireResistant()));
     public static final RegistryObject<Item> COBALT_STEEL_CROSSBOW = registerItem("cobalt_steel_crossbow",
-            () -> new ModCobaltSteelCrossbowItem(new Item.Properties().durability(1500).fireResistant()));
+            () -> new ModCobaltSteelCrossbowItem(new Item.Properties()
+                    .durability(1650)       // Default durability is 465
+                    .fireResistant()));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_BOW = registerItem("infused_gemstone_bow",
-            () -> new ModInfusedGemstoneBowItem(new Item.Properties().durability(1200).fireResistant()));   //Base durability (durability) is 384
+            () -> new ModInfusedGemstoneBowItem(new Item.Properties()
+                    .durability(1200)
+                    .fireResistant()));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_CROSSBOW = registerItem("infused_gemstone_crossbow",
-            () -> new ModInfusedGemstoneCrossbowItem(new Item.Properties().durability(1500).fireResistant()));  //Base durability (durability) is 465
+            () -> new ModInfusedGemstoneCrossbowItem(new Item.Properties()
+                    .durability(1500)
+                    .fireResistant()));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_BOW = registerItem("tungsten_carbide_bow",
-            () -> new ModTungstenCarbideBowItem(new Item.Properties().durability(1200).fireResistant()));
+            () -> new ModTungstenCarbideBowItem(new Item.Properties()
+                    .durability(1500)
+                    .fireResistant()));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_CROSSBOW = registerItem("tungsten_carbide_crossbow",
-            () -> new ModTungstenCarbideCrossbowItem(new Item.Properties().durability(1500).fireResistant()));
+            () -> new ModTungstenCarbideCrossbowItem(new Item.Properties()
+                    .durability(1800)
+                    .fireResistant()));
     //endregion
 
     //region Axes
@@ -296,22 +313,22 @@ public class ModItems {
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.HELMET,
                     new Item.Properties()
                             .fireResistant()
-                            .durability(ArmorItem.Type.HELMET.getDurability(37))));
+                            .durability(ArmorItem.Type.HELMET.getDurability(39))));
     public static final RegistryObject<Item> COBALT_STEEL_CHESTPLATE = registerItem("cobalt_steel_chestplate",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties()
                             .fireResistant()
-                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(39))));
     public static final RegistryObject<Item> COBALT_STEEL_LEGGINGS = registerItem("cobalt_steel_leggings",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.LEGGINGS,
                     new Item.Properties()
                             .fireResistant()
-                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(39))));
     public static final RegistryObject<Item> COBALT_STEEL_BOOTS = registerItem("cobalt_steel_boots",
             () -> new ModCobaltSteelArmorItem(ModArmorMaterials.COBALT_STEEL, ArmorItem.Type.BOOTS,
                     new Item.Properties()
                             .fireResistant()
-                            .durability(ArmorItem.Type.BOOTS.getDurability(37))));
+                            .durability(ArmorItem.Type.BOOTS.getDurability(39))));
     //endregion
 
     //region Infused Gemstone armor

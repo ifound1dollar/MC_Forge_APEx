@@ -1,5 +1,6 @@
 package net.dollar.apex.entity.custom;
 
+import net.dollar.apex.entity.goal.ModStareOrMoveGoal;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -31,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -76,11 +77,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
-        //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+
+        this.goalSelector.addGoal(3, new ModStareOrMoveGoal(this, Player.class, 10.0f,
+                0.666d, 0.001f));
     }
 
     /**
@@ -140,12 +142,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         }
     }
 
-    public void addAdditionalSaveData(CompoundTag p_28867_) {
+    public void addAdditionalSaveData(@NotNull CompoundTag p_28867_) {
         super.addAdditionalSaveData(p_28867_);
         this.addPersistentAngerSaveData(p_28867_);
     }
 
-    public void readAdditionalSaveData(CompoundTag p_28857_) {
+    public void readAdditionalSaveData(@NotNull CompoundTag p_28857_) {
         super.readAdditionalSaveData(p_28857_);
         this.readPersistentAngerSaveData(this.level(), p_28857_);
     }
@@ -198,7 +200,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param source DamageSource of damage being dealt
      * @return Hurt SoundEvent
      */
-    protected SoundEvent getHurtSound(DamageSource source) {
+    protected @NotNull SoundEvent getHurtSound(@NotNull DamageSource source) {
         return SoundEvents.BLAZE_AMBIENT;
     }
 
@@ -206,8 +208,30 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Gets death sound produced by this Monster.
      * @return Death SoundEvent
      */
-    protected SoundEvent getDeathSound() {
+    protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.BLAZE_DEATH;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return switch (getRandom().nextInt(5)) {
+            case 0 -> SoundEvents.BLAZE_AMBIENT;
+            case 1 -> SoundEvents.HUSK_AMBIENT;
+            case 2 -> SoundEvents.ZOMBIE_VILLAGER_AMBIENT;
+            case 3 -> SoundEvents.GHAST_AMBIENT;
+            case 4 -> SoundEvents.WARDEN_TENDRIL_CLICKS;
+            default -> null;    // Should never reach default case.
+        };
+    }
+
+    @Override
+    public int getAmbientSoundInterval() {
+        return 300;     // Default is 80.
+    }
+
+    @Override
+    protected float getSoundVolume() {
+        return 0.666f;  // Default is 1.0f.
     }
 
     /**
@@ -215,7 +239,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param blockPos Position being stepped on
      * @param blockState Blockstate of block at position being stepped on
      */
-    protected void playStepSound(BlockPos blockPos, BlockState blockState) {
+    protected void playStepSound(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         //PLAY NO STEP SOUND.
 //        this.playSound(SoundEvents.IRON_GOLEM_STEP, 1.0F, 1.0F);
     }
@@ -236,7 +260,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether attack was performed successfully
      */
     @Override
-    public boolean doHurtTarget(Entity targetEntity) {
+    public boolean doHurtTarget(@NotNull Entity targetEntity) {
         //Can only attack once every second, then resets counter.
         if (ticksSinceLastAttack < 20) {
             return false;
@@ -311,7 +335,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Whether hurt operation was completed successfully
      */
     @Override
-    public boolean hurt(DamageSource source, float value) {
+    public boolean hurt(@NotNull DamageSource source, float value) {
         return super.hurt(source, value);
     }
 
@@ -354,7 +378,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Applies the Weakness and Hunger effect to all nearby Entities.
      */
     private void applyWeaknessHungerAura() {
-        double radius = 16.0;
+        double radius = 10.0;
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
@@ -364,10 +388,9 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
-                //Do not apply effect to Mysterious Specters.
-                if (livingEntity instanceof ModMysteriousSpecterEntity) {
-                    continue;
-                }
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
 
                 //Apply lowest-level Weakness and Hunger to each entity for 10 seconds.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0));
@@ -393,14 +416,13 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         this.playSound(SoundEvents.RAVAGER_ROAR, 1.0f, 1.0f);
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
+
                 //Slow and Weaken ALL nearby LivingEntities regardless of whether angry at.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60));
-
-                //Knockback the LivingEntity with half default strength.
-                //KNOCKBACK NOT WORKING FOR SOME REASON
-//                livingEntity.takeKnockback(0.5f, MathHelper.sin(this.getYaw() * ((float)Math.PI / 180)),
-//                        -MathHelper.cos(this.getYaw() * ((float)Math.PI / 180)));
             }
         }
     }
@@ -445,7 +467,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param killedByPlayer Whether this was killed by a player
      */
     @Override
-    protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean killedByPlayer) {
+    protected void dropCustomDeathLoot(@NotNull ServerLevel level, @NotNull DamageSource source, boolean killedByPlayer) {
         if (!killedByPlayer) {
             //Only drop if last attacker was Player.
             return;
