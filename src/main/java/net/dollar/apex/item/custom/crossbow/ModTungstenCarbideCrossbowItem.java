@@ -217,7 +217,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
                                           ItemStack arrowStack) {
         //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                ModArrowUtil.ARROW_TYPE.CARBIDE);
+                ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE);
 
         //DEFAULT METHOD AGAIN STARTING HERE.
         if (livingEntity instanceof Player) {
