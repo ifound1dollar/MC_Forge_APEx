@@ -1,5 +1,6 @@
 package net.dollar.apex.entity.custom;
 
+import net.dollar.apex.entity.goal.ModStareOrMoveGoal;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -77,11 +77,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
-        //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+
+        this.goalSelector.addGoal(3, new ModStareOrMoveGoal(this, Player.class, 10.0f,
+                0.666d, 0.001f));
     }
 
     /**
@@ -209,6 +210,28 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.BLAZE_DEATH;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return switch (getRandom().nextInt(5)) {
+            case 0 -> SoundEvents.BLAZE_AMBIENT;
+            case 1 -> SoundEvents.HUSK_AMBIENT;
+            case 2 -> SoundEvents.ZOMBIE_VILLAGER_AMBIENT;
+            case 3 -> SoundEvents.GHAST_AMBIENT;
+            case 4 -> SoundEvents.WARDEN_TENDRIL_CLICKS;
+            default -> null;    // Should never reach default case.
+        };
+    }
+
+    @Override
+    public int getAmbientSoundInterval() {
+        return 300;     // Default is 80.
+    }
+
+    @Override
+    protected float getSoundVolume() {
+        return 0.666f;  // Default is 1.0f.
     }
 
     /**
@@ -362,10 +385,9 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
-                //Do not apply effect to Mysterious Specters.
-                if (livingEntity instanceof ModMysteriousSpecterEntity) {
-                    continue;
-                }
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
 
                 //Apply lowest-level Weakness and Hunger to each entity for 10 seconds.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0));
@@ -391,14 +413,13 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         this.playSound(SoundEvents.RAVAGER_ROAR, 1.0f, 1.0f);
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
+                // Do not apply effect to creative mode players or other Mysterious Specters.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
+
                 //Slow and Weaken ALL nearby LivingEntities regardless of whether angry at.
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60));
-
-                //Knockback the LivingEntity with half default strength.
-                //KNOCKBACK NOT WORKING FOR SOME REASON
-//                livingEntity.takeKnockback(0.5f, MathHelper.sin(this.getYaw() * ((float)Math.PI / 180)),
-//                        -MathHelper.cos(this.getYaw() * ((float)Math.PI / 180)));
             }
         }
     }

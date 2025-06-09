@@ -110,22 +110,27 @@ public class ModItems {
 
     //Region End-game upgrade items
     public static final RegistryObject<Item> MOLTEN_CORE = registerItem("molten_core",
-            () -> new ModMoltenCoreItem(new Item.Properties().fireResistant()
+            () -> new ModMoltenCoreItem(new Item.Properties()
+                    .fireResistant()
                     .setId(generateItemKey("molten_core"))));
     public static final RegistryObject<Item> HANDFUL_OF_STARDUST = registerItem("handful_of_stardust",
-            () -> new ModCustomItem(new Item.Properties().fireResistant()
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant()
                     .setId(generateItemKey("handful_of_stardust")),
                     "tooltip.handful_of_stardust", false));
     public static final RegistryObject<Item> INFUSED_GEMSTONE = registerItem("infused_gemstone",
-            () -> new ModCustomItem(new Item.Properties().fireResistant()
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant()
                     .setId(generateItemKey("infused_gemstone")),
                     "tooltip.infused_gemstone", true));
     public static final RegistryObject<Item> COBALT_STEEL_INGOT = registerItem("cobalt_steel_ingot",
-            () -> new ModCustomItem(new Item.Properties().fireResistant()
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant()
                     .setId(generateItemKey("cobalt_steel_ingot")),
                     "tooltip.cobalt_steel_ingot", false));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_INGOT = registerItem("tungsten_carbide_ingot",
-            () -> new ModCustomItem(new Item.Properties().fireResistant()
+            () -> new ModCustomItem(new Item.Properties()
+                    .fireResistant()
                     .setId(generateItemKey("tungsten_carbide_ingot")),
                     "tooltip.tungsten_carbide_ingot", false));
     //endregion
@@ -144,29 +149,41 @@ public class ModItems {
 
     //region Bows/Crossbows 
     public static final RegistryObject<Item> COBALT_STEEL_BOW = registerItem("cobalt_steel_bow",
-            () -> new ModCobaltSteelBowItem(
-                    new Item.Properties().durability(1200).fireResistant()
-                            .setId(generateItemKey("cobalt_steel_bow"))));
+            () -> new ModCobaltSteelBowItem(new Item.Properties()
+                    .durability(1350)       // Default durability is 384
+                    .enchantable(18)        // Matches tool tier value
+                    .fireResistant()
+                    .setId(generateItemKey("cobalt_steel_bow"))));
     public static final RegistryObject<Item> COBALT_STEEL_CROSSBOW = registerItem("cobalt_steel_crossbow",
-            () -> new ModCobaltSteelCrossbowItem(
-                    new Item.Properties().durability(1500).fireResistant()
-                            .setId(generateItemKey("cobalt_steel_crossbow"))));
+            () -> new ModCobaltSteelCrossbowItem(new Item.Properties()
+                    .durability(1650)       // Default durability is 465
+                    .enchantable(18)
+                    .fireResistant()
+                    .setId(generateItemKey("cobalt_steel_crossbow"))));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_BOW = registerItem("infused_gemstone_bow",
-            () -> new ModInfusedGemstoneBowItem(
-                    new Item.Properties().durability(1200).fireResistant()
-                            .setId(generateItemKey("infused_gemstone_bow"))));    //Base durability is 384
+            () -> new ModInfusedGemstoneBowItem(new Item.Properties()
+                    .durability(1200)
+                    .enchantable(25)
+                    .fireResistant()
+                    .setId(generateItemKey("infused_gemstone_bow"))));
     public static final RegistryObject<Item> INFUSED_GEMSTONE_CROSSBOW = registerItem("infused_gemstone_crossbow",
-            () -> new ModInfusedGemstoneCrossbowItem(
-                    new Item.Properties().durability(1500).fireResistant()
-                            .setId(generateItemKey("infused_gemstone_crossbow"))));    //Base durability is 465
+            () -> new ModInfusedGemstoneCrossbowItem(new Item.Properties()
+                    .durability(1500)
+                    .enchantable(25)
+                    .fireResistant()
+                    .setId(generateItemKey("infused_gemstone_crossbow"))));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_BOW = registerItem("tungsten_carbide_bow",
-            () -> new ModTungstenCarbideBowItem(
-                    new Item.Properties().durability(1200).fireResistant()
-                            .setId(generateItemKey("tungsten_carbide_bow"))));
+            () -> new ModTungstenCarbideBowItem(new Item.Properties()
+                    .durability(1500)
+                    .enchantable(15)
+                    .fireResistant()
+                    .setId(generateItemKey("tungsten_carbide_bow"))));
     public static final RegistryObject<Item> TUNGSTEN_CARBIDE_CROSSBOW = registerItem("tungsten_carbide_crossbow",
-            () -> new ModTungstenCarbideCrossbowItem(
-                    new Item.Properties().durability(1500).fireResistant()
-                            .setId(generateItemKey("tungsten_carbide_crossbow"))));
+            () -> new ModTungstenCarbideCrossbowItem(new Item.Properties()
+                    .durability(1800)
+                    .enchantable(15)
+                    .fireResistant()
+                    .setId(generateItemKey("tungsten_carbide_crossbow"))));
     //endregion
 
     //region Axes

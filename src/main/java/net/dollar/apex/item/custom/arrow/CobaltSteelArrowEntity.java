@@ -1,5 +1,6 @@
 package net.dollar.apex.item.custom.arrow;
 
+import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +16,7 @@ public class CobaltSteelArrowEntity extends Arrow {
 
     public CobaltSteelArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
         super(level, owner, arrowStack, weaponStack);
+        setBaseDamage(3.0f);
     }
 
 
@@ -29,15 +31,6 @@ public class CobaltSteelArrowEntity extends Arrow {
     }
 
     /**
-     * Sets the base damage value of this ArrowEntity (set to 3.0 from 2.0).
-     * @param damage New base damage (default 2.0)
-     */
-    @Override
-    public void setBaseDamage(double damage) {
-        super.setBaseDamage(3.0);
-    }
-
-    /**
      * Performs operations as the arrow hits a target LivingEntity.
      * @param hitResult EntityHitResult from collision
      */
@@ -46,21 +39,15 @@ public class CobaltSteelArrowEntity extends Arrow {
         super.onHitEntity(hitResult);
 
         //Only if hit Entity is a LivingEntity.
-        if (hitResult.getEntity() instanceof LivingEntity livingEntity) {
+        if (hitResult.getEntity() instanceof LivingEntity target) {
             //If the arrow is spectral, make the target glowing (same functionality as actual Spectral Arrow).
             if (isSpectral) {
                 MobEffectInstance statusEffectInstance = new MobEffectInstance(
                         MobEffects.GLOWING, 200, 0); //10 seconds
-                livingEntity.addEffect(statusEffectInstance, this.getOwner());
+                target.addEffect(statusEffectInstance, this.getOwner());
             }
 
-            //Apply Slowness effect to target (attackedEntity) for configurable duration in seconds.
-            //TODO: RE-IMPLEMENT CONFIGS
-            //Level 1 (third argument) for 4 heart melee damage reduction.
-//            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,
-//                    ModCommonConfigs.ENDGAME_TIER_EFFECT_SECONDS.get() * 20, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS,
-                    4 * 20, 1));
+            ModItemUtils.applyCobaltSteelOnHit(target);
         }
     }
 }
