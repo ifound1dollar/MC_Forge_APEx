@@ -217,7 +217,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
                                           ItemStack arrowStack) {
         //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                ModArrowUtil.ARROW_TYPE.CARBIDE);
+                ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE);
 
         //DEFAULT METHOD AGAIN STARTING HERE.
         if (livingEntity instanceof Player) {
@@ -332,8 +332,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
 
 
     /**
-     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
-     *  vanilla weapon enchantments except Sweeping Edge.
+     * Allow or deny specific enchantment application to this Item.
      * @param stack The ItemStack attempting to be enchanted (this)
      * @param enchantment The Enchantment attempting to be applied
      * @return Whether the enchantment is allowed

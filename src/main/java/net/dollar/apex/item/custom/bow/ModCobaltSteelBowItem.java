@@ -50,7 +50,7 @@ public class ModCobaltSteelBowItem extends BowItem {
                         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
                         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
                         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(
-                                level, livingEntity, stack, ModArrowUtil.ARROW_TYPE.COBALT);
+                                level, livingEntity, stack, ModArrowUtil.ArrowType.COBALT_STEEL);
 
                         abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
                         if (f == 1.0F) {
@@ -94,8 +94,7 @@ public class ModCobaltSteelBowItem extends BowItem {
     }
 
     /**
-     * Allow or deny specific enchantment application to this Item. For Battleaxes, allow all
-     *  vanilla weapon enchantments except Sweeping Edge.
+     * Allow or deny specific enchantment application to this Item.
      * @param stack The ItemStack attempting to be enchanted (this)
      * @param enchantment The Enchantment attempting to be applied
      * @return Whether the enchantment is allowed
