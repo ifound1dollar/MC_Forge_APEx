@@ -69,7 +69,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
         //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 0.6d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
