@@ -39,17 +39,14 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
      * @param crit Whether the arrow will critically strike
      * @return The generated Projectile entity
      */
-    protected Projectile createProjectile(Level level, LivingEntity livingEntity, ItemStack weaponStack, ItemStack arrowStack, boolean crit) {
+    protected @NotNull Projectile createProjectile(@NotNull Level level, @NotNull LivingEntity livingEntity,
+                                                   @NotNull ItemStack weaponStack, ItemStack arrowStack, boolean crit) {
         if (arrowStack.is(Items.FIREWORK_ROCKET)) {
             return new FireworkRocketEntity(level, arrowStack, livingEntity, livingEntity.getX(), livingEntity.getEyeY() - 0.15000000596046448, livingEntity.getZ(), true);
         } else {
             //Vanilla functionality overridden only in next line.
-            Projectile projectile = customArrowEntity(level, livingEntity, arrowStack, weaponStack, crit);
-
-            if (projectile instanceof AbstractArrow abstractarrow) {
-                abstractarrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
-            }
-
+            AbstractArrow projectile = customArrowEntity(level, livingEntity, arrowStack, weaponStack, crit);
+            projectile.setSoundEvent(SoundEvents.CROSSBOW_HIT);
             return projectile;
         }
     }
@@ -67,7 +64,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
         AbstractArrow abstractArrow = ModArrowUtil.createCustomArrow(level, entity,
-                projectileStack, weaponStack, ModArrowUtil.ARROW_TYPE.CARBIDE);
+                projectileStack, weaponStack, ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE);
 
         //Remainder of original function (with arrow creation omitted) is below.
         if (critical) {
