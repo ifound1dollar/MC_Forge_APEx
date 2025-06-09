@@ -1,5 +1,7 @@
 package net.dollar.apex.item.custom.arrow;
 
+import net.dollar.apex.util.ModArrowUtil;
+import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,11 +12,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class CobaltSteelArrowEntity extends Arrow {
-    private boolean isSpectral;
+public class ModCustomArrowEntity extends Arrow {
 
-    public CobaltSteelArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
+    private boolean isSpectral;
+    private final ModArrowUtil.ArrowType arrowType;
+
+    public ModCustomArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack,
+                                ModArrowUtil.ArrowType arrowType) {
         super(level, owner, arrowStack, weaponStack);
+        this.arrowType = arrowType;
+        setBaseDamage(3.0f);
     }
 
 
@@ -25,16 +32,9 @@ public class CobaltSteelArrowEntity extends Arrow {
      * @param arrow ItemStack of the ArrowItem used to spawn this ArrowEntity
      */
     public void checkIsSpectral(ItemStack arrow) {
-        if (arrow.getItem() instanceof SpectralArrowItem) { isSpectral = true; }
-    }
-
-    /**
-     * Sets the base damage value of this ArrowEntity (set to 3.0 from 2.0).
-     * @param damage New base damage (default 2.0)
-     */
-    @Override
-    public void setBaseDamage(double damage) {
-        super.setBaseDamage(3.0);
+        if (arrow.getItem() instanceof SpectralArrowItem) {
+            isSpectral = true;
+        }
     }
 
     /**
@@ -46,21 +46,19 @@ public class CobaltSteelArrowEntity extends Arrow {
         super.onHitEntity(hitResult);
 
         //Only if hit Entity is a LivingEntity.
-        if (hitResult.getEntity() instanceof LivingEntity livingEntity) {
+        if (hitResult.getEntity() instanceof LivingEntity target) {
             //If the arrow is spectral, make the target glowing (same functionality as actual Spectral Arrow).
             if (isSpectral) {
                 MobEffectInstance statusEffectInstance = new MobEffectInstance(
                         MobEffects.GLOWING, 200, 0); //10 seconds
-                livingEntity.addEffect(statusEffectInstance, this.getOwner());
+                target.addEffect(statusEffectInstance, this.getOwner());
             }
 
-            //Apply Slowness effect to target (attackedEntity) for configurable duration in seconds.
-            //TODO: RE-IMPLEMENT CONFIGS
-            //Level 1 (third argument) for 4 heart melee damage reduction.
-//            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,
-//                    ModCommonConfigs.ENDGAME_TIER_EFFECT_SECONDS.get() * 20, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS,
-                    4 * 20, 1));
+            switch (arrowType) {
+                case ModArrowUtil.ArrowType.COBALT_STEEL -> ModItemUtils.applyCobaltSteelOnHit(target);
+                case ModArrowUtil.ArrowType.INFUSED_GEMSTONE -> ModItemUtils.applyInfusedGemstoneOnHit(target);
+                case ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE -> ModItemUtils.applyTungstenCarbideOnHit(target);
+            }
         }
     }
 }

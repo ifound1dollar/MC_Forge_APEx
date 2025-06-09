@@ -32,12 +32,13 @@ public class ModInfusedGemstoneBowItem extends BowItem {
      * @return The generated Projectile entity
      */
     @Override
-    protected Projectile createProjectile(Level level, LivingEntity shooter, ItemStack weaponStack,
-                                          ItemStack arrowStack, boolean crit) {
+    protected @NotNull Projectile createProjectile(@NotNull Level level, @NotNull LivingEntity shooter,
+                                                   @NotNull ItemStack weaponStack, @NotNull ItemStack arrowStack,
+                                                   boolean crit) {
         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(
-                level, shooter, arrowStack, weaponStack, ModArrowUtil.ARROW_TYPE.INFUSED);
+                level, shooter, arrowStack, weaponStack, ModArrowUtil.ArrowType.INFUSED_GEMSTONE);
 
         if (crit) {
             abstractarrow.setCritArrow(true);
