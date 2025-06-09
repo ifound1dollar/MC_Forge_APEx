@@ -48,7 +48,7 @@ public class ModInfusedGemstoneBowItem extends BowItem {
                         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
                         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
                         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(
-                                level, livingEntity, stack, ModArrowUtil.ARROW_TYPE.INFUSED);
+                                level, livingEntity, stack, ModArrowUtil.ArrowType.INFUSED_GEMSTONE);
 
                         abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
                         if (f == 1.0F) {

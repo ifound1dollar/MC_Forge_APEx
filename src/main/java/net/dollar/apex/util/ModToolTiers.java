@@ -26,7 +26,7 @@ public class ModToolTiers {
             () -> Ingredient.of(Items.GOLD_INGOT));
     public static final Tier COBALT_STEEL = new ForgeTier(
             4,
-            2031,
+            2266,
             20.0f,
             3.0f,
             18,
@@ -37,7 +37,7 @@ public class ModToolTiers {
             2031,
             10.0f,
             4.0f,
-            22,
+            25,
             BlockTags.NEEDS_DIAMOND_TOOL,
             () -> Ingredient.of(ModItems.INFUSED_GEMSTONE.get()));
     public static final Tier TUNGSTEN_CARBIDE = new ForgeTier(

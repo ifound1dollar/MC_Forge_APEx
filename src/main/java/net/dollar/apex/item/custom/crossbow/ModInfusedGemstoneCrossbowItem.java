@@ -217,7 +217,7 @@ public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
                                           ItemStack arrowStack) {
         //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
         AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                ModArrowUtil.ARROW_TYPE.INFUSED);
+                ModArrowUtil.ArrowType.INFUSED_GEMSTONE);
 
         //DEFAULT METHOD AGAIN STARTING HERE.
         if (livingEntity instanceof Player) {

@@ -35,7 +35,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                 map.put(ArmorItem.Type.HELMET, 3);
             }), 25, SoundEvents.ARMOR_EQUIP_GOLD, 1.0f, 0.0f,
             () -> Ingredient.of(Items.GOLD_INGOT)),
-    COBALT_STEEL("cobalt_steel", 37, Util.make(
+    COBALT_STEEL("cobalt_steel", 39, Util.make(
             new EnumMap<>(ArmorItem.Type.class), (map) -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
                 map.put(ArmorItem.Type.LEGGINGS, 6);
@@ -49,7 +49,7 @@ public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
                 map.put(ArmorItem.Type.LEGGINGS, 6);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.HELMET, 3);
-            }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0f, 0.05f,
+            }), 28, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0f, 0.1f,
             () -> Ingredient.of(ModItems.INFUSED_GEMSTONE.get())),
     TUNGSTEN_CARBIDE("tungsten_carbide", 41, Util.make(
                     new EnumMap<>(ArmorItem.Type.class), (map) -> {
