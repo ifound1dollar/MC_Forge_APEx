@@ -1,5 +1,6 @@
 package net.dollar.apex.item.custom.arrow;
 
+import net.dollar.apex.util.ModArrowUtil;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -11,11 +12,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class TungstenCarbideArrowEntity extends Arrow {
+public class ModCustomArrowEntity extends Arrow {
     private boolean isSpectral;
+    private final ModArrowUtil.ArrowType arrowType;
 
-    public TungstenCarbideArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack) {
+    public ModCustomArrowEntity(Level level, LivingEntity owner, ItemStack arrowStack, ItemStack weaponStack,
+                                ModArrowUtil.ArrowType arrowType) {
         super(level, owner, arrowStack, weaponStack);
+        this.arrowType = arrowType;
         setBaseDamage(3.0f);
     }
 
@@ -47,7 +51,11 @@ public class TungstenCarbideArrowEntity extends Arrow {
                 target.addEffect(statusEffectInstance, this.getOwner());
             }
 
-            ModItemUtils.applyTungstenCarbideOnHit(target);
+            switch (arrowType) {
+                case COBALT_STEEL -> ModItemUtils.applyCobaltSteelOnHit(target);
+                case INFUSED_GEMSTONE -> ModItemUtils.applyInfusedGemstoneOnHit(target);
+                case TUNGSTEN_CARBIDE -> ModItemUtils.applyTungstenCarbideOnHit(target);
+            }
         }
     }
 }
