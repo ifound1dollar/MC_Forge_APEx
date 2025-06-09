@@ -1,6 +1,5 @@
 package net.dollar.apex.event;
 
-import net.dollar.apex.ModMain;
 import net.dollar.apex.util.IFullSetEffectArmor;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -21,10 +20,6 @@ public class ModLivingEntityEvents {
         //  wearing a full set and the effect is one of the effects that the full set is immune to.
         if (event.getEntity().getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof IFullSetEffectArmor armor) {
             boolean result = armor.canReceiveEffect(event.getEffectInstance().getEffect(), event.getEntity());
-
-            //TEMP
-            ModMain.LOGGER.info("Can receive effect status: {}", result);
-            //TEMP
 
             //If the LivingEntity cannot receive effect, DENY event. Otherwise, leave default.
             if (!result) {

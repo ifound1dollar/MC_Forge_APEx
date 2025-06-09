@@ -127,13 +127,14 @@ public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
         return (new Vector3f(vector3f)).rotateAxis(p_331595_ * 0.017453292F, vector3f2.x, vector3f2.y, vector3f2.z);
     }
 
-    protected Projectile createProjectile(Level level, LivingEntity livingEntity, ItemStack weaponStack, ItemStack arrowStack, boolean crit) {
+    protected @NotNull Projectile createProjectile(@NotNull Level level, @NotNull LivingEntity livingEntity,
+                                                   @NotNull ItemStack weaponStack, ItemStack arrowStack, boolean crit) {
         if (arrowStack.is(Items.FIREWORK_ROCKET)) {
             return new FireworkRocketEntity(level, arrowStack, livingEntity, livingEntity.getX(), livingEntity.getEyeY() - 0.15000000596046448, livingEntity.getZ(), true);
         } else {
             //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
             AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                    ModArrowUtil.ARROW_TYPE.INFUSED);
+                    ModArrowUtil.ArrowType.INFUSED_GEMSTONE);
 
             abstractarrow.setShotFromCrossbow(true);    //AFAIK this guarantees crit
             abstractarrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
