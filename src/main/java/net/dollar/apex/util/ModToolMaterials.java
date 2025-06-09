@@ -21,7 +21,7 @@ public interface ModToolMaterials {
             ItemTags.GOLD_TOOL_MATERIALS);
     ToolMaterial COBALT_STEEL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-            2031,
+            2266,
             20.0f,
             3.0f,
             18,
@@ -31,7 +31,7 @@ public interface ModToolMaterials {
             2031,
             10.0f,
             4.0f,
-            22,
+            25,
             ModTags.Items.MOD_REPAIRS_INFUSED_GEMSTONE_EQUIPMENT);
     ToolMaterial TUNGSTEN_CARBIDE = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,

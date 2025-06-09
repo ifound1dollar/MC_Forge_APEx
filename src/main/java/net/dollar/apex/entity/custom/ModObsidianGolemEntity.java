@@ -69,7 +69,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         //speedModifier, followingTargetEvenIfNotSeen
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
         //speedModifier
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0d));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 0.6d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -86,11 +86,17 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      */
     public static boolean checkObsidianGolemSpawnRules(EntityType<ModObsidianGolemEntity> entityType, LevelAccessor accessor,
                                                        EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
-        //Only valid spawn very low in the world
-        if (blockPos.getY() >= 0) {
+        // Only spawn below y=0.
+        int y = blockPos.getY();
+        if (y >= 0) {
             return false;
+        } else if (y >= -24) {
+            // Effectively reduce spawn rate by 50% above y = -24.
+            return randomSource.nextBoolean()
+                    && checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
         }
 
+// Else check regular spawn rules (normal spawn rate).
         return checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
     }
 
@@ -204,6 +210,16 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      */
     protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.IRON_GOLEM_DEATH;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundEvents.RAVAGER_AMBIENT;
+    }
+
+    @Override
+    public int getAmbientSoundInterval() {
+        return 300;     // Default is 80.
     }
 
     /**
@@ -366,6 +382,10 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         this.playSound(SoundEvents.RAVAGER_ROAR, 1.0F, 1.0F);   //volume, pitch???
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity) {
+                // Do not apply effect to creative mode players or other Obsidian Golems.
+                if (livingEntity instanceof Player player && player.isCreative()) continue;
+                if (livingEntity instanceof ModObsidianGolemEntity) continue;
+
                 //blind and slow ALL nearby LivingEntities, regardless of whether angry at
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
