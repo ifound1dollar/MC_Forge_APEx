@@ -1,7 +1,6 @@
-package net.dollar.apex.item.custom.bow;
+package net.dollar.apex.item.custom.ranged;
 
 
-import net.dollar.apex.util.ModArrowUtil;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,12 +14,25 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 
-public class ModCobaltSteelBowItem extends BowItem {
-    public ModCobaltSteelBowItem(Item.Properties properties) {
+public class ModEndgameBowItem extends BowItem {
+    private final ModItemUtils.EndgameTier endgameTier;
+    private final BiConsumer<Consumer<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgameBowItem(ModItemUtils.EndgameTier tier, Item.Properties properties) {
         super(properties);
+
+        // Set endgameTier field and tooltip method reference based on passed-in EndgameTier.
+        this.endgameTier = tier;
+        switch (tier) {
+            case COBALT_STEEL -> tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            case INFUSED_GEMSTONE -> tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            case TUNGSTEN_CARBIDE -> tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -40,8 +52,8 @@ public class ModCobaltSteelBowItem extends BowItem {
                                                    boolean crit) {
         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
-        AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(
-                level, shooter, arrowStack, weaponStack, ModArrowUtil.ArrowType.COBALT_STEEL);
+        AbstractArrow abstractarrow = ModItemUtils.createCustomArrow(
+                level, shooter, arrowStack, weaponStack, endgameTier);
 
         if (crit) {
             abstractarrow.setCritArrow(true);
@@ -61,6 +73,6 @@ public class ModCobaltSteelBowItem extends BowItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
                                 @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendCobaltSteelEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.RANGED);
     }
 }

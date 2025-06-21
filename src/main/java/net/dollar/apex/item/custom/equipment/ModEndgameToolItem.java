@@ -1,4 +1,4 @@
-package net.dollar.apex.item.custom.cobaltsteel;
+package net.dollar.apex.item.custom.equipment;
 
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.network.chat.Component;
@@ -9,11 +9,32 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class ModCobaltSteelToolItem extends Item {
-    public ModCobaltSteelToolItem(Properties properties) {
+public class ModEndgameToolItem extends Item {
+    private final Consumer<LivingEntity> onHitMethod;
+    private final BiConsumer<Consumer<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgameToolItem(ModItemUtils.EndgameTier tier, Properties properties) {
         super(properties);
+
+        // Set proper method references to both Consumers.
+        switch (tier) {
+            case COBALT_STEEL -> {
+                onHitMethod = ModItemUtils::applyCobaltSteelOnHit;
+                tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            }
+            case INFUSED_GEMSTONE -> {
+                onHitMethod = ModItemUtils::applyInfusedGemstoneOnHit;
+                tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            }
+            case TUNGSTEN_CARBIDE -> {
+                onHitMethod = ModItemUtils::applyTungstenCarbideOnHit;
+                tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -26,7 +47,7 @@ public class ModCobaltSteelToolItem extends Item {
      */
     @Override
     public void hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
-        ModItemUtils.applyCobaltSteelOnHit(target);
+        onHitMethod.accept(target);
     }
 
     /**
@@ -40,6 +61,6 @@ public class ModCobaltSteelToolItem extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull TooltipDisplay display,
                                 @NotNull Consumer<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendCobaltSteelEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.TOOL);
     }
 }
