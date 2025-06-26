@@ -1,6 +1,5 @@
-package net.dollar.apex.item.custom.crossbow;
+package net.dollar.apex.item.custom.ranged;
 
-import net.dollar.apex.util.ModArrowUtil;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -13,14 +12,27 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 
 /**
- * Corresponds specifically to the Infused Gemstone Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
+ * Corresponds specifically to the Steel Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
  *  which are private and must be entirely re-defined. All redundant override methods are removed.
  */
-public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
-    public ModInfusedGemstoneCrossbowItem(Item.Properties properties) {
+public class ModEndgameCrossbowItem extends CrossbowItem {
+    private final ModItemUtils.EndgameTier endgameTier;
+    private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgameCrossbowItem(ModItemUtils.EndgameTier tier, Item.Properties properties) {
         super(properties);
+
+        // Set endgameTier field and tooltip method reference based on passed-in EndgameTier.
+        this.endgameTier = tier;
+        switch (tier) {
+            case COBALT_STEEL -> tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            case INFUSED_GEMSTONE -> tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            case TUNGSTEN_CARBIDE -> tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -58,12 +70,12 @@ public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
      * @param critical Whether the arrow will be critical
      * @return The generated custom PersistentProjectileEntity
      */
-    private static AbstractArrow customArrowEntity(Level level, LivingEntity entity, ItemStack projectileStack,
+    private AbstractArrow customArrowEntity(Level level, LivingEntity entity, ItemStack projectileStack,
                                                    ItemStack weaponStack, boolean critical) {
         //Replace vanilla functionality to get the ArrowItem from the found ItemStack with this function. Will
         //  automatically handle Spectral Arrow and Tipped Arrow functionality in-method.
-        AbstractArrow abstractArrow = ModArrowUtil.createCustomArrow(level, entity,
-                projectileStack, weaponStack, ModArrowUtil.ArrowType.INFUSED_GEMSTONE);
+        AbstractArrow abstractArrow = ModItemUtils.createCustomArrow(level, entity,
+                projectileStack, weaponStack, endgameTier);
 
         //Remainder of original function (with arrow creation omitted) is below.
         if (critical) {
@@ -72,8 +84,6 @@ public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
 
         return abstractArrow;
     }
-
-
 
     /**
      * Appends text to the Item's hover tooltip.
@@ -85,7 +95,7 @@ public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendInfusedGemstoneEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.RANGED);
 
         //Call super function AFTER because it has return statement if not charged.
         super.appendHoverText(stack, context, tooltip, flag);
