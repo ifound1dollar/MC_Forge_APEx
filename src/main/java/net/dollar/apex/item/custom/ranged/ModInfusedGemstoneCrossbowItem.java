@@ -1,7 +1,6 @@
-package net.dollar.apex.item.custom.crossbow;
+package net.dollar.apex.item.custom.ranged;
 
 import com.google.common.collect.Lists;
-import net.dollar.apex.util.ModArrowUtil;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
@@ -35,11 +34,11 @@ import org.joml.Vector3f;
 import java.util.List;
 
 /**
- * Corresponds specifically to the Tungsten-Carbide Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
+ * Corresponds specifically to the Infused Gemstone Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
  *  which are private and must be entirely re-defined. All redundant override methods are removed.
  */
-public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
-    public ModTungstenCarbideCrossbowItem(Item.Properties properties) {
+public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
+    public ModInfusedGemstoneCrossbowItem(Item.Properties properties) {
         super(properties);
     }
 
@@ -216,8 +215,8 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
     private static AbstractArrow getArrow(Level level, LivingEntity livingEntity, ItemStack crossbowStack,
                                           ItemStack arrowStack) {
         //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
-        AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE);
+        AbstractArrow abstractarrow = ModItemUtils.createCustomArrow(level, livingEntity, arrowStack,
+                ModItemUtils.EndgameTier.INFUSED_GEMSTONE);
 
         //DEFAULT METHOD AGAIN STARTING HERE.
         if (livingEntity instanceof Player) {
@@ -356,7 +355,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
      */
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
+        ModItemUtils.appendInfusedGemstoneEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
 
         //Call super function AFTER because it has return statement if not charged.
         super.appendHoverText(stack, level, tooltip, flag);

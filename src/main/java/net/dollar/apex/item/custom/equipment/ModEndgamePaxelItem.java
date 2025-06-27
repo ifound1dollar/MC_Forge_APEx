@@ -1,4 +1,4 @@
-package net.dollar.apex.item.custom.infusedgemstone;
+package net.dollar.apex.item.custom.equipment;
 
 import net.dollar.apex.item.custom.ModPaxelItem;
 import net.dollar.apex.util.ModItemUtils;
@@ -13,10 +13,33 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class ModInfusedGemstonePaxelItem extends ModPaxelItem {
-    public ModInfusedGemstonePaxelItem(Tier material, float attackDamage, float attackSpeed, Item.Properties properties) {
+public class ModEndgamePaxelItem extends ModPaxelItem {
+    private final Consumer<LivingEntity> onHitMethod;
+    private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgamePaxelItem(Tier material, float attackDamage, float attackSpeed, ModItemUtils.EndgameTier tier,
+                             Item.Properties properties) {
         super(material, attackDamage, attackSpeed, properties);
+
+        // Set proper method references to both Consumers.
+        switch (tier) {
+            case COBALT_STEEL -> {
+                onHitMethod = ModItemUtils::applyCobaltSteelOnHit;
+                tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            }
+            case INFUSED_GEMSTONE -> {
+                onHitMethod = ModItemUtils::applyInfusedGemstoneOnHit;
+                tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            }
+            case TUNGSTEN_CARBIDE -> {
+                onHitMethod = ModItemUtils::applyTungstenCarbideOnHit;
+                tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -30,7 +53,7 @@ public class ModInfusedGemstonePaxelItem extends ModPaxelItem {
      */
     @Override
     public boolean hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
-        ModItemUtils.applyInfusedGemstoneOnHit(target);
+        onHitMethod.accept(target);
         return super.hurtEnemy(stack, target, attacker);
     }
 
@@ -43,6 +66,6 @@ public class ModInfusedGemstonePaxelItem extends ModPaxelItem {
      */
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendInfusedGemstoneEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.TOOL);
     }
 }
