@@ -1,6 +1,6 @@
-package net.dollar.apex.item.custom.tungstencarbide;
+package net.dollar.apex.item.custom.equipment;
 
-import net.dollar.apex.item.custom.ModPaxelItem;
+import net.dollar.apex.item.custom.ModBattleaxeItem;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,10 +13,33 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class ModTungstenCarbidePaxelItem extends ModPaxelItem {
-    public ModTungstenCarbidePaxelItem(Tier material, float attackDamage, float attackSpeed, Item.Properties properties) {
+public class ModEndgameBattleaxeItem extends ModBattleaxeItem {
+    private final Consumer<LivingEntity> onHitMethod;
+    private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgameBattleaxeItem(Tier material, int attackDamage, float attackSpeed, ModItemUtils.EndgameTier tier,
+                             Item.Properties properties) {
         super(material, attackDamage, attackSpeed, properties);
+
+        // Set proper method references to both Consumers.
+        switch (tier) {
+            case COBALT_STEEL -> {
+                onHitMethod = ModItemUtils::applyCobaltSteelOnHit;
+                tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            }
+            case INFUSED_GEMSTONE -> {
+                onHitMethod = ModItemUtils::applyInfusedGemstoneOnHit;
+                tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            }
+            case TUNGSTEN_CARBIDE -> {
+                onHitMethod = ModItemUtils::applyTungstenCarbideOnHit;
+                tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -30,7 +53,7 @@ public class ModTungstenCarbidePaxelItem extends ModPaxelItem {
      */
     @Override
     public boolean hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
-        ModItemUtils.applyTungstenCarbideOnHit(target);
+        onHitMethod.accept(target);
         return super.hurtEnemy(stack, target, attacker);
     }
 
@@ -43,6 +66,6 @@ public class ModTungstenCarbidePaxelItem extends ModPaxelItem {
      */
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.TOOL);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.TOOL);
     }
 }
