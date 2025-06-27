@@ -1,6 +1,5 @@
-package net.dollar.apex.item.custom.crossbow;
+package net.dollar.apex.item.custom.ranged;
 
-import net.dollar.apex.util.ModArrowUtil;
 import net.dollar.apex.util.ModItemUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.component.DataComponents;
@@ -32,14 +31,27 @@ import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 /**
- * Corresponds specifically to the Tungsten-Carbide Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
+ * Corresponds specifically to the Steel Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
  *  which are private and must be entirely re-defined. All redundant override methods are removed.
  */
-public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
-    public ModTungstenCarbideCrossbowItem(Item.Properties properties) {
+public class ModEndgameCrossbowItem extends CrossbowItem {
+    private final ModItemUtils.EndgameTier endgameTier;
+    private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
+
+    public ModEndgameCrossbowItem(ModItemUtils.EndgameTier tier, Item.Properties properties) {
         super(properties);
+
+        // Set endgameTier field and tooltip method reference based on passed-in EndgameTier.
+        this.endgameTier = tier;
+        switch (tier) {
+            case COBALT_STEEL -> tooltipMethod = ModItemUtils::appendCobaltSteelEquipmentTooltip;
+            case INFUSED_GEMSTONE -> tooltipMethod = ModItemUtils::appendInfusedGemstoneEquipmentTooltip;
+            case TUNGSTEN_CARBIDE -> tooltipMethod = ModItemUtils::appendTungstenCarbideEquipmentTooltip;
+            default -> throw new IllegalStateException("Unexpected value: " + tier);
+        }
     }
 
 
@@ -133,8 +145,8 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
             return new FireworkRocketEntity(level, arrowStack, livingEntity, livingEntity.getX(), livingEntity.getEyeY() - 0.15000000596046448, livingEntity.getZ(), true);
         } else {
             //OVERRIDE HERE. Uses custom ModArrowUtil class function to generate a custom arrow entity.
-            AbstractArrow abstractarrow = ModArrowUtil.createCustomArrow(level, livingEntity, arrowStack,
-                    ModArrowUtil.ArrowType.TUNGSTEN_CARBIDE);
+            AbstractArrow abstractarrow = ModItemUtils.createCustomArrow(level, livingEntity, arrowStack,
+                    endgameTier);
 
             abstractarrow.setShotFromCrossbow(true);    //AFAIK this guarantees crit
             abstractarrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
@@ -272,7 +284,7 @@ public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        ModItemUtils.appendTungstenCarbideEquipmentTooltip(tooltip, ModItemUtils.EquipmentType.RANGED);
+        tooltipMethod.accept(tooltip, ModItemUtils.EquipmentType.RANGED);
 
         //Call super function AFTER because it has return statement if not charged.
         super.appendHoverText(stack, context, tooltip, flag);

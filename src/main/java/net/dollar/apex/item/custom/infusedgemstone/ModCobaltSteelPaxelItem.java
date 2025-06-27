@@ -1,4 +1,4 @@
-package net.dollar.apex.item.custom.cobaltsteel;
+package net.dollar.apex.item.custom.infusedgemstone;
 
 import net.dollar.apex.item.custom.ModPaxelItem;
 import net.dollar.apex.util.ModItemUtils;
