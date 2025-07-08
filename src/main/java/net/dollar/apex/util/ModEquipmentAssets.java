@@ -7,6 +7,10 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 
 import static net.minecraft.world.item.equipment.EquipmentAssets.ROOT_ID;
 
+/**
+ * Contains an Identifier for each armor equipment tier. Required in order to
+ *  successfully load worn equipment textures.
+ */
 public interface ModEquipmentAssets {
     ResourceKey<EquipmentAsset> BRONZE = createId("bronze");
     ResourceKey<EquipmentAsset> GILDED_BRONZE = createId("gilded_bronze");

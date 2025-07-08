@@ -4,6 +4,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 
+/**
+ * Defines ToolMaterials for each of the new equipment tiers (Bronze, Gilded Bronze,
+ *  Cobalt-Steel, Infused Gemstone, and Tungsten-Carbide).
+ */
 public interface ModToolMaterials {
     ToolMaterial BRONZE = new ToolMaterial(
             BlockTags.INCORRECT_FOR_IRON_TOOL,

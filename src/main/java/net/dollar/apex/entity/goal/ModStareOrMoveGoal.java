@@ -1,6 +1,9 @@
 package net.dollar.apex.entity.goal;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +30,7 @@ public class ModStareOrMoveGoal extends Goal {
     private State state = State.IDLE;
 
     @Nullable
-    protected Entity lookAt;
+    protected LivingEntity lookAt;
     protected final float lookDistance;
     private final double lookDistSquared;
     protected final Class<? extends LivingEntity> lookAtType;
@@ -42,6 +45,9 @@ public class ModStareOrMoveGoal extends Goal {
     protected boolean forceTrigger;
     private final boolean checkNoActionTime;
     private final float probability;
+
+    private int staringForTicks = 0;
+    private static final int STARING_FOR_TICKS_ANGER_THRESHOLD = 200;
 
     /**
      * Constructs a new ModStareOrMoveGoal instance, which causes the mob to look at a target
@@ -215,6 +221,8 @@ public class ModStareOrMoveGoal extends Goal {
         this.mob.getNavigation().stop();
         super.stop();
 
+        // Reset staring ticks and set state to IDLE.
+        staringForTicks = 0;
         state = State.IDLE;
     }
 
@@ -228,6 +236,35 @@ public class ModStareOrMoveGoal extends Goal {
         if (state == State.LOOKING && lookAt != null && lookAt.isAlive()) {
             double lookAtTargetEyeY = lookAt.getEyeY();
             mob.getLookControl().setLookAt(lookAt.getX(), lookAtTargetEyeY, lookAt.getZ());
+
+            // Ensure that lookAt target is a Player.
+            if (!(lookAt instanceof Player player)) return;
+
+            // If lookAt target is a player in creative or spectator mode, reset staringForTicks and return.
+            if (player.isCreative() || player.isSpectator()) {
+                staringForTicks = 0;
+                return;
+            }
+
+            // Else should tick down anger time, rolling chance if greater than threshold.
+            staringForTicks++;
+            if (staringForTicks > STARING_FOR_TICKS_ANGER_THRESHOLD) {
+                // Roll 1% chance per tick to get angry at lookAt target.
+                if (mob.getRandom().nextInt(100) == 0) {
+
+                    // If now angry at, get angry at target and play anger sound.
+                    mob.setTarget(lookAt);
+                    mob.playSound(SoundEvents.RAVAGER_ROAR);    // Volume uses 0.666f by default.
+
+                    // Add Speed effect on aggro for an exciting start, also removing Slowness if active.
+                    mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 2,
+                            false, false));     // 60% movement speed bonus, 20% per level.
+                    mob.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+
+                    // Stop the goal (must be called AFTER setting target because stop() nullifies lookAt target).
+                    stop();
+                }
+            }
         }
     }
 }
