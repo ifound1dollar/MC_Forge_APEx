@@ -64,7 +64,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     protected void registerGoals() {
         //NOTE: smaller numbers (first argument) imply higher priority
 
-        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, true,
+        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, false,
                 40));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
