@@ -8,6 +8,10 @@ import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.EnumMap;
 
+/**
+ * Defines ArmorMaterials for each of the new equipment tiers (Bronze, Gilded Bronze,
+ *  Cobalt-Steel, Infused Gemstone, and Tungsten-Carbide).
+ */
 public interface ModArmorMaterials {
     //First integer is durability multiplier. Second integer enchantability.
     //First float is toughness. Second float is knockback resistance.

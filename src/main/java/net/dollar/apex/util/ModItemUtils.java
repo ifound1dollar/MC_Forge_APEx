@@ -40,12 +40,12 @@ public class ModItemUtils {
      * @param shooter LivingEntity firing the weapon
      * @param arrowStack ItemStack where the arrow is pulled from (used for Spectral/Tipped behavior)
      * @param weaponStack ItemStack of the weapon shooting the arrow
-     * @param type Enum determining which of the three bow/crossbow types to spawn the ArrowEntity for
-     * @return The newly created custom PersistentProjectileEntity
+     * @param tier Enum determining which of the three bow/crossbow types to spawn the ArrowEntity for
+     * @return The newly created custom AbstractArrow
      */
     public static AbstractArrow createCustomArrow(Level level, LivingEntity shooter,
-                                                  ItemStack arrowStack, ItemStack weaponStack, EndgameTier type) {
-        net.dollar.apex.item.custom.ranged.ModCustomArrowEntity arrowEntity = new net.dollar.apex.item.custom.ranged.ModCustomArrowEntity(level, shooter, arrowStack, weaponStack, type);
+                                                  ItemStack arrowStack, ItemStack weaponStack, EndgameTier tier) {
+        net.dollar.apex.item.custom.ranged.ModCustomArrowEntity arrowEntity = new net.dollar.apex.item.custom.ranged.ModCustomArrowEntity(level, shooter, arrowStack, weaponStack, tier);
         arrowEntity.checkIsSpectral(arrowStack);
         return arrowEntity;
     }

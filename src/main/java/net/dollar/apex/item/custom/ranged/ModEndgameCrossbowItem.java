@@ -15,13 +15,19 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 /**
- * Corresponds specifically to the Steel Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
- *  which are private and must be entirely re-defined. All redundant override methods are removed.
+ * Corresponds to an endgame-tier Crossbow item. Spawns a custom ArrowEntity which
+ *  deals bonus damage and applies an effect on-hit.
  */
 public class ModEndgameCrossbowItem extends CrossbowItem {
     private final ModItemUtils.EndgameTier endgameTier;
     private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
 
+    /**
+     * Instantiates a new endgame-tier Crossbow item. Spawns a custom ArrowEntity when
+     *  fired which deals bonus damage and applies an effect on-hit.
+     * @param tier EndgameTier for this Crossbow item
+     * @param properties Item.Properties for this Crossbow item
+     */
     public ModEndgameCrossbowItem(ModItemUtils.EndgameTier tier, Item.Properties properties) {
         super(properties);
 

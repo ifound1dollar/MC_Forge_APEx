@@ -24,6 +24,13 @@ public class ModEndgameArmorItem extends ArmorItem implements IFullSetEffectArmo
     private final BiPredicate<Holder<MobEffect>, LivingEntity> canReceiveEffectMethod;
     private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
 
+    /**
+     * Instantiates a new endgame-tier armor item.
+     * @param material ArmorMaterial for this Item
+     * @param armorType ArmorItem.Type determining the type of armor piece
+     * @param tier EndgameTier determining which effect to be prevented with a full set of armor
+     * @param properties Item.Properties associated with the armor item
+     */
     public ModEndgameArmorItem(ArmorMaterial material, ArmorType armorType,
                                ModItemUtils.EndgameTier tier, Properties properties) {
         super(material, armorType, properties);
