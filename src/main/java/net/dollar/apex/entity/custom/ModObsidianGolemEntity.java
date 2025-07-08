@@ -75,7 +75,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
     protected void registerGoals() {
         //NOTE: smaller numbers (first argument) imply higher priority
 
-        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, true,
+        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, false,
                 40));
         //speedModifier
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 0.6d));
