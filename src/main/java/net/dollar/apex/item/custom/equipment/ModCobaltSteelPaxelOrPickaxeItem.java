@@ -14,6 +14,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public class ModCobaltSteelPaxelOrPickaxeItem extends Item {
+    /**
+     * Instantiates a new Cobalt-Steel Paxel or Pickaxe item. This class must remain distinct
+     *  from the other generic Endgame classes because it overrides getMiningSpeed().
+     * @param properties Item.Properties for this Item
+     */
     public ModCobaltSteelPaxelOrPickaxeItem(Properties properties) {
         super(properties);
     }

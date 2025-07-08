@@ -27,7 +27,7 @@ public class ModItemUtils {
      * @param arrowStack ItemStack where the arrow is pulled from (used for Spectral/Tipped behavior)
      * @param weaponStack ItemStack of the weapon shooting the arrow
      * @param tier Enum determining which of the three bow/crossbow types to spawn the ArrowEntity for
-     * @return The newly created custom PersistentProjectileEntity
+     * @return The newly created custom AbstractArrow
      */
     public static AbstractArrow createCustomArrow(Level level, LivingEntity shooter,
                                                   ItemStack arrowStack, ItemStack weaponStack, EndgameTier tier) {
