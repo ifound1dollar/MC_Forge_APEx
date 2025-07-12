@@ -34,10 +34,15 @@ import org.joml.Vector3f;
 import java.util.List;
 
 /**
- * Corresponds specifically to the Infused Gemstone Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
- *  which are private and must be entirely re-defined. All redundant override methods are removed.
+ * Corresponds to the Infused Gemstone Crossbow item. Spawns a custom ArrowEntity which
+ *  deals bonus damage and applies an effect on-hit.
  */
 public class ModInfusedGemstoneCrossbowItem extends CrossbowItem {
+    /**
+     * Instantiates a new Infused Gemstone Crossbow Item. Spawns a custom ArrowEntity when
+     *  fired which deals bonus damage and applies an effect on-hit.
+     * @param properties Item.Properties for this Bow item
+     */
     public ModInfusedGemstoneCrossbowItem(Item.Properties properties) {
         super(properties);
     }
