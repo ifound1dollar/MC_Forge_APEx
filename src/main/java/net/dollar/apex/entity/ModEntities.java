@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
- * Handles registering new mob entities.
+ * Class responsible for defining and registering mob entities for this mod.
  */
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -23,7 +23,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<ModObsidianGolemEntity>> OBSIDIAN_GOLEM =
             ENTITY_TYPES.register("obsidian_golem",
                     () -> EntityType.Builder.of(ModObsidianGolemEntity::new, MobCategory.MONSTER)
-                            .sized(1.67f, 3.33f)   //roughly 1.25x Iron Golem hitbox size, but narrower
+                            .sized(1.4f, 2.7f)
                             .build(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem").toString()));
     public static final RegistryObject<EntityType<ModMysteriousSpecterEntity>> MYSTERIOUS_SPECTER =
             ENTITY_TYPES.register("mysterious_specter",
