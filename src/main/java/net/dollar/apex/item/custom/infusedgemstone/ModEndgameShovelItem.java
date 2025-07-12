@@ -15,6 +15,13 @@ public class ModEndgameShovelItem extends ShovelItem {
     private final Consumer<LivingEntity> onHitMethod;
     private final BiConsumer<List<Component>, ModItemUtils.EquipmentType> tooltipMethod;
 
+    /**
+     * Instantiates a new ShovelItem for one of the new endgame tiers.
+     * @param material ToolMaterial for this Item
+     * @param attackDamage Attack damage of this Item
+     * @param attackSpeed Attack speed of this Item
+     * @param tier EndgameTier determining on-hit behavior and tooltip text
+     */
     public ModEndgameShovelItem(Tier material, float attackDamage, float attackSpeed, ModItemUtils.EndgameTier tier) {
         super(material, new Item.Properties()
                 .attributes(ShovelItem.createAttributes(
