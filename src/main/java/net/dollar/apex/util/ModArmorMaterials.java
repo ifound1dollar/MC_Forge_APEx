@@ -16,6 +16,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
+/**
+ * Defines ArmorMaterials for each of the new equipment tiers (Bronze, Gilded Bronze,
+ *  Cobalt-Steel, Infused Gemstone, and Tungsten-Carbide).
+ */
 public enum ModArmorMaterials implements StringRepresentable, ArmorMaterial {
     //First integer is durability multiplier. Second integer enchantability.
     //First float is toughness. Second float is knockback resistance.

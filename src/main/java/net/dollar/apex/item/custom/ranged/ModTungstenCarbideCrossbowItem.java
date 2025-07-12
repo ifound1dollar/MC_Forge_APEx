@@ -34,10 +34,15 @@ import org.joml.Vector3f;
 import java.util.List;
 
 /**
- * Corresponds specifically to the Tungsten-Carbide Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
- *  which are private and must be entirely re-defined. All redundant override methods are removed.
+ * Corresponds to an endgame-tier Crossbow item. Spawns a custom ArrowEntity which
+ *  deals bonus damage and applies an effect on-hit.
  */
 public class ModTungstenCarbideCrossbowItem extends CrossbowItem {
+    /**
+     * Instantiates a new Tungsten-Carbide Crossbow Item. Spawns a custom ArrowEntity when
+     *  fired which deals bonus damage and applies an effect on-hit.
+     * @param properties Item.Properties for this Bow item
+     */
     public ModTungstenCarbideCrossbowItem(Item.Properties properties) {
         super(properties);
     }
