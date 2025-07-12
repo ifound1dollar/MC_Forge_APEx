@@ -1,5 +1,6 @@
 package net.dollar.apex.entity.custom;
 
+import net.dollar.apex.entity.goal.ModMeleeAttackGoal;
 import net.dollar.apex.entity.goal.ModStareOrMoveGoal;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -27,7 +27,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,11 +44,16 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     private UUID persistentAngerTarget;
 
     private int ticksSinceLastAttack = 0;
+    private static final int DEFAULT_LAST_ATTACK_TICKS_THRESHOLD = 100;
     private int auraCounterTicks = 60;
+    private int abilityCooldownTicks;
+    private static final int DEFAULT_ABILITY_COOLDOWN_TICKS = 100;
     private final int textureID;
 
     public ModMysteriousSpecterEntity(EntityType<? extends Monster> type, Level level) {
         super(type, level);
+        this.setMaxUpStep(1.0f);
+        abilityCooldownTicks = DEFAULT_ABILITY_COOLDOWN_TICKS;
 
         //Set textureID to a value between 0-4, which is used to determine which texture to render.
         textureID = level.random.nextInt(5);
@@ -73,8 +77,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     protected void registerGoals() {
         //NOTE: smaller numbers (first argument) imply higher priority
 
-        //speedModifier, followingTargetEvenIfNotSeen
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
+        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, false,
+                40));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -111,12 +115,22 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 120)
-                .add(Attributes.ATTACK_DAMAGE, 15.0)    //Normal, Easy/Hard values are auto-scaled
+                .add(Attributes.ATTACK_DAMAGE, 12.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
                 .add(Attributes.FOLLOW_RANGE, 30)
                 .build();
+    }
+
+    /**
+     * Gets the attack range square for this mob. Expanded slightly to increase attack range.
+     * @param livingEntity LivingEntity this attack range square corresponds to
+     * @return The calculated attack range square for this mob.
+     */
+    @Override
+    public double getMeleeAttackRangeSqr(@NotNull LivingEntity livingEntity) {
+        return super.getMeleeAttackRangeSqr(livingEntity) * 1.1d;
     }
 
     /**
@@ -232,68 +246,38 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         return 0.666f;  // Default is 1.0f.
     }
 
-    /**
-     * Plays step sound of this Monster.
-     * @param blockPos Position being stepped on
-     * @param blockState Blockstate of block at position being stepped on
-     */
-    protected void playStepSound(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        //PLAY NO STEP SOUND.
-//        this.playSound(SoundEvents.IRON_GOLEM_STEP, 1.0F, 1.0F);
-    }
-
 
 
     /**
-     * Gets ATTACK_DAMAGE attribute assigned to this Monster.
-     * @return ATTACK_DAMAGE attribute as float
-     */
-    private float getAttackDamage() {
-        return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-    }
-
-    /**
-     * Performs attack operations like checking for attack timer, dealing damage to target, and playing sound.
-     * @param targetEntity Target Entity
-     * @return Whether attack was performed successfully
+     * Attempts to perform attack operations against the target.
+     * @param targetEntity Target being attacked by this Entity
+     * @return Whether the attack was successfully performed
      */
     @Override
     public boolean doHurtTarget(@NotNull Entity targetEntity) {
-        //Can only attack once every second, then resets counter
-        if (ticksSinceLastAttack < 20) {
-            return false;
-        }
         ticksSinceLastAttack = 0;
 
-        //actual attack here
-        float f = this.getAttackDamage();
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
-        boolean flag = targetEntity.hurt(this.damageSources().mobAttack(this), f1);
-
-        //If damaging target was successful.
-        if (flag) {
-            //Immediately reset movement speed buff.
+        // If default attack operation was successful, do special attack effects.
+        if (super.doHurtTarget(targetEntity)) {
+            // Immediately reset movement speed buff.
             resetMovementSpeed();
 
-            this.doEnchantDamageEffects(this, targetEntity);
-
+            // Then, do special Mysterious Specter attack behaviors.
             if (targetEntity instanceof LivingEntity livingEntity) {
-                //CHANCE TO APPLY EFFECT TO TARGET HERE, 50% chance on-hit
-                if (this.random.nextInt(100) < 67) {
-                    //Increase Wither level based on missing Health (split into 3 parts, 33% HP each).
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 81,
-                            calcWitherStrength()));
-                }
-
-                //ALSO CHANCE TO SET TARGET ON FIRE BASED ON % MISSING HP + 10% (LOOSELY CORRESPONDS TO CRACKINESS)
-                if (this.random.nextFloat() > (this.getHealth() / this.getMaxHealth()) - 0.1f) {
-                    livingEntity.setSecondsOnFire(4);
+                // Roll 50% chance each attack to Wither the target here.
+                if (random.nextBoolean()) {
+                    // Increase Wither level based on missing Health (split into 3 parts, 33% HP each).
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 81, calcWitherStrength(),
+                            false, false, true));
                 }
             }
+
+            // Play attack sound, then return success.
+            this.playSound(SoundEvents.RAVAGER_ATTACK, this.getSoundVolume(), 1.0f);
+            return true;
         }
 
-        this.playSound(SoundEvents.PLAYER_ATTACK_STRONG, 1.0F, 1.0F);
-        return flag;
+        return false;
     }
 
     /**
@@ -309,20 +293,6 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     }
 
     /**
-     * Performs default hurt operations like taking damage, playing hurt sound, etc. Here, reduces
-     *  Sharp damage taken and updates visual crackiness.
-     * @param source DamageSource of damage being dealt
-     * @param value Original amount of damage
-     * @return Whether hurt operation was completed successfully
-     */
-    @Override
-    public boolean hurt(@NotNull DamageSource source, float value) {
-        return super.hurt(source, value);
-    }
-
-
-
-    /**
      * Performs any per-tick operations of this Entity. Here, checks if this Monster has not been
      *  able to attack for at least 3s. If it hasn't, rolls a chance each tick to blind and slow all
      *  nearby LivingEntities then teleport toward its target.
@@ -331,81 +301,122 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     public void tick() {
         super.tick();
 
-        //Decrement aura counter, then if <= 0, do aura and reset counter.
+        // Only run tick behavior on server.
+        if (!(this.level() instanceof ServerLevel)) return;
+
+        // Decrement aura counter, then if <= 0, do aura and reset counter.
         auraCounterTicks--;
         if (auraCounterTicks <= 0) {
             applyWeaknessHungerAura();
             auraCounterTicks = 60;
         }
 
-        //If there is no target, ensure that ticksSinceLastAttack remains at 0 and return.
+        // If there is no target, ensure that ticksSinceLastAttack remains at 0 and return.
         if (this.getTarget() == null) {
             ticksSinceLastAttack = 0;
             return;
         }
 
+        // Else if valid target, increment ticksSinceLastAttack and decrement abilityCooldownTicks.
         ticksSinceLastAttack++;
+        abilityCooldownTicks--;
 
-        //if this hasn't attacked in >3 seconds, roll 1% chance per tick to afflict nearby players and teleport to target
-        if (ticksSinceLastAttack > 60 && this.random.nextInt(100) < 1) {
-            weakenAndSlowNearbyEntities();
+        // Then, if unable to attack for at least 3s and ability not on cooldown, try special ability.
+        if (ticksSinceLastAttack > DEFAULT_LAST_ATTACK_TICKS_THRESHOLD && abilityCooldownTicks <= 0) {
+            if (random.nextInt(100) == 0) {
+                // Roll 1% chance each tick to perform special attack.
+                blindAndSlowNearbyPlayers();
+                increaseMovementSpeedTemporarily();
 
-            //IF this hasn't been able to attack in 12s (240 ticks), teleport directly on top of the
-            //  target, ELSE teleport to near the target
-            increaseMovementSpeedTemporarily();
+                // If unable to attack for at least 7.5s, also apply Wither and deal instant damage on ability use.
+                if (ticksSinceLastAttack >= 150) {
+                    witherAndDamageNearbyPlayers();
+                }
+
+                abilityCooldownTicks = DEFAULT_ABILITY_COOLDOWN_TICKS;
+            }
         }
     }
 
     /**
-     * Applies the Weakness and Hunger effect to all nearby Entities.
+     * Applies the Weakness and Hunger effect to all nearby Players.
      */
     private void applyWeaknessHungerAura() {
         double radius = 10.0;
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
-        List<Entity> entities = this.level().getEntities(this,
+        List<Player> players = this.level().getEntitiesOfClass(Player.class,
                 new AABB(x - radius, y - radius, z - radius,
-                        x + radius, y + radius, z + radius));
+                        x + radius, y + radius, z + radius),
+                EntitySelector.NO_CREATIVE_OR_SPECTATOR);
 
-        for (Entity entity : entities) {
-            if (entity instanceof LivingEntity livingEntity) {
-                // Do not apply effect to creative mode players or other Mysterious Specters.
-                if (livingEntity instanceof Player player && player.isCreative()) continue;
-                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
-
-                //Apply lowest-level Weakness and Hunger to each entity for 10 seconds.
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 0));
-            }
+        for (Player player : players) {
+            // Apply lowest-level Weakness and Hunger to each player for 10 seconds.
+            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0,
+                    false, false, true));
+            player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 0,
+                    false, false, true));
         }
     }
 
     /**
-     * Applies Blindness and Slowness effects to all nearby LivingEntities and plays aggressive sound.
+     * Applies Darkness and Slowness effects to all nearby PlayerEntities and plays aggressive sound.
      */
-    private void weakenAndSlowNearbyEntities() {
+    private void blindAndSlowNearbyPlayers() {
         //Store xyz coordinates and get all entities within radius of this Entity.
         double radius = 24.0;
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
-        List<Entity> entities = this.level().getEntities(this,
+        List<Player> players = this.level().getEntitiesOfClass(Player.class,
                 new AABB(x - radius, y - radius, z - radius,
-                        x + radius, y + radius, z + radius));
+                        x + radius, y + radius, z + radius),
+                EntitySelector.NO_CREATIVE_OR_SPECTATOR);
 
         //Play aggressive sound, then apply effects to all nearby LivingEntities.
-        this.playSound(SoundEvents.RAVAGER_ROAR, 1.0f, 1.0f);
-        for (Entity entity : entities) {
-            if (entity instanceof LivingEntity livingEntity) {
-                // Do not apply effect to creative mode players or other Mysterious Specters.
-                if (livingEntity instanceof Player player && player.isCreative()) continue;
-                if (livingEntity instanceof ModMysteriousSpecterEntity) continue;
+        switch (random.nextInt(3)) {
+            case 0 -> this.playSound(SoundEvents.ENDERMAN_SCREAM, this.getSoundVolume(), 1.0f);
+            case 1 -> this.playSound(SoundEvents.WARDEN_ANGRY, this.getSoundVolume(), 1.0f);
+            default -> this.playSound(SoundEvents.RAVAGER_ROAR, this.getSoundVolume(), 1.0f);
+        }
+        for (Player player : players) {
+            // Blind (Darkness) and Slow ALL nearby players that are not creative or spectator mode.
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1,
+                    false, false, true));
+            player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0,
+                    false, false, true));
+        }
+    }
 
-                //Slow and Weaken ALL nearby LivingEntities regardless of whether angry at.
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60));
-            }
+    /**
+     * Applies Wither effect to and instantly damages each nearby PlayerEntity.
+     */
+    private void witherAndDamageNearbyPlayers() {
+        //Store xyz coordinates and get all entities within radius of this Entity.
+        double radius = 24.0;
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        List<Player> players = this.level().getEntitiesOfClass(Player.class,
+                new AABB(x - radius, y - radius, z - radius,
+                        x + radius, y + radius, z + radius),
+                EntitySelector.NO_CREATIVE_OR_SPECTATOR);
+
+//        // Wither effect intensity should scale up with duration.
+//        // Should increase by one level per 6 seconds, -1 to apply intensity 0 at first.
+//        int intensity = (ticksSinceLastAttack / 120) - 1;
+//        intensity = Math.min(intensity, 2);     // Cap at intensity 2 (Level 3 Wither).
+
+        // Apply effect to each player, strength clamped to mob health percentage.
+        int intensity = calcWitherStrength();
+        for (Player player : players) {
+            player.addEffect(new MobEffectInstance(MobEffects.WITHER, 81, intensity,
+                    false, false, true));
+
+            // Also deal instant damage for parity with Obsidian Golem special attack.
+            player.hurt(this.damageSources().mobAttack(this),
+                    5.0f);                  // Same damage as fireball.
         }
     }
 
@@ -413,10 +424,13 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * Increases Entity's movement speed for a duration using the Speed status effect.
      */
     private void increaseMovementSpeedTemporarily() {
-        //Add Speed effect at level 5 (20% * level), so double speed, for 1200 ticks (60 seconds).
-        if (!this.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-            this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 4));
-        }
+        // Add Speed effect at Level 3 (20% * level), so 60% bonus speed, for 1200 ticks (60 seconds).
+        // This will upgrade an existing lower-strength Speed effect, if active.
+        this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 2,
+                false, false));
+
+        // Also remove Slowness effect if active.
+        this.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
     }
 
     /**
@@ -430,6 +444,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     }
 
 
+
     /**
      * Determines whether this Monster can be affected by a specific MobEffect.
      * @param effectInstance MobEffectInstance to check validity of
@@ -437,8 +452,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean canBeAffected(MobEffectInstance effectInstance) {
-        MobEffect mobeffect = effectInstance.getEffect();
-        return mobeffect != MobEffects.POISON && mobeffect != MobEffects.WITHER && mobeffect != MobEffects.HUNGER;
+        MobEffect mobEffect = effectInstance.getEffect();
+        return mobEffect != MobEffects.POISON && mobEffect != MobEffects.WITHER && mobEffect != MobEffects.HUNGER;
     }
 
     /**

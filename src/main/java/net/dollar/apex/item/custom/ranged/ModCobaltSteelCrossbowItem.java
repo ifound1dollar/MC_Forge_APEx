@@ -34,10 +34,15 @@ import org.joml.Vector3f;
 import java.util.List;
 
 /**
- * Corresponds specifically to the Steel Crossbow item. Re-implements NUMEROUS methods from CrossbowItem
- *  which are private and must be entirely re-defined. All redundant override methods are removed.
+ * Corresponds to the Cobalt-Steel Crossbow item. Spawns a custom ArrowEntity which
+ *  deals bonus damage and applies an effect on-hit.
  */
 public class ModCobaltSteelCrossbowItem extends CrossbowItem {
+    /**
+     * Instantiates a new Cobalt-Steel Crossbow Item. Spawns a custom ArrowEntity when
+     *  fired which deals bonus damage and applies an effect on-hit.
+     * @param properties Item.Properties for this Bow item
+     */
     public ModCobaltSteelCrossbowItem(Item.Properties properties) {
         super(properties);
     }

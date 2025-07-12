@@ -1,5 +1,8 @@
 package net.dollar.apex.entity.custom;
 
+import net.dollar.apex.entity.ModEntities;
+import net.dollar.apex.entity.ability.ModFireballEntity;
+import net.dollar.apex.entity.goal.ModMeleeAttackGoal;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -16,7 +19,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -28,8 +30,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,10 +53,14 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
     private UUID persistentAngerTarget;
 
     private int ticksSinceLastAttack = 0;
-    private int teleportDelayTicks = 0;
+    private static final int DEFAULT_LAST_ATTACK_TICKS_THRESHOLD = 100;
+    private int abilityCooldownTicks;
+    private static final int DEFAULT_ABILITY_COOLDOWN_TICKS = 100;
 
     public ModObsidianGolemEntity(EntityType<? extends Monster> type, Level level) {
         super(type, level);
+        this.setMaxUpStep(1.0f);
+        abilityCooldownTicks = DEFAULT_ABILITY_COOLDOWN_TICKS;
     }
 
 
@@ -62,8 +72,8 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
     protected void registerGoals() {
         //NOTE: smaller numbers (first argument) imply higher priority
 
-        //speedModifier, followingTargetEvenIfNotSeen
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0d, true));
+        this.goalSelector.addGoal(1, new ModMeleeAttackGoal(this, 1.0, false,
+                40));
         //speedModifier
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 0.6d));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
@@ -105,13 +115,23 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 120)
-                .add(Attributes.ARMOR, 5)
-                .add(Attributes.ATTACK_DAMAGE, 15.0)    //Normal, Easy/Hard values are auto-scaled
+                .add(Attributes.ARMOR, 20)
+                .add(Attributes.ATTACK_DAMAGE, 12.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
                 .add(Attributes.FOLLOW_RANGE, 30)
                 .build();
+    }
+
+    /**
+     * Gets the attack range square for this mob. Expanded slightly to increase attack range.
+     * @param livingEntity LivingEntity this attack range square corresponds to
+     * @return The calculated attack range square for this mob.
+     */
+    @Override
+    public double getMeleeAttackRangeSqr(@NotNull LivingEntity livingEntity) {
+        return super.getMeleeAttackRangeSqr(livingEntity) * 1.1d;
     }
 
     /**
@@ -224,61 +244,36 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * @param blockState Blockstate of block at position being stepped on
      */
     protected void playStepSound(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        this.playSound(SoundEvents.IRON_GOLEM_STEP, 1.0F, 1.0F);
+        this.playSound(SoundEvents.IRON_GOLEM_STEP);
     }
 
 
 
     /**
-     * Gets ATTACK_DAMAGE attribute assigned to this Monster.
-     * @return ATTACK_DAMAGE attribute as float
-     */
-    private float getAttackDamage() {
-        return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-    }
-
-    /**
-     * Performs attack operations like checking for attack timer, dealing damage to target, and playing sound.
-     * @param targetEntity Target Entity
-     * @return Whether attack was performed successfully
+     * Attempts to perform attack operations against the target.
+     * @param targetEntity Target being attacked by this Entity
+     * @return Whether the attack was successfully performed
      */
     @Override
     public boolean doHurtTarget(@NotNull Entity targetEntity) {
-        //can only attack once every 2 seconds, then resets counter
-        if (ticksSinceLastAttack < 30) {
-            return false;
-        }
         ticksSinceLastAttack = 0;
+        attackAnimationTick = 10;
 
-        //actual attack here
-        this.attackAnimationTick = 10;  //why?
-        float f = this.getAttackDamage();
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
-        boolean flag = targetEntity.hurt(this.damageSources().mobAttack(this), f1);
-        if (flag) {
-            this.doEnchantDamageEffects(this, targetEntity);
-
+        // If default attack operation is successful, do special attack effects.
+        if (super.doHurtTarget(targetEntity)) {
             if (targetEntity instanceof LivingEntity livingEntity) {
-                //CHANCE TO APPLY EFFECT TO TARGET HERE, 50% chance on-hit
-                if (this.random.nextInt(100) < 50) {
-                    //APPLY ONE OF THESE TWO EFFECTS
-                    if (this.random.nextBoolean()) {
-                        //apply only level 1 slow, 15%/level (30% was a bit too much)
-                        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 0));
-                    } else {
-                        livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0));
-                    }
-                }
-
-                //ALSO CHANCE TO SET TARGET ON FIRE BASED ON % MISSING HP + 10% (LOOSELY CORRESPONDS TO CRACKINESS)
-                if (this.random.nextFloat() > (this.getHealth() / this.getMaxHealth()) - 0.1f) {
-                    livingEntity.setSecondsOnFire(4);
+                // Roll chance to set target on fire based on % missing HP (loosely corresponds to crack level).
+                if (random.nextFloat() > (this.getHealth() / this.getMaxHealth()) - 0.25f) {
+                    livingEntity.setSecondsOnFire(4);       // 100% chance at 25% HP because of -0.25f above
                 }
             }
+
+            // Play attack sound, then return success.
+            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, this.getSoundVolume(), 1.0f);
+            return true;
         }
 
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
-        return flag;
+        return false;
     }
 
     /**
@@ -293,7 +288,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         IronGolem.Crackiness irongolem$crackiness = this.getCrackiness();
         boolean flag = super.hurt(source, value);
         if (flag && this.getCrackiness() != irongolem$crackiness) {
-            this.playSound(SoundEvents.IRON_GOLEM_DAMAGE, 1.0F, 1.0F);
+            this.playSound(SoundEvents.IRON_GOLEM_DAMAGE);
         }
 
         return flag;
@@ -315,90 +310,114 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         return this.attackAnimationTick;
     }
 
+    /**
+     * This method implementation copied almost directly from IronGolem, but with EntityType overridden
+     *  to use OBSIDIAN_GOLEM.
+     * @param levelReader LevelReader to access the current level
+     * @return Whether this Entity can spawn at a given location
+     */
+    @Override
+    public boolean checkSpawnObstruction(LevelReader levelReader) {
+        BlockPos blockpos = this.blockPosition();
+        BlockPos blockpos1 = blockpos.below();
+        BlockState blockstate = levelReader.getBlockState(blockpos1);
+        if (!blockstate.entityCanStandOn(levelReader, blockpos1, this)) {
+            return false;
+        } else {
+            for (int i = 1; i < 3; i++) {
+                BlockPos blockpos2 = blockpos.above(i);
+                BlockState blockstate1 = levelReader.getBlockState(blockpos2);
+                if (!NaturalSpawner.isValidEmptySpawnBlock(levelReader, blockpos2, blockstate1, blockstate1.getFluidState(),
+                        ModEntities.OBSIDIAN_GOLEM.get())) {
+                    return false;
+                }
+            }
 
+            return NaturalSpawner.isValidEmptySpawnBlock(levelReader, blockpos, levelReader.getBlockState(blockpos),
+                    Fluids.EMPTY.defaultFluidState(), ModEntities.OBSIDIAN_GOLEM.get())
+                    && levelReader.isUnobstructed(this);
+        }
+    }
 
     /**
-     * Performs any per-tick operations of this Entity. Here, checks if this Monster has not been
-     *  able to attack for at least 3s. If it hasn't, rolls a chance each tick to blind and slow all
-     *  nearby LivingEntities then teleport toward its target.
+     * Performs per-tick operations of this Entity. Here, checks if this Entity has been unable to attack for
+     *  at least 3 seconds. If it hasn't, rolls a chance each tick to use special ability.
      */
     @Override
     public void tick() {
         super.tick();
 
-        //If there is no target, ensure that ticksSinceLastAttack remains at 0 and return.
+        // Only run tick behavior on server.
+        if (!(this.level() instanceof ServerLevel)) return;
+
+        // If there is no target, ensure that ticksSinceLastAttack remains at 0 and return.
         if (this.getTarget() == null) {
             ticksSinceLastAttack = 0;
             return;
         }
 
+        // If valid target, increment ticksSinceLastAttack and decrement abilityCooldownTicks.
         ticksSinceLastAttack++;
-        teleportDelayTicks--;
-        //if this hasn't attacked in >3 seconds, roll 1% chance per tick to afflict nearby players and teleport to target
-        if (ticksSinceLastAttack > 60 && teleportDelayTicks <= 0 && this.random.nextInt(100) < 1) {
-            blindAndSlowNearbyLivingEntities();
+        abilityCooldownTicks--;
 
-            //IF this hasn't been able to attack in 12s (240 ticks), teleport directly on top of the
-            //  target, ELSE teleport to near the target
-            teleportTowardTarget(this.getTarget(), ticksSinceLastAttack > 240);
+        // Then, if unable to attack for at least 3s and ability not on cooldown, try special ability.
+        if (ticksSinceLastAttack >= DEFAULT_LAST_ATTACK_TICKS_THRESHOLD && abilityCooldownTicks <= 0) {
+            if (random.nextInt(100) == 0) {
+                // Roll 1% chance each tick to perform special attack.
+                rangedAttackNearbyPlayers();
+
+                abilityCooldownTicks = DEFAULT_ABILITY_COOLDOWN_TICKS;
+            }
         }
     }
 
     /**
-     * Applies Blindness and Slowness effects to all nearby LivingEntities, then plays aggressive sound.
+     * Perform special ranged attack against all nearby PlayerEntities.
      */
-    private void blindAndSlowNearbyLivingEntities() {
-        //Blind and slow for 3s all players within configurable block radius
+    private void rangedAttackNearbyPlayers() {
         double radius = 24.0;
-        double x = this.position().x;
-        double y = this.position().y;
-        double z = this.position().z;
-
-        List<Entity> entities = this.level().getEntities(this,
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        List<Player> players = this.level().getEntitiesOfClass(Player.class,
                 new AABB(x - radius, y - radius, z - radius,
-                        x + radius, y + radius, z + radius));
+                        x + radius, y + radius, z + radius),
+                EntitySelector.NO_CREATIVE_OR_SPECTATOR);
 
-        //Play aggressive sound, then apply effects to all nearby LivingEntities.
-        this.playSound(SoundEvents.RAVAGER_ROAR, 1.0F, 1.0F);   //volume, pitch???
-        for (Entity entity : entities) {
-            if (entity instanceof LivingEntity livingEntity) {
-                // Do not apply effect to creative mode players or other Obsidian Golems.
-                if (livingEntity instanceof Player player && player.isCreative()) continue;
-                if (livingEntity instanceof ModObsidianGolemEntity) continue;
+        // Play aggressive sound at full volume, then perform special ability.
+        this.playSound(SoundEvents.RAVAGER_ROAR, this.getSoundVolume(), 1.0f);
+        for (Player player : players) {
+            // Slow all nearby players at Level 3 intensity (45%) for 3s.
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60,
+                    2, false, false, true));
 
-                //blind and slow ALL nearby LivingEntities, regardless of whether angry at
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
+            // Shoot a fireball at the player always, but if not visible, immediately damage and set on fire.
+            shootFireballAtPlayer(player);
+            if (!this.getSensing().hasLineOfSight(player)) {
+                player.hurt(this.damageSources().mobAttack(this),
+                        5.0f);                // Same damage as fireball.
+                player.setSecondsOnFire(4);             // Same duration as fireball.
             }
         }
     }
 
     /**
-     * Teleports this Monster either toward or directly on top of its target, depending on param value.
-     * @param target Target to teleport toward / on top of
-     * @param onTop Whether to teleport directly on top
+     * Attempts to shoot a fireball at a visible PlayerEntity. Pulled largely from blaze fireball goal.
+     * @param player PlayerEntity to attempt to shoot the fireball at
      */
-    private void teleportTowardTarget(LivingEntity target, boolean onTop) {
-        if (onTop) {
-            //teleport directly on top of target, +- 0.5 blocks
-            teleportTo((this.random.nextDouble() - 0.5D) + target.getX(),
-                    target.getY() + 0.5D,
-                    (this.random.nextDouble() - 0.5D) + target.getZ());
-        } else {
-            //teleport to within 5 blocks of the target
-            randomTeleport((this.random.nextDouble() - 0.5D) + target.getX() + (this.random.nextInt(10) - 5),
-                    target.getY() + 2.5D,
-                    (this.random.nextDouble() - 0.5D) + target.getZ() + (this.random.nextInt(10) - 5),
-                    false);
+    private void shootFireballAtPlayer(Player player) {
+        double xDist = player.getX() - this.getX();
+        double yDist = player.getY(0.5) - this.getY(0.5);
+        double zDist = player.getZ() - this.getZ();
 
-            //if now in attack range, should delay 0.5s before allowing attack
-            //IMPORTANT: Must happen only here BECAUSE: when teleporting directly onto target, must attack
-            //  much faster to prevent cheesing (ex. knock off of pillar).
-            if (this.isWithinMeleeAttackRange(target)) {
-                ticksSinceLastAttack = 20;
-            }
-        }
-        teleportDelayTicks = 100;   //minimum of 5s delay between teleports
+        // Create fireball velocity vector, then create fireball and shoot it at the PlayerEntity.
+        Vec3 vec3 = new Vec3(xDist, yDist, zDist);
+        ModFireballEntity modFireballEntity = new ModFireballEntity(this.level(), this, vec3.normalize());
+        modFireballEntity.setPos(
+                modFireballEntity.getX(),
+                this.getY(0.5) + 0.5,
+                modFireballEntity.getZ());
+        this.level().addFreshEntity(modFireballEntity);
     }
 
 
@@ -409,8 +428,8 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      */
     @Override
     public boolean canBeAffected(MobEffectInstance effectInstance) {
-        MobEffect mobeffect = effectInstance.getEffect();
-        return mobeffect != MobEffects.POISON && mobeffect != MobEffects.WITHER && mobeffect != MobEffects.HUNGER;
+        MobEffect mobEffect = effectInstance.getEffect();
+        return mobEffect != MobEffects.POISON && mobEffect != MobEffects.HUNGER;
     }
 
     /**
