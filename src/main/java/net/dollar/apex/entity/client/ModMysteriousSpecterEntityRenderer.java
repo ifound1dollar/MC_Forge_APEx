@@ -20,7 +20,8 @@ public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriou
     private static final String TEXTURE_BASE = "textures/entity/mysterious_specter";
 
     public ModMysteriousSpecterEntityRenderer(EntityRendererProvider.Context context) {
-        super(context, new ModMysteriousSpecterModel(context.bakeLayer(ModelLayers.PLAYER)), 0.6f);  //shadow radius
+        super(context, new ModMysteriousSpecterModel(context.bakeLayer(ModelLayers.PLAYER)),
+                0.0f);  //shadow radius
     }
 
 
