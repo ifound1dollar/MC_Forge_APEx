@@ -4,7 +4,7 @@
   "spawners": [
     {
       "type": "apex:obsidian_golem",
-      "weight": 300,
+      "weight": 225,
       "minCount": 1,
       "maxCount": 1
     }
