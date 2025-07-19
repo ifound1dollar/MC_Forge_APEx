@@ -133,7 +133,8 @@ public class ModStareOrMoveGoal extends Goal {
                     lookAtContext, mob, mob.getX(), mob.getEyeY(), mob.getZ());
         }
 
-        return (lookAt != null);
+        // Return true if lookAt is non-null and is NOT a spectator mode player.
+        return ((lookAt != null) && (!lookAt.isSpectator()));
     }
 
     /**
@@ -141,8 +142,15 @@ public class ModStareOrMoveGoal extends Goal {
      * @return True if the lookAt Entity is valid.
      */
     protected boolean checkLookAtTargetIsValid() {
-        return (lookAt != null && lookAt.isAlive()
-                && (mob.distanceToSqr(lookAt) <= lookDistSquared));
+        if (lookAt != null && lookAt.isAlive()) {
+            // Do not look at spectator mode players.
+            if (lookAt.isSpectator()) return false;
+
+            // Return true if lookAt is within look range.
+            return (mob.distanceToSqr(lookAt) <= lookDistSquared);
+        }
+
+        return false;
     }
 
     /**
@@ -224,8 +232,8 @@ public class ModStareOrMoveGoal extends Goal {
     }
 
     /**
-     * Runs per-tick operations for this Goal. This method is only necessary for looking, as
-     *  movement uses a navigation component to move (not this Goal directly).
+     * Runs per-tick operations for this Goal. This method is only relevant for looking
+     *  and determining whether to get angry at the current lookAt target.
      */
     @Override
     public void tick() {
@@ -237,8 +245,8 @@ public class ModStareOrMoveGoal extends Goal {
             // Ensure that lookAt target is a Player.
             if (!(lookAt instanceof Player player)) return;
 
-            // If lookAt target is a player in creative or spectator mode, reset staringForTicks and return.
-            if (player.isCreative() || player.isSpectator()) {
+            // If lookAt target is a player in creative mode, reset staringForTicks and return.
+            if (player.isCreative()) {
                 staringForTicks = 0;
                 return;
             }
@@ -246,22 +254,34 @@ public class ModStareOrMoveGoal extends Goal {
             // Else should tick down anger time, rolling chance if greater than threshold.
             staringForTicks++;
             if (staringForTicks > STARING_FOR_TICKS_ANGER_THRESHOLD) {
-                // Roll 1% chance per tick to get angry at lookAt target.
-                if (mob.getRandom().nextInt(100) == 0) {
-
-                    // If now angry at, get angry at target and play anger sound.
-                    mob.setTarget(lookAt);
-                    mob.playSound(SoundEvents.RAVAGER_ROAR);    // Volume uses 0.666f by default.
-
-                    // Add Speed effect on aggro for an exciting start, also removing Slowness if active.
-                    mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 2,
-                            false, false));     // 60% movement speed bonus, 20% per level.
-                    mob.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
-
-                    // Stop the goal (must be called AFTER setting target because stop() nullifies lookAt target).
-                    stop();
-                }
+                doAngerAtTargetChance(lookAt);
             }
+        }
+    }
+
+    /**
+     * Rolls a 1% chance each tick to get angry at the current lookTarget. Can only get
+     *  angry at targets that are visible (ex. not behind a wall inside a structure).
+     * @param lookAtNonNull The current lookAt target, but non-null to silence warning
+     */
+    private void doAngerAtTargetChance(LivingEntity lookAtNonNull) {
+        // If lookAt is not visible (ex. behind block, inside a structure), do not get angry.
+        if (!mob.hasLineOfSight(lookAtNonNull)) return;
+
+        // Roll 1% chance per tick to get angry at lookAt target.
+        if (mob.getRandom().nextInt(100) == 0) {
+
+            // If now angry at, get angry at target and play anger sound.
+            mob.setTarget(lookAtNonNull);
+            mob.playSound(SoundEvents.RAVAGER_ROAR);    // Volume uses 0.666f by default.
+
+            // Add Speed effect on aggro for an exciting start, also removing Slowness if active.
+            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 2,
+                    false, false));     // 60% movement speed bonus, 20% per level.
+            mob.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+
+            // Stop the goal (must be called AFTER setting target because stop() nullifies lookAt target).
+            stop();
         }
     }
 }
