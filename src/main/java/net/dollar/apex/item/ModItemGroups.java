@@ -5,15 +5,13 @@ import net.dollar.apex.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
  * Handles creation of new item groups (creative mode tabs).
  */
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModItemGroups {
     //Create a Deferred Register to hold CreativeModeTabs.
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(
@@ -181,7 +179,7 @@ public class ModItemGroups {
      * Register new item groups.
      * @param bus Main event bus
      */
-    public static void register(IEventBus bus) {
+    public static void register(BusGroup bus) {
         CREATIVE_MODE_TABS.register(bus);
     }
 }

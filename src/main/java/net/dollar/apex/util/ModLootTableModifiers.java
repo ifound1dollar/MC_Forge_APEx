@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.dollar.apex.ModMain;
 import net.dollar.apex.loot.chest.*;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -64,7 +64,7 @@ public class ModLootTableModifiers {
 
 
 
-    public static void register(IEventBus bus) {
+    public static void register(BusGroup bus) {
         LOOT_MODIFIER_SERIALIZERS.register(bus);
     }
 }

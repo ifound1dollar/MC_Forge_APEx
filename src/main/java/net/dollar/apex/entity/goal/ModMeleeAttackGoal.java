@@ -87,7 +87,7 @@ public class ModMeleeAttackGoal extends Goal {
         } else if (!this.followingTargetEvenIfNotSeen) {
             return !this.mob.getNavigation().isDone();
         } else {
-            return !this.mob.isWithinRestriction(livingentity.blockPosition())
+            return !this.mob.isWithinHome(livingentity.blockPosition())
                     ? false
                     : !(livingentity instanceof Player player && (player.isSpectator() || player.isCreative()));
         }

@@ -2,9 +2,9 @@ package net.dollar.apex.event;
 
 import net.dollar.apex.util.IFullSetEffectArmor;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraftforge.common.util.Result;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -23,7 +23,7 @@ public class ModLivingEntityEvents {
 
             //If the LivingEntity cannot receive effect, DENY event. Otherwise, leave default.
             if (!result) {
-                event.setResult(Event.Result.DENY);
+                event.setResult(Result.DENY);
             }
         }
     }

@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -38,6 +37,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -161,14 +162,14 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         }
     }
 
-    public void addAdditionalSaveData(@NotNull CompoundTag p_28867_) {
-        super.addAdditionalSaveData(p_28867_);
-        this.addPersistentAngerSaveData(p_28867_);
+    public void addAdditionalSaveData(@NotNull ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        this.addPersistentAngerSaveData(output);
     }
 
-    public void readAdditionalSaveData(@NotNull CompoundTag p_28857_) {
-        super.readAdditionalSaveData(p_28857_);
-        this.readPersistentAngerSaveData(this.level(), p_28857_);
+    public void readAdditionalSaveData(@NotNull ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.readPersistentAngerSaveData(this.level(), input);
     }
 
 
