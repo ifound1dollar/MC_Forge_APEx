@@ -356,7 +356,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "compass_from_tin_ingot")));
-        shaped(RecipeCategory.MISC, Items.CHAIN, 1)
+        shaped(RecipeCategory.MISC, Items.IRON_CHAIN, 1)
                 .define('d', ModTags.Items.FORGE_TIN_INGOTS)
                 .define('i', ModItems.TIN_NUGGET.get())
                 .pattern("i")

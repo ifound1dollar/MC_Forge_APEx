@@ -1,7 +1,7 @@
 package net.dollar.apex.util;
 
 import net.dollar.apex.item.custom.ranged.ModCustomArrowEntity;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -65,7 +65,7 @@ public class ModItemUtils {
         //This method should only ever be called client-side, so no null risk here.
 
         //If the player is holding shift, show detailed info.
-        if (Screen.hasShiftDown()) {
+        if (Minecraft.getInstance().hasShiftDown()) {
             switch (equipmentType) {
                 case ARMOR -> {
                     tooltip.accept(Component.translatable("tooltip.cobalt_steel_armor_details_0"));
@@ -124,7 +124,7 @@ public class ModItemUtils {
         //This method should only ever be called client-side, so no null risk here.
 
         //If the player is holding shift, show detailed info.
-        if (Screen.hasShiftDown()) {
+        if (Minecraft.getInstance().hasShiftDown()) {
             switch (equipmentType) {
                 case ARMOR -> {
                     tooltip.accept(Component.translatable("tooltip.infused_gemstone_armor_details_0"));
@@ -184,7 +184,7 @@ public class ModItemUtils {
         //This method should only ever be called client-side, so no null risk here.
 
         //If the player is holding shift, show detailed info.
-        if (Screen.hasShiftDown()) {
+        if (Minecraft.getInstance().hasShiftDown()) {
             switch (equipmentType) {
                 case ARMOR -> {
                     tooltip.accept(Component.translatable("tooltip.tungsten_carbide_armor_details_0"));

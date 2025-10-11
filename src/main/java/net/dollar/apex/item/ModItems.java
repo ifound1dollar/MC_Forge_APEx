@@ -29,13 +29,13 @@ public class ModItems {
 
     //region Misc.
     public static final RegistryObject<Item> OBSIDIAN_GOLEM_SPAWN_EGG = registerItem("obsidian_golem_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.OBSIDIAN_GOLEM.get(),
-                    new Item.Properties()
-                            .setId(generateItemKey("obsidian_golem_spawn_egg"))));
+            () -> new SpawnEggItem(new Item.Properties()
+                    .spawnEgg(ModEntities.OBSIDIAN_GOLEM.get())
+                    .setId(generateItemKey("obsidian_golem_spawn_egg"))));
     public static final RegistryObject<Item> MYSTERIOUS_SPECTER_SPAWN_EGG = registerItem("mysterious_specter_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.MYSTERIOUS_SPECTER.get(),
-                    new Item.Properties()
-                            .setId(generateItemKey("mysterious_specter_spawn_egg"))));
+            () -> new SpawnEggItem(new Item.Properties()
+                    .spawnEgg(ModEntities.MYSTERIOUS_SPECTER.get())
+                    .setId(generateItemKey("mysterious_specter_spawn_egg"))));
     public static final RegistryObject<Item> FERTILIZER = registerItem("fertilizer",
             () -> new BoneMealItem(new Item.Properties()
                     .setId(generateItemKey("fertilizer"))));

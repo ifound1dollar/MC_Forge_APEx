@@ -157,7 +157,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
             --this.attackAnimationTick;
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             this.updatePersistentAnger((ServerLevel)this.level(), true);
         }
     }

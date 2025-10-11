@@ -3,7 +3,7 @@ package net.dollar.apex.entity.client;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.dollar.apex.ModMain;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
@@ -30,14 +30,15 @@ public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemRend
     }
 
 
-
-    public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource source, int p_117150_,
+    @Override
+    public void submit(@NotNull PoseStack poseStack, @NotNull SubmitNodeCollector collector, int light,
                        ModObsidianGolemRenderState renderState, float limbAngle, float limbDistance) {
         if (!renderState.isInvisible) {
             Crackiness.Level crackLevel = renderState.crackiness;
             if (crackLevel != Crackiness.Level.NONE) {
                 ResourceLocation resourcelocation = resourceLocations.get(crackLevel);
-                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, source, p_117150_, renderState, -1);
+                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, collector, light,
+                        renderState, -1, 1);    // Last argument is for render order, leave at 1.
             }
         }
     }

@@ -1,6 +1,5 @@
 package net.dollar.apex.entity;
 
-import net.dollar.apex.ModMain;
 import net.dollar.apex.entity.client.ModMysteriousSpecterEntityRenderer;
 import net.dollar.apex.entity.client.ModObsidianGolemEntityRenderer;
 import net.dollar.apex.entity.custom.ModMysteriousSpecterEntity;
@@ -17,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
  * Handles three different entity events regarding the newly added mobs: EntityAttributeCreationEvent,
  *  SpawnPlacementRegisterEvent, and EntityRenderersEvent.RegisterRenderers.
  */
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEntityEvents {
     /**
      * Sets attributes for all newly added mobs and adds to the event.
