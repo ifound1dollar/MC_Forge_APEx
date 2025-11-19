@@ -107,7 +107,7 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         } else if (y >= -24) {
             // Effectively reduce spawn rate by 50% above y = -24.
             return randomSource.nextBoolean()
-                    && checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
+                    && checkMonsterSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
         }
 
         // Else check regular spawn rules (normal spawn rate).
