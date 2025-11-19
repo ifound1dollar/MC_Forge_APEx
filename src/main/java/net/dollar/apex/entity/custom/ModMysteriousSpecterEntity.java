@@ -27,7 +27,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,8 +56,11 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
         super(type, level);
         abilityCooldownTicks = DEFAULT_ABILITY_COOLDOWN_TICKS;
 
-        //Set textureID to a value between 0-4, which is used to determine which texture to render.
-        textureID = level.random.nextInt(5);
+//        //Set textureID to a value between 0-4, which is used to determine which texture to render.
+//        textureID = level.random.nextInt(5);
+
+        // Above was causing rapid swapping between textures for some reason, change to always 0.
+        this.textureID = 0;
     }
 
 
@@ -96,17 +100,27 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
-    public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, LevelAccessor accessor,
+    public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, ServerLevelAccessor accessor,
                                                        MobSpawnType spawnType, BlockPos blockPos, RandomSource randomSource) {
+        // Return false if biome at attempted spawn location is mushroom island.
+        if (accessor.getBiome(blockPos).is(Biomes.MUSHROOM_FIELDS)) return false;
+
         //Only allow spawn above a certain y-level (62 is sea level).
         if (blockPos.getY() < 62) {
             return false;
         }
 
-        return checkMobSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
+        return checkMonsterSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
     }
 
-
+    /**
+     * Gets whether this mob should despawn in peaceful mode. Returns true here.
+     * @return Returns true if it should despawn, false otherwise
+     */
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 
     /**
      * Set mob attributes, like MAX_HEALTH, FOLLOW_RANGE, etc.
