@@ -4,16 +4,17 @@ import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Random;
-
 @OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterRenderState extends HumanoidRenderState {
     private final int textureID;
 
     public ModMysteriousSpecterRenderState() {
         //Set textureID to a value between 0-4, which is used to determine which texture to render.
-        Random random = new Random();
-        this.textureID = random.nextInt(5);
+//        Random random = new Random();
+//        this.textureID = random.nextInt(5);
+
+        // Above was causing rapid swapping between textures for some reason, change to always 0.
+        this.textureID = 0;
     }
 
 
