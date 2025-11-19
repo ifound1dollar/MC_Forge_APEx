@@ -3,7 +3,7 @@
   "biomes": "#is_overworld",
   "spawners": {
     "type": "apex:obsidian_golem",
-    "weight": 225,
+    "weight": 150,
     "minCount": 1,
     "maxCount": 1
   }
