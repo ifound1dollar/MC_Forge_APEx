@@ -26,7 +26,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
@@ -84,14 +85,17 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
-    public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, LevelAccessor accessor,
+    public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, ServerLevelAccessor accessor,
                                                        EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
-        //Only allow spawn above a certain y-level (62 is sea level).
+        // Return false if biome at attempted spawn location is mushroom island.
+        if (accessor.getBiome(blockPos).is(Biomes.MUSHROOM_FIELDS)) return false;
+
+        // Only allow spawn above a certain y-level (62 is sea level).
         if (blockPos.getY() < 62) {
             return false;
         }
 
-        return checkMobSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
+        return checkMonsterSpawnRules(entityType, accessor, spawnReason, blockPos, randomSource);
     }
 
 
