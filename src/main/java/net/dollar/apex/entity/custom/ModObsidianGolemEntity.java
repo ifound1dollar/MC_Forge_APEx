@@ -29,9 +29,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.NaturalSpawner;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
@@ -90,8 +91,11 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
-    public static boolean checkObsidianGolemSpawnRules(EntityType<ModObsidianGolemEntity> entityType, LevelAccessor accessor,
+    public static boolean checkObsidianGolemSpawnRules(EntityType<ModObsidianGolemEntity> entityType, ServerLevelAccessor accessor,
                                                        MobSpawnType spawnType, BlockPos blockPos, RandomSource randomSource) {
+        // Return false if biome at attempted spawn location is mushroom island.
+        if (accessor.getBiome(blockPos).is(Biomes.MUSHROOM_FIELDS)) return false;
+
         // Only spawn below y=0.
         int y = blockPos.getY();
         if (y >= 0) {
@@ -99,14 +103,21 @@ public class ModObsidianGolemEntity extends Monster implements NeutralMob {
         } else if (y >= -24) {
             // Effectively reduce spawn rate by 50% above y = -24.
             return randomSource.nextBoolean()
-                    && checkMobSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
+                    && checkMonsterSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
         }
 
         // Else check regular spawn rules (normal spawn rate).
-        return checkMobSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
+        return checkMonsterSpawnRules(entityType, accessor, spawnType, blockPos, randomSource);
     }
 
-
+    /**
+     * Gets whether this mob should despawn in peaceful mode. Returns true here.
+     * @return Returns true if it should despawn, false otherwise
+     */
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 
     /**
      * Set mob attributes, like MAX_HEALTH, FOLLOW_RANGE, etc.
