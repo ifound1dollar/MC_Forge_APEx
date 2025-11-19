@@ -26,12 +26,14 @@ public class ModEntities {
             ENTITY_TYPES.register("obsidian_golem",
                     () -> EntityType.Builder.of(ModObsidianGolemEntity::new, MobCategory.MONSTER)
                             .sized(1.4f, 2.7f)
+                            .notInPeaceful()
                             .build(ResourceKey.create(Registries.ENTITY_TYPE,
                                     ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem"))));
     public static final RegistryObject<EntityType<ModMysteriousSpecterEntity>> MYSTERIOUS_SPECTER =
             ENTITY_TYPES.register("mysterious_specter",
                     () -> EntityType.Builder.of(ModMysteriousSpecterEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 1.8f)
+                            .notInPeaceful()
                             .build(ResourceKey.create(Registries.ENTITY_TYPE,
                                     ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter"))));
 
