@@ -7,7 +7,7 @@ import net.dollar.apex.entity.custom.ModObsidianGolemEntity;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -16,9 +16,9 @@ import org.jetbrains.annotations.NotNull;
  * CLIENT-ONLY. Handles Old Lady Muff rendering, supporting custom texture. Also implements custom render scale.
  */
 @OnlyIn(Dist.CLIENT)
-public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolemEntity,
-        ModObsidianGolemRenderState, ModObsidianGolemModel> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+public class ModObsidianGolemEntityRenderer extends MobRenderer<@NotNull ModObsidianGolemEntity,
+        @NotNull ModObsidianGolemRenderState, @NotNull ModObsidianGolemModel> {
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(
             ModMain.MODID, "textures/entity/obsidian_golem.png");
 
     public ModObsidianGolemEntityRenderer(EntityRendererProvider.Context context) {
@@ -29,12 +29,12 @@ public class ModObsidianGolemEntityRenderer extends MobRenderer<ModObsidianGolem
 
 
     /**
-     * Gets texture ResourceLocation defined in top of class.
+     * Gets texture Identifier defined in top of class.
      * @param renderState RenderState for the Obsidian Golem being rendered
-     * @return Texture ResourceLocation
+     * @return Texture Identifier
      */
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull ModObsidianGolemRenderState renderState) {
+    public @NotNull Identifier getTextureLocation(@NotNull ModObsidianGolemRenderState renderState) {
         return TEXTURE;
     }
 

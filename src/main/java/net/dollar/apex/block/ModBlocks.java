@@ -3,8 +3,8 @@ package net.dollar.apex.block;
 import net.dollar.apex.ModMain;
 import net.dollar.apex.item.ModItems;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -144,11 +144,11 @@ public class ModBlocks {
 
 
     private static ResourceKey<Item> generateItemKey(String name) {
-        return ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     private static ResourceKey<Block> generateBlockKey(String name) {
-        return ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     /**

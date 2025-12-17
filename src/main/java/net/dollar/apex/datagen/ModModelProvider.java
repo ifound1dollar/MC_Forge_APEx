@@ -25,12 +25,12 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected @NotNull Stream<Item> getKnownItems() {
-        return BuiltInRegistries.ITEM.stream().filter(item -> ModMain.MODID.equals(item.builtInRegistryHolder().key().location().getNamespace()));
+        return BuiltInRegistries.ITEM.stream().filter(item -> ModMain.MODID.equals(item.builtInRegistryHolder().key().identifier().getNamespace()));
     }
 
     @Override
     protected @NotNull Stream<Block> getKnownBlocks() {
-        return BuiltInRegistries.BLOCK.stream().filter(block -> ModMain.MODID.equals(block.builtInRegistryHolder().key().location().getNamespace()));
+        return BuiltInRegistries.BLOCK.stream().filter(block -> ModMain.MODID.equals(block.builtInRegistryHolder().key().identifier().getNamespace()));
     }
 
     @Override

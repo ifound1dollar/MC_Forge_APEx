@@ -6,7 +6,7 @@ import net.dollar.apex.entity.custom.ModMysteriousSpecterEntity;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
  * CLIENT-ONLY. Handles Mysterious Specter rendering, supporting custom texture. Also implements custom render scale.
  */
 @OnlyIn(Dist.CLIENT)
-public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriousSpecterEntity,
-        ModMysteriousSpecterRenderState, ModMysteriousSpecterModel> {
+public class ModMysteriousSpecterEntityRenderer extends MobRenderer<@NotNull ModMysteriousSpecterEntity,
+        @NotNull ModMysteriousSpecterRenderState, @NotNull ModMysteriousSpecterModel> {
     private static final String TEXTURE_BASE = "textures/entity/mysterious_specter";
 
     public ModMysteriousSpecterEntityRenderer(EntityRendererProvider.Context context) {
@@ -27,15 +27,15 @@ public class ModMysteriousSpecterEntityRenderer extends MobRenderer<ModMysteriou
 
 
     /**
-     * Gets texture ResourceLocation defined in top of class.
+     * Gets texture Identifier defined in top of class.
      * @param renderState RenderState for the Mysterious Specter entity being rendered
-     * @return Texture ResourceLocation
+     * @return Texture Identifier
      */
     @Override
-    public @NotNull ResourceLocation getTextureLocation(ModMysteriousSpecterRenderState renderState) {
+    public @NotNull Identifier getTextureLocation(ModMysteriousSpecterRenderState renderState) {
         //Generate and return a new identifier using the TEXTURE_BASE string appended with the texture
         //  ID from the Entity instance (plus the .png extension).
-        return ResourceLocation.fromNamespaceAndPath(ModMain.MODID, TEXTURE_BASE + renderState.getTextureID() + ".png");
+        return Identifier.fromNamespaceAndPath(ModMain.MODID, TEXTURE_BASE + renderState.getTextureID() + ".png");
     }
 
     /**

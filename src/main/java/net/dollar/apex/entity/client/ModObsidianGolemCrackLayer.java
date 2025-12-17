@@ -6,7 +6,7 @@ import net.dollar.apex.ModMain;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Crackiness;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -18,14 +18,14 @@ import java.util.Map;
  * CLIENT-ONLY. Handles Crackiness layer applied to ModObsidianGolemEntityRenderer.
  */
 @OnlyIn(Dist.CLIENT)
-public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemRenderState, ModObsidianGolemModel> {
-    private static final Map<Crackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
-            Crackiness.Level.LOW, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_low.png"),
-            Crackiness.Level.MEDIUM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_medium.png"),
-            Crackiness.Level.HIGH, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_high.png"));
+public class ModObsidianGolemCrackLayer extends RenderLayer<@NotNull ModObsidianGolemRenderState, @NotNull ModObsidianGolemModel> {
+    private static final Map<Crackiness.Level, Identifier> resourceLocations = ImmutableMap.of(
+            Crackiness.Level.LOW, Identifier.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_low.png"),
+            Crackiness.Level.MEDIUM, Identifier.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_medium.png"),
+            Crackiness.Level.HIGH, Identifier.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_high.png"));
 
-    public ModObsidianGolemCrackLayer(RenderLayerParent<ModObsidianGolemRenderState,
-            ModObsidianGolemModel> parent) {
+    public ModObsidianGolemCrackLayer(RenderLayerParent<@NotNull ModObsidianGolemRenderState,
+            @NotNull ModObsidianGolemModel> parent) {
         super(parent);
     }
 
@@ -36,8 +36,8 @@ public class ModObsidianGolemCrackLayer extends RenderLayer<ModObsidianGolemRend
         if (!renderState.isInvisible) {
             Crackiness.Level crackLevel = renderState.crackiness;
             if (crackLevel != Crackiness.Level.NONE) {
-                ResourceLocation resourcelocation = resourceLocations.get(crackLevel);
-                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, collector, light,
+                Identifier resourceLocation = resourceLocations.get(crackLevel);
+                renderColoredCutoutModel(this.getParentModel(), resourceLocation, poseStack, collector, light,
                         renderState, -1, 1);    // Last argument is for render order, leave at 1.
             }
         }

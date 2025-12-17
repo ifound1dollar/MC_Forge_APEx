@@ -10,8 +10,8 @@ import net.dollar.apex.item.custom.ranged.ModEndgameBowItem;
 import net.dollar.apex.item.custom.ranged.ModEndgameCrossbowItem;
 import net.dollar.apex.util.*;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
@@ -506,7 +506,7 @@ public class ModItems {
      * @return The newly generated ResourceKey<Item>.
      */
     private static ResourceKey<Item> generateItemKey(String name) {
-        return ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     /**

@@ -4,8 +4,8 @@ import net.dollar.apex.ModMain;
 import net.dollar.apex.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -91,11 +91,11 @@ public class ModConfiguredFeatures {
 
     /**
      * Generates a ConfiguredFeature ResourceKey.
-     * @param name String corresponding to the ConfiguredFeature's ResourceLocation
+     * @param name String corresponding to the ConfiguredFeature's Identifier
      * @return The generated ResourceKey
      */
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     /**

@@ -4,8 +4,8 @@ import net.dollar.apex.ModMain;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SmithingTemplateItem;
@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Contains helper methods to generate Smithing Upgrade Template items, which have custom tooltips that require
- *  numerous ResourceLocations and styles.
+ *  numerous Identifiers and styles.
  */
 public class ModSmithingUpgradeItemHelper {
     //region COBALT-STEEL Components
@@ -45,17 +45,17 @@ public class ModSmithingUpgradeItemHelper {
     //endregion
 
     //region EMPTY SLOT RESOURCE LOCATIONS
-    private static final ResourceLocation EMPTY_SLOT_HELMET = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet");
-    private static final ResourceLocation EMPTY_SLOT_CHESTPLATE = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate");
-    private static final ResourceLocation EMPTY_SLOT_LEGGINGS = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_leggings");
-    private static final ResourceLocation EMPTY_SLOT_BOOTS = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots");
-    private static final ResourceLocation EMPTY_SLOT_HOE = ResourceLocation.withDefaultNamespace("item/empty_slot_hoe");
-    private static final ResourceLocation EMPTY_SLOT_AXE = ResourceLocation.withDefaultNamespace("item/empty_slot_axe");
-    private static final ResourceLocation EMPTY_SLOT_SWORD = ResourceLocation.withDefaultNamespace("item/empty_slot_sword");
-    private static final ResourceLocation EMPTY_SLOT_SHOVEL = ResourceLocation.withDefaultNamespace("item/empty_slot_shovel");
-    private static final ResourceLocation EMPTY_SLOT_PICKAXE = ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe");
-    private static final ResourceLocation EMPTY_SLOT_INGOT = ResourceLocation.withDefaultNamespace("item/empty_slot_ingot");
-    private static final ResourceLocation EMPTY_SLOT_DIAMOND = ResourceLocation.withDefaultNamespace("item/empty_slot_diamond");
+    private static final Identifier EMPTY_SLOT_HELMET = Identifier.withDefaultNamespace("item/empty_armor_slot_helmet");
+    private static final Identifier EMPTY_SLOT_CHESTPLATE = Identifier.withDefaultNamespace("item/empty_armor_slot_chestplate");
+    private static final Identifier EMPTY_SLOT_LEGGINGS = Identifier.withDefaultNamespace("item/empty_armor_slot_leggings");
+    private static final Identifier EMPTY_SLOT_BOOTS = Identifier.withDefaultNamespace("item/empty_armor_slot_boots");
+    private static final Identifier EMPTY_SLOT_HOE = Identifier.withDefaultNamespace("item/empty_slot_hoe");
+    private static final Identifier EMPTY_SLOT_AXE = Identifier.withDefaultNamespace("item/empty_slot_axe");
+    private static final Identifier EMPTY_SLOT_SWORD = Identifier.withDefaultNamespace("item/empty_slot_sword");
+    private static final Identifier EMPTY_SLOT_SHOVEL = Identifier.withDefaultNamespace("item/empty_slot_shovel");
+    private static final Identifier EMPTY_SLOT_PICKAXE = Identifier.withDefaultNamespace("item/empty_slot_pickaxe");
+    private static final Identifier EMPTY_SLOT_INGOT = Identifier.withDefaultNamespace("item/empty_slot_ingot");
+    private static final Identifier EMPTY_SLOT_DIAMOND = Identifier.withDefaultNamespace("item/empty_slot_diamond");
     //endregion
 
 
@@ -73,7 +73,7 @@ public class ModSmithingUpgradeItemHelper {
                 COBALT_UPGRADE_BASE_SLOT_DESCRIPTION, COBALT_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(true),
                 new Item.Properties().rarity(Rarity.UNCOMMON)
-                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(
                                 ModMain.MODID, "cobalt_upgrade_smithing_template"))));
     }
 
@@ -87,7 +87,7 @@ public class ModSmithingUpgradeItemHelper {
                 INFUSION_UPGRADE_BASE_SLOT_DESCRIPTION, INFUSION_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(false),
                 new Item.Properties().rarity(Rarity.UNCOMMON)
-                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(
                                 ModMain.MODID, "infusion_upgrade_smithing_template"))));
     }
 
@@ -101,27 +101,27 @@ public class ModSmithingUpgradeItemHelper {
                 CARBIDE_UPGRADE_BASE_SLOT_DESCRIPTION, CARBIDE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
                 createUpgradeIconList(), createUpgradeMaterialList(true),
                 new Item.Properties().rarity(Rarity.UNCOMMON)
-                        .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(
                                 ModMain.MODID, "carbide_upgrade_smithing_template"))));
     }
 
 
 
     /**
-     * Generates a List of ResourceLocations pointing to empty equipment icons.
-     * @return List of empty equipment icon ResourceLocations
+     * Generates a List of Identifiers pointing to empty equipment icons.
+     * @return List of empty equipment icon Identifiers
      */
-    private static List<ResourceLocation> createUpgradeIconList() {
+    private static List<Identifier> createUpgradeIconList() {
         return List.of(EMPTY_SLOT_HELMET, EMPTY_SLOT_SWORD, EMPTY_SLOT_CHESTPLATE, EMPTY_SLOT_PICKAXE,
                 EMPTY_SLOT_LEGGINGS, EMPTY_SLOT_AXE, EMPTY_SLOT_BOOTS, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
     }
 
     /**
-     * Generates a List of ResourceLocations pointing to empty upgrade ingredient icons.
+     * Generates a List of Identifiers pointing to empty upgrade ingredient icons.
      * @param isIngot Whether the upgrade material is shaped like a Diamond or an Ingot
-     * @return List (single item) of empty upgrade ingredient ResourceLocations
+     * @return List (single item) of empty upgrade ingredient Identifiers
      */
-    private static List<ResourceLocation> createUpgradeMaterialList(boolean isIngot) {
+    private static List<Identifier> createUpgradeMaterialList(boolean isIngot) {
         if (isIngot) {
             return List.of(EMPTY_SLOT_INGOT);
         } else {

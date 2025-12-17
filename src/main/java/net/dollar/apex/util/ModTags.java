@@ -2,7 +2,7 @@ package net.dollar.apex.util;
 
 import net.dollar.apex.ModMain;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -31,7 +31,7 @@ public class ModTags {
          */
         private static TagKey<Block> forgeBlockTag(String name)
         {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
+            return BlockTags.create(Identifier.fromNamespaceAndPath("forge", name));
         }
         
         /**
@@ -42,7 +42,7 @@ public class ModTags {
          */
         private static TagKey<Block> modBlockTag(String name)
         {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+            return BlockTags.create(Identifier.fromNamespaceAndPath(ModMain.MODID, name));
         }
     }
 
@@ -105,7 +105,7 @@ public class ModTags {
          */
         private static TagKey<Item> forgeItemTag(String name)
         {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath("forge", name));
         }
 
         /**
@@ -116,11 +116,11 @@ public class ModTags {
          */
         private static TagKey<Item> modItemTag(String name)
         {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath(ModMain.MODID, name));
         }
 
         private static TagKey<Item> minecraftItemTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath("minecraft", name));
         }
     }
 
@@ -137,7 +137,7 @@ public class ModTags {
          */
         private static TagKey<EntityType<?>> forgeEntityTypeTag(String name)
         {
-            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("forge", name));
+            return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath("forge", name));
         }
         /**
          * Generate an apex entity_type tag. NOTE: Using Registries.ENTITY_TYPE auto-inserts the
@@ -147,7 +147,7 @@ public class ModTags {
          */
         private static TagKey<EntityType<?>> modEntityTypeTag(String name)
         {
-            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+            return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
         }
 
     }

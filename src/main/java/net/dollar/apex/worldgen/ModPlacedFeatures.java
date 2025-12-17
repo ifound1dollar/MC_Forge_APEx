@@ -5,8 +5,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
@@ -89,11 +89,11 @@ public class ModPlacedFeatures {
 
     /**
      * Generates a Placed Feature ResourceKey.
-     * @param name String corresponding to the PlacedFeature's ResourceLocation
+     * @param name String corresponding to the PlacedFeature's Identifier
      * @return The generated ResourceKey
      */
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 
     /**

@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.dollar.apex.util.ModLootUtils;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -47,11 +47,10 @@ public class ModBasicUpgradeTemplateModifier extends LootModifier {
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(LootTable lootTable, ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         //Check chest type, calling genLootByRarity below to ensure correct loot modification.
-        ResourceLocation chest = context.getQueriedLootTableId();
+        Identifier chest = context.getQueriedLootTableId();
 
         //COMMON
         //None.
-
         //UNCOMMON
         if (chest.equals( ModLootUtils.ANCIENT_CITY_ID) || chest.equals( ModLootUtils.BASTION_TREASURE_ID) ||
                 chest.equals( ModLootUtils.END_CITY_TREASURE_ID) || chest.equals( ModLootUtils.NETHER_BRIDGE_ID) ||

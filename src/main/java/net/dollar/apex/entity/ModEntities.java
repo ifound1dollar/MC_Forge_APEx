@@ -4,8 +4,8 @@ import net.dollar.apex.ModMain;
 import net.dollar.apex.entity.custom.ModMysteriousSpecterEntity;
 import net.dollar.apex.entity.custom.ModObsidianGolemEntity;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
@@ -28,14 +28,14 @@ public class ModEntities {
                             .sized(1.4f, 2.7f)
                             .notInPeaceful()
                             .build(ResourceKey.create(Registries.ENTITY_TYPE,
-                                    ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem"))));
+                                    Identifier.fromNamespaceAndPath(ModMain.MODID, "obsidian_golem"))));
     public static final RegistryObject<EntityType<ModMysteriousSpecterEntity>> MYSTERIOUS_SPECTER =
             ENTITY_TYPES.register("mysterious_specter",
                     () -> EntityType.Builder.of(ModMysteriousSpecterEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 1.8f)
                             .notInPeaceful()
                             .build(ResourceKey.create(Registries.ENTITY_TYPE,
-                                    ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter"))));
+                                    Identifier.fromNamespaceAndPath(ModMain.MODID, "mysterious_specter"))));
 
 
 

@@ -8,14 +8,14 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecterRenderState> {
+public class ModMysteriousSpecterModel extends HumanoidModel<@NotNull ModMysteriousSpecterRenderState> {
     public final ModelPart leftSleeve;
     public final ModelPart rightSleeve;
     public final ModelPart leftPants;
@@ -23,7 +23,7 @@ public class ModMysteriousSpecterModel extends HumanoidModel<ModMysteriousSpecte
     public final ModelPart jacket;
 
     public ModMysteriousSpecterModel(ModelPart modelPart) {
-        super(modelPart, RenderType::entityTranslucent);
+        super(modelPart, RenderTypes::entityTranslucent);
         this.leftSleeve = this.leftArm.getChild("left_sleeve");
         this.rightSleeve = this.rightArm.getChild("right_sleeve");
         this.leftPants = this.leftLeg.getChild("left_pants");

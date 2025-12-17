@@ -35,16 +35,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Custom boss Monster entity, naturally spawning very low in the world.
  */
 public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    private int remainingPersistentAngerTime;
+    private long persistentAngerEndTime;
     @Nullable
-    private UUID persistentAngerTarget;
+    private EntityReference<@NotNull LivingEntity> persistentAngerTarget;
 
     private int ticksSinceLastAttack = 0;
     private static final int DEFAULT_LAST_ATTACK_TICKS_THRESHOLD = 100;
@@ -85,8 +84,8 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @param randomSource RandomSource instance
      * @return Whether the spawn attempt is valid
      */
-    public static boolean checkMysteriousSpecterSpawnRules(EntityType<ModMysteriousSpecterEntity> entityType, ServerLevelAccessor accessor,
-                                                       EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
+    public static boolean checkMysteriousSpecterSpawnRules(EntityType<@NotNull ModMysteriousSpecterEntity> entityType, ServerLevelAccessor accessor,
+                                                           EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource randomSource) {
         // Return false if biome at attempted spawn location is mushroom island.
         if (accessor.getBiome(blockPos).is(Biomes.MUSHROOM_FIELDS)) return false;
 
@@ -116,11 +115,12 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
 
     /**
      * Gets the attack Box for this mob. Overridden to expand on the X and Z axes somewhat.
+     * @param attackRange Attack range of this mob
      * @return The attack Box for this mob.
      */
     @Override
-    protected @NotNull AABB getAttackBoundingBox() {
-        return super.getAttackBoundingBox().inflate(0.1d, 0.0d, 0.1d);
+    protected @NotNull AABB getAttackBoundingBox(double attackRange) {
+        return super.getAttackBoundingBox(attackRange).inflate(0.1d, 0.0d, 0.1d);
     }
 
     /**
@@ -158,32 +158,36 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
     /**
      * Begins counting persistent anger, called when a LivingEntity attacks this Monster.
      */
+    @Override
     public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
     /**
      * Sets current remaining persistent anger time.
      * @param value New persistent anger time
      */
-    public void setRemainingPersistentAngerTime(int value) {
-        this.remainingPersistentAngerTime = value;
+    @Override
+    public void setPersistentAngerEndTime(long value) {
+        this.persistentAngerEndTime = value;
     }
 
     /**
      * Gets current remaining persistent anger time.
      * @return Current remaining persistent anger time.
      */
-    public int getRemainingPersistentAngerTime() {
-        return this.remainingPersistentAngerTime;
+    @Override
+    public long getPersistentAngerEndTime() {
+        return this.persistentAngerEndTime;
     }
 
     /**
      * Sets current persistent anger target via UUID.
-     * @param targetUUID UUID of new persistent anger target
+     * @param target EntityReference of new persistent anger target
      */
-    public void setPersistentAngerTarget(@javax.annotation.Nullable UUID targetUUID) {
-        this.persistentAngerTarget = targetUUID;
+    @Override
+    public void setPersistentAngerTarget(@Nullable EntityReference<@NotNull LivingEntity> target) {
+        this.persistentAngerTarget = target;
     }
 
     /**
@@ -191,7 +195,7 @@ public class ModMysteriousSpecterEntity extends Monster implements NeutralMob {
      * @return Current persistent target UUID
      */
     @javax.annotation.Nullable
-    public UUID getPersistentAngerTarget() {
+    public EntityReference<@NotNull LivingEntity> getPersistentAngerTarget() {
         return this.persistentAngerTarget;
     }
 

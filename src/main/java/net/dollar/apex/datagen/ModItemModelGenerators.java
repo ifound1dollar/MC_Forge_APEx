@@ -1,18 +1,17 @@
 package net.dollar.apex.datagen;
 
-import net.dollar.apex.ModMain;
 import net.dollar.apex.item.ModItems;
 import net.dollar.apex.util.ModEquipmentAssets;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.ModelInstance;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.function.BiConsumer;
 
 public class ModItemModelGenerators extends ItemModelGenerators {
-    public ModItemModelGenerators(ItemModelOutput output, BiConsumer<ResourceLocation, ModelInstance> consumer) {
+    public ModItemModelGenerators(ItemModelOutput output, BiConsumer<Identifier, ModelInstance> consumer) {
         super(output, consumer);
     }
 
@@ -108,49 +107,49 @@ public class ModItemModelGenerators extends ItemModelGenerators {
 
         // ARMORS
         generateTrimmableItem(ModItems.BRONZE_HELMET.get(), ModEquipmentAssets.BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_helmet"), false);
+                TRIM_PREFIX_HELMET, false);
         generateTrimmableItem(ModItems.BRONZE_CHESTPLATE.get(), ModEquipmentAssets.BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_chestplate"), false);
+                TRIM_PREFIX_CHESTPLATE, false);
         generateTrimmableItem(ModItems.BRONZE_LEGGINGS.get(), ModEquipmentAssets.BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_leggings"), false);
+                TRIM_PREFIX_LEGGINGS, false);
         generateTrimmableItem(ModItems.BRONZE_BOOTS.get(), ModEquipmentAssets.BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "bronze_boots"), false);
+                TRIM_PREFIX_BOOTS, false);
 
         generateTrimmableItem(ModItems.GILDED_BRONZE_HELMET.get(), ModEquipmentAssets.GILDED_BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_helmet"), false);
+                TRIM_PREFIX_HELMET, false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_CHESTPLATE.get(), ModEquipmentAssets.GILDED_BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_chestplate"), false);
+                TRIM_PREFIX_CHESTPLATE, false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_LEGGINGS.get(), ModEquipmentAssets.GILDED_BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_leggings"), false);
+                TRIM_PREFIX_LEGGINGS, false);
         generateTrimmableItem(ModItems.GILDED_BRONZE_BOOTS.get(), ModEquipmentAssets.GILDED_BRONZE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "gilded_bronze_boots"), false);
+                TRIM_PREFIX_BOOTS, false);
 
         generateTrimmableItem(ModItems.COBALT_STEEL_HELMET.get(), ModEquipmentAssets.COBALT_STEEL,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_helmet"), false);
+                TRIM_PREFIX_HELMET, false);
         generateTrimmableItem(ModItems.COBALT_STEEL_CHESTPLATE.get(), ModEquipmentAssets.COBALT_STEEL,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_chestplate"), false);
+                TRIM_PREFIX_CHESTPLATE, false);
         generateTrimmableItem(ModItems.COBALT_STEEL_LEGGINGS.get(), ModEquipmentAssets.COBALT_STEEL,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_leggings"), false);
+                TRIM_PREFIX_LEGGINGS, false);
         generateTrimmableItem(ModItems.COBALT_STEEL_BOOTS.get(), ModEquipmentAssets.COBALT_STEEL,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_boots"), false);
+                TRIM_PREFIX_BOOTS, false);
 
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_HELMET.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_helmet"), false);
+                TRIM_PREFIX_HELMET, false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_CHESTPLATE.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_chestplate"), false);
+                TRIM_PREFIX_CHESTPLATE, false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_LEGGINGS.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_leggings"), false);
+                TRIM_PREFIX_LEGGINGS, false);
         generateTrimmableItem(ModItems.INFUSED_GEMSTONE_BOOTS.get(), ModEquipmentAssets.INFUSED_GEMSTONE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "infused_gemstone_boots"), false);
+                TRIM_PREFIX_BOOTS, false);
 
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_HELMET.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_helmet"), false);
+                TRIM_PREFIX_HELMET, false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_CHESTPLATE.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_chestplate"), false);
+                TRIM_PREFIX_CHESTPLATE, false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_LEGGINGS.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_leggings"), false);
+                TRIM_PREFIX_LEGGINGS, false);
         generateTrimmableItem(ModItems.TUNGSTEN_CARBIDE_BOOTS.get(), ModEquipmentAssets.TUNGSTEN_CARBIDE,
-                ResourceLocation.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_boots"), false);
+                TRIM_PREFIX_BOOTS, false);
 
         // SPAWN EGGS
         generateFlatItem(ModItems.OBSIDIAN_GOLEM_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);

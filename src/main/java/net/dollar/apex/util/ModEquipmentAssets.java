@@ -1,8 +1,8 @@
 package net.dollar.apex.util;
 
 import net.dollar.apex.ModMain;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 
 import static net.minecraft.world.item.equipment.EquipmentAssets.ROOT_ID;
@@ -19,6 +19,6 @@ public interface ModEquipmentAssets {
     ResourceKey<EquipmentAsset> TUNGSTEN_CARBIDE = createId("tungsten_carbide");
 
     static ResourceKey<EquipmentAsset> createId(String name) {
-        return ResourceKey.create(ROOT_ID, ResourceLocation.fromNamespaceAndPath(ModMain.MODID, name));
+        return ResourceKey.create(ROOT_ID, Identifier.fromNamespaceAndPath(ModMain.MODID, name));
     }
 }
