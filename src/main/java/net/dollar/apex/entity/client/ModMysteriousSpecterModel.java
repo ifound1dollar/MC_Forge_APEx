@@ -10,11 +10,8 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterModel extends HumanoidModel<@NotNull ModMysteriousSpecterRenderState> {
     public final ModelPart leftSleeve;
     public final ModelPart rightSleeve;
@@ -63,15 +60,6 @@ public class ModMysteriousSpecterModel extends HumanoidModel<@NotNull ModMysteri
         this.rightLeg.visible = $$1;
         this.leftLeg.visible = $$1;
         super.setupAnim(renderState);
-    }
-
-    public void setAllVisible(boolean isVisible) {
-        super.setAllVisible(isVisible);
-        this.leftSleeve.visible = isVisible;
-        this.rightSleeve.visible = isVisible;
-        this.leftPants.visible = isVisible;
-        this.rightPants.visible = isVisible;
-        this.jacket.visible = isVisible;
     }
 
     public void translateToHand(@NotNull HumanoidArm p_103392_, @NotNull PoseStack p_103393_) {

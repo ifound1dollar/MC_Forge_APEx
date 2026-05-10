@@ -1,10 +1,7 @@
 package net.dollar.apex.entity.client;
 
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterRenderState extends HumanoidRenderState {
     private final int textureID;
 

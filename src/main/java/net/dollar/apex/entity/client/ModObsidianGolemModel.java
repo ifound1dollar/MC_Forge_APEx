@@ -3,14 +3,11 @@ package net.dollar.apex.entity.client;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Defines Obsidian Golem model, copied largely from IronGolemModel but without flower layer.
  */
-@OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemModel extends EntityModel<ModObsidianGolemRenderState> {
     private final ModelPart head;
     private final ModelPart rightArm;

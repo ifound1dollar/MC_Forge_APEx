@@ -7,14 +7,11 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Handles Mysterious Specter rendering, supporting custom texture. Also implements custom render scale.
  */
-@OnlyIn(Dist.CLIENT)
 public class ModMysteriousSpecterEntityRenderer extends MobRenderer<@NotNull ModMysteriousSpecterEntity,
         @NotNull ModMysteriousSpecterRenderState, @NotNull ModMysteriousSpecterModel> {
     private static final String TEXTURE_BASE = "textures/entity/mysterious_specter";

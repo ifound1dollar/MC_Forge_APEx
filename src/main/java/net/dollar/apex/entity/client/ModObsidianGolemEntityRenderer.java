@@ -8,14 +8,11 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * CLIENT-ONLY. Handles Old Lady Muff rendering, supporting custom texture. Also implements custom render scale.
  */
-@OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemEntityRenderer extends MobRenderer<@NotNull ModObsidianGolemEntity,
         @NotNull ModObsidianGolemRenderState, @NotNull ModObsidianGolemModel> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(

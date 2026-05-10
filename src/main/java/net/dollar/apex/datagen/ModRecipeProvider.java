@@ -16,8 +16,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.BlastingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
@@ -47,152 +47,152 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes() {
         //region Ores, smelting AND blasting
-        smeltingRecipeBuilder(output, ModBlocks.COBALT_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.COBALT_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.COBALT_SHARD.get(), 0.9f, 200, "cobalt_shard" );
-        blastingRecipeBuilder(output, ModBlocks.COBALT_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.COBALT_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.COBALT_SHARD.get(), 0.9f, 100, "cobalt_shard" );
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_COBALT_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_COBALT_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.COBALT_SHARD.get(), 0.9f, 200, "cobalt_shard" );
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_COBALT_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_COBALT_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.COBALT_SHARD.get(), 0.9f, 100, "cobalt_shard" );
 
-        smeltingRecipeBuilder(output, ModBlocks.PHOSPHATE_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.PHOSPHATE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.PHOSPHATE_POWDER.get(), 0.2f, 200, "phosphate_powder" );
-        blastingRecipeBuilder(output, ModBlocks.PHOSPHATE_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.PHOSPHATE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.PHOSPHATE_POWDER.get(), 0.2f, 100, "phosphate_powder" );
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.PHOSPHATE_POWDER.get(), 0.2f, 200, "phosphate_powder" );
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_PHOSPHATE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.PHOSPHATE_POWDER.get(), 0.2f, 100, "phosphate_powder" );
 
-        smeltingRecipeBuilder(output, ModBlocks.RUBY_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.RUBY_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.RUBY.get(), 1.2f, 200, "ruby" );
-        blastingRecipeBuilder(output, ModBlocks.RUBY_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.RUBY_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.RUBY.get(), 1.2f, 100, "ruby" );
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_RUBY_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_RUBY_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.RUBY.get(), 1.2f, 200, "ruby" );
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_RUBY_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_RUBY_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.RUBY.get(), 1.2f, 100, "ruby" );
 
-        smeltingRecipeBuilder(output, ModBlocks.SAPPHIRE_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.SAPPHIRE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.SAPPHIRE.get(), 1.2f, 200, "sapphire" );
-        blastingRecipeBuilder(output, ModBlocks.SAPPHIRE_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.SAPPHIRE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.SAPPHIRE.get(), 1.2f, 100, "sapphire" );
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.SAPPHIRE.get(), 1.2f, 200, "sapphire" );
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.SAPPHIRE.get(), 1.2f, 100, "sapphire" );
 
-        smeltingRecipeBuilder(output, ModBlocks.TIN_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.TIN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 200, "tin_ingot");
-        blastingRecipeBuilder(output, ModBlocks.TIN_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.TIN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 100, "tin_ingot");
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_TIN_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_TIN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 200, "tin_ingot");
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_TIN_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_TIN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 100, "tin_ingot");
-        smeltingRecipeBuilder(output, ModItems.RAW_TIN.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.RAW_TIN.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 200, "tin_ingot");
-        blastingRecipeBuilder(output, ModItems.RAW_TIN.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.RAW_TIN.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TIN_INGOT.get(), 0.7f, 100, "tin_ingot");
 
-        smeltingRecipeBuilder(output, ModItems.BRONZE_COMPOUND.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_COMPOUND.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_INGOT.get(), 0.7f, 200, "bronze_ingot");
-        blastingRecipeBuilder(output, ModItems.BRONZE_COMPOUND.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_COMPOUND.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_INGOT.get(), 0.7f, 100, "bronze_ingot");
 
-        smeltingRecipeBuilder(output, ModItems.STEEL_COMPOUND.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.STEEL_COMPOUND.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.STEEL_INGOT.get(), 0.9f, 200, "steel_ingot");
-        blastingRecipeBuilder(output, ModItems.STEEL_COMPOUND.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.STEEL_COMPOUND.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.STEEL_INGOT.get(), 0.9f, 100, "steel_ingot");
 
-        smeltingRecipeBuilder(output, ModBlocks.TUNGSTEN_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.TUNGSTEN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "tungsten_ingot");
-        blastingRecipeBuilder(output, ModBlocks.TUNGSTEN_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.TUNGSTEN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
-        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "tungsten_ingot");
-        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
-        smeltingRecipeBuilder(output, ModItems.RAW_TUNGSTEN.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.RAW_TUNGSTEN.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "tungsten_ingot");
-        blastingRecipeBuilder(output, ModItems.RAW_TUNGSTEN.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.RAW_TUNGSTEN.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
         //endregion
         
         //region Smeltable tools
-        smeltingRecipeBuilder(output, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_AXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_HOE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_PICKAXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_SHOVEL.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_SWORD.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_HELMET.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_CHESTPLATE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_LEGGINGS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
-        smeltingRecipeBuilder(output, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 200, "bronze_nugget");
-        blastingRecipeBuilder(output, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.BRONZE_BOOTS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 ModItems.BRONZE_NUGGET.get(), 0.1f, 100, "bronze_nugget");
 
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_AXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_HOE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_PICKAXE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_SHOVEL.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_SWORD.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_HELMET.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_CHESTPLATE.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_LEGGINGS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
-        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC,
+        smeltingRecipeBuilder(output, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 200, "gold_nugget");
-        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC,
+        blastingRecipeBuilder(output, ModItems.GILDED_BRONZE_BOOTS.get(), RecipeCategory.MISC, CookingBookCategory.MISC,
                 Items.GOLD_NUGGET, 0.1f, 100, "gold_nugget");
         //endregion
 
@@ -940,18 +940,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      *  specifically item-to-item, and should never use tags.
      * @param output RecipeOutput object
      * @param ingredientItemLike ItemLike that will be blasted
-     * @param category Recipe category
+     * @param recipeCategory Recipe category
      * @param resultItemLike ItemLike that will be produced
      * @param xpReward XP reward per item blasted
      * @param ticks Number of ticks required to blast
      * @param resultItemName String, equal to result item name, that is used in JSON filename
      */
     protected void smeltingRecipeBuilder(RecipeOutput output, ItemLike ingredientItemLike,
-                                                RecipeCategory category, ItemLike resultItemLike, float xpReward,
-                                                int ticks, String resultItemName) {
+                                             RecipeCategory recipeCategory, CookingBookCategory cookingCategory,
+                                             ItemLike resultItemLike, float xpReward,
+                                             int ticks, String resultItemName) {
         SimpleCookingRecipeBuilder
-                .generic(Ingredient.of(ingredientItemLike), category, resultItemLike, xpReward, ticks,
-                        RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new)
+                .generic(Ingredient.of(ingredientItemLike), recipeCategory, cookingCategory, resultItemLike,
+                        xpReward, ticks, SmeltingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
                 .save(output, Identifier.fromNamespaceAndPath(ModMain.MODID,
@@ -963,18 +964,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
      *  specifically item-to-item, and should never use tags.
      * @param output RecipeOutput object
      * @param ingredientItemLike ItemLike that will be blasted
-     * @param category Recipe category
+     * @param recipeCategory Recipe category
      * @param resultItemLike ItemLike that will be produced
      * @param xpReward XP reward per item blasted
      * @param ticks Number of ticks required to blast
      * @param resultItemName String, equal to result item name, that is used in JSON filename
      */
     protected void blastingRecipeBuilder(RecipeOutput output, ItemLike ingredientItemLike,
-                                                RecipeCategory category, ItemLike resultItemLike, float xpReward,
-                                                int ticks, String resultItemName) {
+                                            RecipeCategory recipeCategory, CookingBookCategory cookingCategory,
+                                            ItemLike resultItemLike, float xpReward,
+                                            int ticks, String resultItemName) {
         SimpleCookingRecipeBuilder
-                .generic(Ingredient.of(ingredientItemLike), category, resultItemLike, xpReward, ticks,
-                        RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new)
+                .generic(Ingredient.of(ingredientItemLike), recipeCategory, cookingCategory, resultItemLike,
+                        xpReward, ticks, BlastingRecipe::new)
                 .group(resultItemName)
                 .unlockedBy(getHasName(ingredientItemLike), has(ingredientItemLike))
                 .save(output, Identifier.fromNamespaceAndPath(ModMain.MODID,

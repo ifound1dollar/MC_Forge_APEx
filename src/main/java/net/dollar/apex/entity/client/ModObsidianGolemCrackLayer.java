@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Crackiness;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -17,7 +15,6 @@ import java.util.Map;
 /**
  * CLIENT-ONLY. Handles Crackiness layer applied to ModObsidianGolemEntityRenderer.
  */
-@OnlyIn(Dist.CLIENT)
 public class ModObsidianGolemCrackLayer extends RenderLayer<@NotNull ModObsidianGolemRenderState, @NotNull ModObsidianGolemModel> {
     private static final Map<Crackiness.Level, Identifier> resourceLocations = ImmutableMap.of(
             Crackiness.Level.LOW, Identifier.fromNamespaceAndPath(ModMain.MODID, "textures/entity/obsidian_golem_crackiness_low.png"),
