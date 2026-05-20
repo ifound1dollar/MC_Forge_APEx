@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#c:raw_materials/bronze",
+    "#c:raw_materials/cobalt",
+    "#c:raw_materials/phosphate",
+    "#c:raw_materials/steel",
+    "#c:raw_materials/tin",
+    "#c:raw_materials/tungsten"
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
   "key": {
-    "d": "#forge:ingots/gold",
+    "d": "#c:ingots/gold",
     "i": "apex:bronze_chestplate"
   },
   "pattern": [

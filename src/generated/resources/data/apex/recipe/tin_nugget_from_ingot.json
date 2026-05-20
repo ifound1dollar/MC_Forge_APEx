@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#forge:ingots/tin"
+    "#c:ingots/tin"
   ],
   "result": {
     "count": 9,

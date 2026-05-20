@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#forge:gems/amethyst",
-    "#forge:gems/diamond",
-    "#forge:gems/emerald",
-    "#forge:gems/ruby",
-    "#forge:gems/sapphire",
+    "#c:gems/amethyst",
+    "#c:gems/diamond",
+    "#c:gems/emerald",
+    "#c:gems/ruby",
+    "#c:gems/sapphire",
     "apex:handful_of_stardust"
   ],
   "result": {

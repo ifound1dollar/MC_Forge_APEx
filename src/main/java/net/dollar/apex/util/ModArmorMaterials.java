@@ -18,7 +18,7 @@ public interface ModArmorMaterials {
     ArmorMaterial BRONZE = new ArmorMaterial(15,
             makeDefense(2, 5, 6, 2, 5),
             9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-            ModTags.Items.FORGE_BRONZE_INGOTS, ModEquipmentAssets.BRONZE);
+            ModTags.Items.COMMON_BRONZE_INGOTS, ModEquipmentAssets.BRONZE);
 
     ArmorMaterial GILDED_BRONZE = new ArmorMaterial(23,
             makeDefense(3, 5, 6, 3, 9),

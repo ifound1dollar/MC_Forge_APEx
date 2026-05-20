@@ -15,7 +15,7 @@ public interface ModToolMaterials {
             6.0f,
             2.0f,
             14,
-            ModTags.Items.FORGE_BRONZE_INGOTS);
+            ModTags.Items.COMMON_BRONZE_INGOTS);
     ToolMaterial GILDED_BRONZE = new ToolMaterial(
             BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
             666,

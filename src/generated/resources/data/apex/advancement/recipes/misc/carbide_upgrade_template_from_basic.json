@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#forge:ingots/tungsten"
+            "items": "#c:ingots/tungsten"
           }
         ]
       },

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "d": "#forge:ingots/bronze"
+    "d": "#c:ingots/bronze"
   },
   "pattern": [
     "ddd",

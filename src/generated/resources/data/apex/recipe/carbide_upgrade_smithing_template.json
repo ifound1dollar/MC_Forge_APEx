@@ -4,7 +4,7 @@
   "key": {
     "d": "apex:carbide_upgrade_smithing_template",
     "i": "minecraft:obsidian",
-    "n": "#forge:ingots/tungsten"
+    "n": "#c:ingots/tungsten"
   },
   "pattern": [
     "ndn",

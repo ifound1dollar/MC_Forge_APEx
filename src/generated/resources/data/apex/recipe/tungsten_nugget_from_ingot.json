@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#forge:ingots/tungsten"
+    "#c:ingots/tungsten"
   ],
   "result": {
     "count": 9,

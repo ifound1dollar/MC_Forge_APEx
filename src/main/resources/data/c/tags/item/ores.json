@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#c:ores/cobalt",
+    "#c:ores/phosphate",
+    "#c:ores/ruby",
+    "#c:ores/sapphire",
+    "#c:ores/tin",
+    "#c:ores/tungsten"
+  ]
+}

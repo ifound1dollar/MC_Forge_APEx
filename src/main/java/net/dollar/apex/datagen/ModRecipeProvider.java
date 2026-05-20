@@ -224,8 +224,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //region Nuggets (cannot use storage recipes helper because duplicate ingot recipe names)
         shapeless(RecipeCategory.MISC, ModItems.TIN_NUGGET.get(), 9)
-                .requires(tag(ModTags.Items.FORGE_TIN_INGOTS), 1)
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .requires(tag(ModTags.Items.COMMON_TIN_INGOTS), 1)
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tin_nugget_from_ingot")));
         // THIS ONE IS FUNCTIONAL
@@ -238,8 +238,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tin_ingot_from_nugget")));
 
         shapeless(RecipeCategory.MISC, ModItems.TUNGSTEN_NUGGET.get(), 9)
-                .requires(tag(ModTags.Items.FORGE_TUNGSTEN_INGOTS), 1)
-                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
+                .requires(tag(ModTags.Items.COMMON_TUNGSTEN_INGOTS), 1)
+                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.COMMON_TUNGSTEN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tungsten_nugget_from_ingot")));
         shapeless(RecipeCategory.MISC, ModItems.TUNGSTEN_INGOT.get(), 1)
@@ -249,8 +249,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tungsten_ingot_from_nugget")));
 
         shapeless(RecipeCategory.MISC, ModItems.BRONZE_NUGGET.get(), 9)
-                .requires(tag(ModTags.Items.FORGE_BRONZE_INGOTS), 1)
-                .unlockedBy("has_bronze_ingot", has(ModTags.Items.FORGE_BRONZE_INGOTS))
+                .requires(tag(ModTags.Items.COMMON_BRONZE_INGOTS), 1)
+                .unlockedBy("has_bronze_ingot", has(ModTags.Items.COMMON_BRONZE_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "bronze_nugget_from_ingot")));
         shapeless(RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 1)
@@ -260,8 +260,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "bronze_ingot_from_nugget")));
 
         shapeless(RecipeCategory.MISC, ModItems.STEEL_NUGGET.get(), 9)
-                .requires(tag(ModTags.Items.FORGE_STEEL_INGOTS), 1)
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .requires(tag(ModTags.Items.COMMON_STEEL_INGOTS), 1)
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "steel_nugget_from_ingot")));
         shapeless(RecipeCategory.MISC, ModItems.STEEL_INGOT.get(), 1)
@@ -290,94 +290,94 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //region Iron-Replacement Tin Recipes
         shaped(RecipeCategory.MISC, Items.BUCKET, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .pattern("d d")
                 .pattern(" d ")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "bucket_from_tin_ingot")));
         shaped(RecipeCategory.MISC, Items.SHEARS, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .pattern(" d")
                 .pattern("d ")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "shears_from_tin_ingot")));
         shaped(RecipeCategory.MISC, Items.SHEARS, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .pattern("d ")
                 .pattern(" d")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "shears_from_tin_ingot_reversed")));
         shaped(RecipeCategory.MISC, Items.LANTERN, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .define('i', Items.TORCH)
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "lantern_from_tin_nugget")));
         shaped(RecipeCategory.MISC, Items.SOUL_LANTERN, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .define('i', Items.SOUL_TORCH)
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "soul_lantern_from_tin_nugget")));
         shaped(RecipeCategory.MISC, Items.TRIPWIRE_HOOK, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
-                .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
+                .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                 .define('n', ItemTags.PLANKS)
                 .pattern("d")
                 .pattern("i")
                 .pattern("n")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tripwire_hook_from_tin_ingot")));
         shaped(RecipeCategory.MISC, Items.HOPPER, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
-                .define('i', ModTags.Items.FORGE_CHESTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
+                .define('i', ModTags.Items.COMMON_CHESTS)
                 .pattern("d d")
                 .pattern("did")
                 .pattern(" d ")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "hopper_from_tin_ingot")));
         shaped(RecipeCategory.MISC, Items.COMPASS, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .define('i', Items.REDSTONE)
                 .pattern(" d ")
                 .pattern("did")
                 .pattern(" d ")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "compass_from_tin_ingot")));
         shaped(RecipeCategory.MISC, Items.IRON_CHAIN, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .define('i', ModItems.TIN_NUGGET.get())
                 .pattern("i")
                 .pattern("d")
                 .pattern("i")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .unlockedBy("has_tin_nugget", has(ModItems.TIN_NUGGET.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "chain_from_tin_ingot_and_nugget")));
         shaped(RecipeCategory.MISC, Items.CAULDRON, 1)
-                .define('d', ModTags.Items.FORGE_TIN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TIN_INGOTS)
                 .pattern("d d")
                 .pattern("d d")
                 .pattern("ddd")
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "cauldron_from_tin_ingot")));
         shapeless(RecipeCategory.MISC, Items.FLINT_AND_STEEL, 1)
-                .requires(tag(ModTags.Items.FORGE_TIN_INGOTS), 1)
+                .requires(tag(ModTags.Items.COMMON_TIN_INGOTS), 1)
                 .requires(Ingredient.of(Items.FLINT), 1)
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .unlockedBy("has_flint", has(Items.FLINT))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "flint_and_steel_from_tin_ingot")));
@@ -386,76 +386,76 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //region Compounds and Endgame Ingredient Items
         shapeless(RecipeCategory.MISC, ModItems.BRONZE_COMPOUND.get(), 3)
                 .requires(tag(Tags.Items.INGOTS_COPPER), 3)
-                .requires(tag(ModTags.Items.FORGE_TIN_INGOTS), 1)
-                .unlockedBy("has_copper_ingot", has(ModTags.Items.FORGE_COPPER_INGOTS))
-                .unlockedBy("has_tin_ingot", has(ModTags.Items.FORGE_TIN_INGOTS))
+                .requires(tag(ModTags.Items.COMMON_TIN_INGOTS), 1)
+                .unlockedBy("has_copper_ingot", has(ModTags.Items.COMMON_COPPER_INGOTS))
+                .unlockedBy("has_tin_ingot", has(ModTags.Items.COMMON_TIN_INGOTS))
                 .save(output);
         shapeless(RecipeCategory.MISC, ModItems.STEEL_COMPOUND.get(), 1)
-                .requires(tag(ModTags.Items.FORGE_IRON_INGOTS), 1)
+                .requires(tag(ModTags.Items.COMMON_IRON_INGOTS), 1)
                 .requires(tag(ItemTags.COALS), 1)
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .unlockedBy("has_coal", has(ItemTags.COALS))
                 .save(output);
         shapeless(RecipeCategory.MISC, ModItems.INFUSED_GEMSTONE.get(), 1)
-                .requires(tag(ModTags.Items.FORGE_AMETHYST), 1)
-                .requires(tag(ModTags.Items.FORGE_DIAMONDS), 1)
-                .requires(tag(ModTags.Items.FORGE_EMERALDS), 1)
-                .requires(tag(ModTags.Items.FORGE_RUBIES), 1)
-                .requires(tag(ModTags.Items.FORGE_SAPPHIRES), 1)
+                .requires(tag(ModTags.Items.COMMON_AMETHYST), 1)
+                .requires(tag(ModTags.Items.COMMON_DIAMONDS), 1)
+                .requires(tag(ModTags.Items.COMMON_EMERALDS), 1)
+                .requires(tag(ModTags.Items.COMMON_RUBIES), 1)
+                .requires(tag(ModTags.Items.COMMON_SAPPHIRES), 1)
                 .requires(Ingredient.of(ModItems.HANDFUL_OF_STARDUST.get()), 1)
-                .unlockedBy("has_amethyst", has(ModTags.Items.FORGE_AMETHYST))
-                .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
-                .unlockedBy("has_emerald", has(ModTags.Items.FORGE_EMERALDS))
-                .unlockedBy("has_ruby", has(ModTags.Items.FORGE_RUBIES))
-                .unlockedBy("has_sapphire", has(ModTags.Items.FORGE_SAPPHIRES))
+                .unlockedBy("has_amethyst", has(ModTags.Items.COMMON_AMETHYST))
+                .unlockedBy("has_diamond", has(ModTags.Items.COMMON_DIAMONDS))
+                .unlockedBy("has_emerald", has(ModTags.Items.COMMON_EMERALDS))
+                .unlockedBy("has_ruby", has(ModTags.Items.COMMON_RUBIES))
+                .unlockedBy("has_sapphire", has(ModTags.Items.COMMON_SAPPHIRES))
                 .unlockedBy("has_handful_of_stardust", has(ModItems.HANDFUL_OF_STARDUST.get()))
                 .save(output);
 
         shaped(RecipeCategory.MISC, ModItems.COBALT_STEEL_INGOT.get(), 1)
-                .define('d', ModTags.Items.FORGE_STEEL_INGOTS)
+                .define('d', ModTags.Items.COMMON_STEEL_INGOTS)
                 .define('i', ModItems.COBALT_SHARD.get())
                 .define('n', ModItems.MOLTEN_CORE.get())
                 .pattern("did")
                 .pattern("ini")
                 .pattern("did")
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .unlockedBy("has_cobalt_shard", has(ModItems.COBALT_SHARD.get()))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_ingot")));
         shaped(RecipeCategory.MISC, ModItems.COBALT_STEEL_INGOT.get(), 1)
-                .define('d', ModTags.Items.FORGE_STEEL_INGOTS)
+                .define('d', ModTags.Items.COMMON_STEEL_INGOTS)
                 .define('i', ModItems.COBALT_SHARD.get())
                 .define('n', ModItems.MOLTEN_CORE.get())
                 .pattern("idi")
                 .pattern("dnd")
                 .pattern("idi")
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .unlockedBy("has_cobalt_shard", has(ModItems.COBALT_SHARD.get()))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "cobalt_steel_ingot_reversed")));
 
         shaped(RecipeCategory.MISC, ModItems.TUNGSTEN_CARBIDE_INGOT.get(), 1)
-                .define('d', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TUNGSTEN_INGOTS)
                 .define('i', ItemTags.COALS)
                 .define('n', ModItems.MOLTEN_CORE.get())
                 .pattern("did")
                 .pattern("ini")
                 .pattern("did")
-                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
+                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.COMMON_TUNGSTEN_INGOTS))
                 .unlockedBy("has_coal", has(ItemTags.COALS))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "tungsten_carbide_ingot")));
         shaped(RecipeCategory.MISC, ModItems.TUNGSTEN_CARBIDE_INGOT.get(), 1)
-                .define('d', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
+                .define('d', ModTags.Items.COMMON_TUNGSTEN_INGOTS)
                 .define('i', ItemTags.COALS)
                 .define('n', ModItems.MOLTEN_CORE.get())
                 .pattern("idi")
                 .pattern("dnd")
                 .pattern("idi")
-                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
+                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.COMMON_TUNGSTEN_INGOTS))
                 .unlockedBy("has_coal", has(ItemTags.COALS))
                 .unlockedBy("has_molten_core", has(ModItems.MOLTEN_CORE.get()))
                 .save(output, ResourceKey.create(Registries.RECIPE,
@@ -471,83 +471,83 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("nin")
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
+                .unlockedBy("has_diamond", has(ModTags.Items.COMMON_DIAMONDS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "netherite_upgrade_template_from_basic")));
 
         shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
                 .define('i', Items.STONE)
-                .define('n', ModTags.Items.FORGE_STEEL_INGOTS)
+                .define('n', ModTags.Items.COMMON_STEEL_INGOTS)
                 .pattern(" d ")
                 .pattern("nin")
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "cobalt_upgrade_template_from_basic")));
         shaped(RecipeCategory.MISC, ModItems.COBALT_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.COBALT_UPGRADE_TEMPLATE.get())
                 .define('i', Items.STONE)
-                .define('n', ModTags.Items.FORGE_STEEL_INGOTS)
+                .define('n', ModTags.Items.COMMON_STEEL_INGOTS)
                 .pattern("ndn")
                 .pattern("nin")
                 .pattern("nnn")
                 .unlockedBy("has_cobalt_upgrade_template", has(ModItems.COBALT_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_steel_ingot", has(ModTags.Items.FORGE_STEEL_INGOTS))
+                .unlockedBy("has_steel_ingot", has(ModTags.Items.COMMON_STEEL_INGOTS))
                 .save(output);
 
         shaped(RecipeCategory.MISC, ModItems.INFUSION_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
                 .define('i', Items.DEEPSLATE)
-                .define('n', ModTags.Items.FORGE_DIAMONDS)
+                .define('n', ModTags.Items.COMMON_DIAMONDS)
                 .pattern(" d ")
                 .pattern("nin")
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
+                .unlockedBy("has_diamond", has(ModTags.Items.COMMON_DIAMONDS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "infusion_upgrade_template_from_basic")));
         shaped(RecipeCategory.MISC, ModItems.INFUSION_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.INFUSION_UPGRADE_TEMPLATE.get())
                 .define('i', Items.DEEPSLATE)
-                .define('n', ModTags.Items.FORGE_DIAMONDS)
+                .define('n', ModTags.Items.COMMON_DIAMONDS)
                 .pattern("ndn")
                 .pattern("nin")
                 .pattern("nnn")
                 .unlockedBy("has_infusion_upgrade_template", has(ModItems.INFUSION_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_diamond", has(ModTags.Items.FORGE_DIAMONDS))
+                .unlockedBy("has_diamond", has(ModTags.Items.COMMON_DIAMONDS))
                 .save(output);
 
         shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 1)
                 .define('d', ModItems.BASIC_UPGRADE_TEMPLATE.get())
                 .define('i', Items.OBSIDIAN)
-                .define('n', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
+                .define('n', ModTags.Items.COMMON_TUNGSTEN_INGOTS)
                 .pattern(" d ")
                 .pattern("nin")
                 .pattern(" n ")
                 .unlockedBy("has_basic_upgrade_template", has(ModItems.BASIC_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
+                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.COMMON_TUNGSTEN_INGOTS))
                 .save(output, ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(ModMain.MODID, "carbide_upgrade_template_from_basic")));
         shaped(RecipeCategory.MISC, ModItems.CARBIDE_UPGRADE_TEMPLATE.get(), 2)
                 .define('d', ModItems.CARBIDE_UPGRADE_TEMPLATE.get())
                 .define('i', Items.OBSIDIAN)
-                .define('n', ModTags.Items.FORGE_TUNGSTEN_INGOTS)
+                .define('n', ModTags.Items.COMMON_TUNGSTEN_INGOTS)
                 .pattern("ndn")
                 .pattern("nin")
                 .pattern("nnn")
                 .unlockedBy("has_carbide_upgrade_template", has(ModItems.CARBIDE_UPGRADE_TEMPLATE.get()))
-                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.FORGE_TUNGSTEN_INGOTS))
+                .unlockedBy("has_tungsten_ingot", has(ModTags.Items.COMMON_TUNGSTEN_INGOTS))
                 .save(output);
         //endregion
 
 
 
         //region VANILLA TIER BATTLEAXES AND PAXELS
-        toolRecipeBuilder(output, ToolType.BATTLEAXE, ModTags.Items.FORGE_DIAMONDS, ModItems.DIAMOND_BATTLEAXE.get(),
+        toolRecipeBuilder(output, ToolType.BATTLEAXE, ModTags.Items.COMMON_DIAMONDS, ModItems.DIAMOND_BATTLEAXE.get(),
                 "has_diamond");
-        toolRecipeBuilder(output, ToolType.PAXEL, ModTags.Items.FORGE_DIAMONDS, ModItems.DIAMOND_PAXEL.get(),
+        toolRecipeBuilder(output, ToolType.PAXEL, ModTags.Items.COMMON_DIAMONDS, ModItems.DIAMOND_PAXEL.get(),
                 "has_diamond");
         smithingUpgradeRecipeBuilder(output, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.DIAMOND_BATTLEAXE.get(),
                 Items.NETHERITE_INGOT, RecipeCategory.COMBAT, ModItems.NETHERITE_BATTLEAXE.get(),
@@ -582,100 +582,109 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //endregion
 
         //region BRONZE EQUIPMENT
-        armorRecipeBuilder(output, EquipmentSlot.HEAD, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_HELMET.get(),
+        armorRecipeBuilder(output, EquipmentSlot.HEAD, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_HELMET.get(),
                 "has_bronze_ingot");
-        armorRecipeBuilder(output, EquipmentSlot.CHEST, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_CHESTPLATE.get(),
+        armorRecipeBuilder(output, EquipmentSlot.CHEST, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_CHESTPLATE.get(),
                 "has_bronze_ingot");
-        armorRecipeBuilder(output, EquipmentSlot.LEGS, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_LEGGINGS.get(),
+        armorRecipeBuilder(output, EquipmentSlot.LEGS, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_LEGGINGS.get(),
                 "has_bronze_ingot");
-        armorRecipeBuilder(output, EquipmentSlot.FEET, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_BOOTS.get(),
+        armorRecipeBuilder(output, EquipmentSlot.FEET, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_BOOTS.get(),
                 "has_bronze_ingot");
 
-        toolRecipeBuilder(output, ToolType.AXE, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_AXE.get(),
+        toolRecipeBuilder(output, ToolType.AXE, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_AXE.get(),
                 "has_bronze_ingot");
-        toolRecipeBuilder(output, ToolType.HOE, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_HOE.get(),
+        toolRecipeBuilder(output, ToolType.HOE, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_HOE.get(),
                 "has_bronze_ingot");
-        toolRecipeBuilder(output, ToolType.PICKAXE, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_PICKAXE.get(),
+        toolRecipeBuilder(output, ToolType.PICKAXE, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_PICKAXE.get(),
                 "has_bronze_ingot");
-        toolRecipeBuilder(output, ToolType.SHOVEL, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_SHOVEL.get(),
+        toolRecipeBuilder(output, ToolType.SHOVEL, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_SHOVEL.get(),
                 "has_bronze_ingot");
-        toolRecipeBuilder(output, ToolType.SWORD, ModTags.Items.FORGE_BRONZE_INGOTS, ModItems.BRONZE_SWORD.get(),
+        toolRecipeBuilder(output, ToolType.SWORD, ModTags.Items.COMMON_BRONZE_INGOTS, ModItems.BRONZE_SWORD.get(),
                 "has_bronze_ingot");
         //endregion
 
         //region GILDED BRONZE EQUIPMENT
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_HELMET.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.COMBAT, ModItems.GILDED_BRONZE_HELMET.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_HELMET.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_helmet", has(ModItems.GILDED_BRONZE_HELMET.get()))
+                .unlockedBy("has_gilded_bronze_helmet", has(ModItems.BRONZE_HELMET.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_CHESTPLATE.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.COMBAT, ModItems.GILDED_BRONZE_CHESTPLATE.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_CHESTPLATE.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_chestplate", has(ModItems.GILDED_BRONZE_CHESTPLATE.get()))
+                .unlockedBy("has_gilded_bronze_chestplate", has(ModItems.BRONZE_CHESTPLATE.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_LEGGINGS.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.COMBAT, ModItems.GILDED_BRONZE_LEGGINGS.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_LEGGINGS.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_leggings", has(ModItems.GILDED_BRONZE_LEGGINGS.get()))
+                .unlockedBy("has_gilded_bronze_leggings", has(ModItems.BRONZE_LEGGINGS.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_BOOTS.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.COMBAT, ModItems.GILDED_BRONZE_BOOTS.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_BOOTS.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_boots", has(ModItems.GILDED_BRONZE_BOOTS.get()))
+                .unlockedBy("has_gilded_bronze_boots", has(ModItems.BRONZE_BOOTS.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
 
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_AXE.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.TOOLS, ModItems.GILDED_BRONZE_AXE.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_AXE.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_axe", has(ModItems.GILDED_BRONZE_AXE.get()))
+                .unlockedBy("has_gilded_bronze_axe", has(ModItems.BRONZE_AXE.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_HOE.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.TOOLS, ModItems.GILDED_BRONZE_HOE.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_HOE.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_hoe", has(ModItems.GILDED_BRONZE_HOE.get()))
+                .unlockedBy("has_gilded_bronze_hoe", has(ModItems.BRONZE_HOE.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_PICKAXE.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.TOOLS, ModItems.GILDED_BRONZE_PICKAXE.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_PICKAXE.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_pickaxe", has(ModItems.GILDED_BRONZE_PICKAXE.get()))
+                .unlockedBy("has_gilded_bronze_pickaxe", has(ModItems.BRONZE_PICKAXE.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_SHOVEL.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.TOOLS, ModItems.GILDED_BRONZE_SHOVEL.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_SHOVEL.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_shovel", has(ModItems.GILDED_BRONZE_SHOVEL.get()))
+                .unlockedBy("has_gilded_bronze_shovel", has(ModItems.BRONZE_SHOVEL.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
-        shaped(RecipeCategory.MISC, ModItems.GILDED_BRONZE_SWORD.get(), 1)
-                .define('d', ModTags.Items.FORGE_GOLD_INGOTS)
+        shaped(RecipeCategory.TOOLS, ModItems.GILDED_BRONZE_SWORD.get(), 1)
+                .define('d', ModTags.Items.COMMON_GOLD_INGOTS)
                 .define('i', ModItems.BRONZE_SWORD.get())
                 .pattern("ddd")
                 .pattern("did")
                 .pattern("ddd")
-                .unlockedBy("has_gilded_bronze_sword", has(ModItems.GILDED_BRONZE_SWORD.get()))
+                .unlockedBy("has_gilded_bronze_sword", has(ModItems.BRONZE_SWORD.get()))
+                .unlockedBy("has_gold_ingot", has(ModTags.Items.COMMON_GOLD_INGOTS))
                 .save(output);
         //endregion
 
@@ -849,7 +858,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         switch (toolType) {
             case AXE -> shaped(RecipeCategory.TOOLS, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("dd")
                     .pattern("di")
                     .pattern(" i")
@@ -857,7 +866,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case BATTLEAXE -> shaped(RecipeCategory.COMBAT, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("ddd")
                     .pattern("did")
                     .pattern(" i ")
@@ -865,7 +874,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case HOE -> shaped(RecipeCategory.TOOLS, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("dd")
                     .pattern(" i")
                     .pattern(" i")
@@ -873,7 +882,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case PAXEL -> shaped(RecipeCategory.TOOLS, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("ddd")
                     .pattern("di ")
                     .pattern(" i ")
@@ -881,7 +890,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case PICKAXE -> shaped(RecipeCategory.TOOLS, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("ddd")
                     .pattern(" i ")
                     .pattern(" i ")
@@ -889,7 +898,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case SHOVEL -> shaped(RecipeCategory.TOOLS, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("d")
                     .pattern("i")
                     .pattern("i")
@@ -897,7 +906,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(output);
             case SWORD -> shaped(RecipeCategory.COMBAT, result, 1)
                     .define('d', ingredient)
-                    .define('i', ModTags.Items.FORGE_WOODEN_RODS)
+                    .define('i', ModTags.Items.COMMON_WOODEN_RODS)
                     .pattern("d")
                     .pattern("d")
                     .pattern("i")

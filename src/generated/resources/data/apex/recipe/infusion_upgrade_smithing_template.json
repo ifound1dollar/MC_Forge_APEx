@@ -4,7 +4,7 @@
   "key": {
     "d": "apex:infusion_upgrade_smithing_template",
     "i": "minecraft:deepslate",
-    "n": "#forge:gems/diamond"
+    "n": "#c:gems/diamond"
   },
   "pattern": [
     "ndn",

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "#forge:ingots/tin",
+    "d": "#c:ingots/tin",
     "i": "minecraft:soul_torch"
   },
   "pattern": [

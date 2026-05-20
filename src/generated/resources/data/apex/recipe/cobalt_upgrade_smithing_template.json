@@ -4,7 +4,7 @@
   "key": {
     "d": "apex:cobalt_upgrade_smithing_template",
     "i": "minecraft:stone",
-    "n": "#forge:ingots/steel"
+    "n": "#c:ingots/steel"
   },
   "pattern": [
     "ndn",

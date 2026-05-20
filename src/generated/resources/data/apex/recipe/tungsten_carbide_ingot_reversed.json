@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": "#forge:ingots/tungsten",
+    "d": "#c:ingots/tungsten",
     "i": "#minecraft:coals",
     "n": "apex:molten_core"
   },
